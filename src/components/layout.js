@@ -42,11 +42,7 @@ const LayoutWrapper = styled.div`
 `
 
 const Main = styled.main`
-  margin: 0 auto;
-  padding: 70.391px 1.0875rem 1.45rem;
-  @media (min-width: 662px) {
-    padding-top: 110.062px;
-  }
+  margin: 0;
 `
 
 export default Layout

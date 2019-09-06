@@ -46,7 +46,7 @@ const StyledHeader = styled.header`
 `
 
 const Wrapper = styled.div`
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   justify-content: center;

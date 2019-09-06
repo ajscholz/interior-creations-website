@@ -100,8 +100,15 @@ const Footer = ({ className }) => {
 
 export default styled(Footer)`
   width: 100%;
+  /* to deal with fab laying over copyright text on xxs screens */
+  padding: 2rem 2rem 7rem;
   background: var(--secondary);
-  padding: 4rem 2rem;
+  @media (min-width: 400px) {
+    padding: 2rem;
+  }
+  @media (min-width: 662px) {
+    padding: 4rem 2rem;
+  }
 `
 
 const Container = styled.div`
@@ -115,14 +122,14 @@ const Container = styled.div`
     margin: 0;
   }
   @media (min-width: 662px) {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-gap: 1rem;
     grid-template-areas:
-      "info social "
+      "info social"
       "info copyright";
   }
 `
@@ -136,8 +143,8 @@ const StyledGridGroup = styled(GridGroup)`
 `
 
 const Copyright = styled.div`
-  margin-top: 3rem;
-  text-align: left;
+  margin-top: 2rem;
+  text-align: center;
   grid-area: copyright;
   & > p,
   a {
