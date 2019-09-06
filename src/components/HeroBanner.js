@@ -49,8 +49,8 @@ const Overlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
   z-index: 1;
   color: var(--white);
-  font-size: 2.5rem;
   & h1 {
+    font-size: 2rem;
     margin: 0;
   }
   @media (min-width: 576px) {
