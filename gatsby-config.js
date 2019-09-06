@@ -11,13 +11,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-netlify`,
     "gatsby-plugin-netlify-cache",
-    {
-      resolve: `gatsby-plugin-netlify-functions`,
-      options: {
-        functionsSrc: `${__dirname}/src/functions`,
-        functionsOutput: `${__dirname}/functions`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-netlify-functions`,
+    //   options: {
+    //     functionsSrc: `${__dirname}/src/functions`,
+    //     functionsOutput: `${__dirname}/functions`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
