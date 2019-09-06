@@ -32,10 +32,9 @@ const Button = styled.button`
   outline: none;
   height: 3rem;
   width: 3rem;
-  background: var(--transWhite);
-  backdrop-filter: blur(6px);
+  background: var(--white);
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   right: 2rem;
   box-shadow: var(--shadow3);

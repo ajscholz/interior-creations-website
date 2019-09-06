@@ -69,6 +69,7 @@ const MobileWrapper = styled(animated.nav)`
   align-items: center;
   justify-content: center;
   color: var(--white);
+  backdrop-filter: blur(2px);
   @media (min-width: 662px) {
     display: none;
   }
