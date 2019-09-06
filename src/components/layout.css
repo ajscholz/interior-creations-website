@@ -1,4 +1,21 @@
+* {
+  --primary: #0585b0;
+  --secondary: #00234e;
+  --black: black;
+  --white: white;
+  --transWhite: rgba(256, 256, 256, 0.85);
+  --mainTransition: all 0.3s ease;
+  --shadow1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --shadow4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --shadow5: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  font-size: 16px;
+  box-sizing: inherit;
+}
 html {
+  overflow-y: scroll;
+  box-sizing: border-box;
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -7,6 +24,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rebeccapurple;
 }
 article,
 aside,
@@ -42,6 +60,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
 }
 a:active,
 a:hover {
@@ -184,14 +203,7 @@ textarea {
   -webkit-appearance: button;
   font: inherit;
 }
-html {
-  font: 112.5%/1.45em georgia, serif;
-  box-sizing: border-box;
-  overflow-y: scroll;
-}
-* {
-  box-sizing: inherit;
-}
+
 *:before {
   box-sizing: inherit;
 }

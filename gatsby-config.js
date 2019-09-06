@@ -32,7 +32,12 @@ module.exports = {
         // downloadLocal: true,
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
