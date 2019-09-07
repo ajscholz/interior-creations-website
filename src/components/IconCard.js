@@ -14,14 +14,14 @@ const IconCard = props => {
   })
 
   return (
-    <animated.div
+    <animated.button
       className={className}
       style={highlight}
       onClick={() => click(cardNumber)}
     >
       {icon}
       <h5>{text}</h5>
-    </animated.div>
+    </animated.button>
   )
 }
 
@@ -32,21 +32,25 @@ IconCard.propTypes = {
 }
 
 export default styled(IconCard)`
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   /* box-shadow: ${props => (props.current ? "var(--shadow2)" : "none")}; */
   /* color: ${props => (props.current ? "var(--primary)" : "var(--black)")}; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  cursor: pointer;
+  background: var(--white);
+  border: none;
+  outline: none;
+  padding: 0.75rem;
   & svg {
-    margin-top: 20%;
+    margin-top: 10%;
     height: 30%;
     width: 30%;
     /* color: ${props =>
       props.current ? "var(--primary)" : "var(--black)"}; */
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
   & h5 {
     font-size: 0.8rem;
@@ -54,14 +58,14 @@ export default styled(IconCard)`
     margin: 0;
   }
 
-  @media (min-width: 662px) {
-    height: 160px;
-    width: 160px;
+  @media (min-width: 576px) {
+    height: 130px;
+    width: 130px;
     & svg {
       margin-bottom: 1rem;
     }
     & h5 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
 `

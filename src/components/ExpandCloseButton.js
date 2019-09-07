@@ -33,6 +33,7 @@ const Button = styled.button`
   height: 3rem;
   width: 3rem;
   background: var(--white);
+  border: none;
   border-radius: 50%;
   position: fixed;
   bottom: 2rem;
