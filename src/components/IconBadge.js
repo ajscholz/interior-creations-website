@@ -20,7 +20,7 @@ const IconBadge = props => {
 
 IconBadge.propTypes = {
   icon: PropTypes.element.isRequired,
-  size: PropTypes.number.isRequired,
+  // size: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
 }
 

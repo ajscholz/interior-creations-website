@@ -632,3 +632,7 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+a:visited {
+  color: inherit;
+}

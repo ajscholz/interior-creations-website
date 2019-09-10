@@ -7,7 +7,7 @@ export default styled.button`
   text-transform: uppercase;
   font-size: ${props =>
     props.large ? "1rem" : props.small ? ".7rem" : ".85rem"};
-  padding: 0.35rem 3rem;
+  padding: 0.5rem 3rem;
   background: ${props => (props.solid ? "var(--primary)" : "transparent")};
   letter-spacing: 1.5px;
   font-weight: 400;

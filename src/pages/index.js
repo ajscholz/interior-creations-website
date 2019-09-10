@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
 import { graphql } from "gatsby"
 import IconCard from "../components/IconCard"
-import GridGroup from "../components/GridGroup"
 import { P } from "../components/Typography"
 
 import { MdComputer } from "react-icons/md"
@@ -14,6 +13,8 @@ import { FaHammer, FaInfinity } from "react-icons/fa"
 import Section from "../components/Section"
 import Title from "../components/Title"
 import FlexContainer from "../components/FlexContainer"
+import ImageSection from "../components/ImageSection"
+import Button from "../components/Button"
 
 const AnimatedP = animated(P)
 
@@ -51,6 +52,7 @@ const IndexPage = props => {
 
             return (
               <IconCard
+                key={item.contentful_id}
                 current={index === i}
                 icon={icons[i]}
                 title={item.title}
@@ -68,27 +70,20 @@ const IndexPage = props => {
         </TextWrapper>
       </Section>
 
-      <Section>
-        <Title>{section2.title}</Title>
-      </Section>
+      <ImageSection
+        data={section2}
+        buttonText={`View Our Projects`}
+        link={"/view-our-projects/"}
+      />
     </>
   )
 }
 
 const StyledFlexContainer = styled(FlexContainer)`
-  /* max-width: 0; */
   justify-content: space-evenly;
 
   @media (min-width: 662px) {
     justify-content: space-between;
-  }
-`
-
-const StyledGridGroup = styled(GridGroup)`
-  grid-gap: 0.25rem;
-
-  @media (min-width: 662px) {
-    grid-gap: 4rem;
   }
 `
 
@@ -147,11 +142,11 @@ export const query = graphql`
     section2: contentfulPageSection(
       contentful_id: { eq: "2uDsJfL05E53ZgLz9jN2fy" }
     ) {
-      title: sectionTitle
-      text: sectionText {
-        text: sectionText
+      sectionTitle
+      sectionText {
+        sectionText
       }
-      image: sectionImage {
+      sectionImage {
         fluid {
           ...GatsbyContentfulFluid
         }

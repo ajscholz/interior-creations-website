@@ -12,4 +12,8 @@ export default styled.section`
     padding: 4rem;
     width: 100%;
   }
+
+  @media (min-width: 900px) {
+    padding: 6rem 4rem;
+  }
 `
