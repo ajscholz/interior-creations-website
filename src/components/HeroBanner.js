@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import BackgroundImage from "gatsby-background-image"
-// import { H1 } from "./Typography"
+import { H1 } from "./Typography"
 
 const HeroBanner = props => {
   const { image, text, className } = props
@@ -13,7 +13,7 @@ const HeroBanner = props => {
     <BackgroundImage fluid={image} className={className}>
       <Overlay>
         <Wrapper>
-          <h1>{text}</h1>
+          <H1 style={{ margin: "0" }}>{text}</H1>
         </Wrapper>
       </Overlay>
     </BackgroundImage>
@@ -49,23 +49,12 @@ const Overlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
   z-index: 1;
   color: var(--white);
-  & h1 {
-    font-size: 2rem;
-    margin: 0;
-  }
+
   @media (min-width: 576px) {
     padding: 2rem;
   }
   @media (min-width: 662px) {
     height: 26%;
-    & h1 {
-      font-size: 2.75rem;
-    }
-  }
-  @media (min-width: 776px) {
-    & h1 {
-      font-size: 3.25rem;
-    }
   }
 `
 

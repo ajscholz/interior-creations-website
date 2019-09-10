@@ -11,6 +11,10 @@ import GridGroup from "../components/GridGroup"
 import { MdComputer } from "react-icons/md"
 import { FaHammer, FaInfinity } from "react-icons/fa"
 import Section from "../components/Section"
+import Avatar from "../components/Avatar"
+import TeamMember from "../components/TeamMember"
+
+import avImg from "../images/avatarsquare.jpg"
 
 const text = [
   ({ style }) => (
@@ -50,10 +54,16 @@ const IndexPage = props => {
   return (
     <>
       <SEO title="Home" />
+
       <HeroBanner
         image={data.file.image.fluid}
-        text="Quality,&nbsp;Custom Cabinets"
+        text="Quality, Custom Cabinets"
       />
+
+      <Section>
+        <TeamMember name="Andrew Scholz" image={ avImg } text={ `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturimolestiae sint quis doloremque perspiciatis odio facilis consequuntur eius facere voluptates quaerat rem officiis cumque temporibus.`} />
+      </Section>
+
       <Section>
         <FlexContainer>
           <IconCard
