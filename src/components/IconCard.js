@@ -3,14 +3,15 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { animated, useSpring } from "react-spring"
 
+import { H3 } from "./Typography"
+
 const IconCard = props => {
-  const { className, current, icon, text, click, cardNumber } = props
+  const { className, current, icon, title, click, cardNumber } = props
   const highlight = useSpring({
     boxShadow: current
       ? "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)"
       : "0 3px 6px rgba(0, 0, 0, 0), 0 3px 6px rgba(0, 0, 0, 0)",
-    color: current ? "#0585b0" : "#222526",
-    // opacity: current ? "1" : "0",
+    color: current ? "#0585b0" : "#707070",
   })
 
   return (
@@ -20,52 +21,57 @@ const IconCard = props => {
       onClick={() => click(cardNumber)}
     >
       {icon}
-      <h5>{text}</h5>
+      <H3>{title}</H3>
     </animated.button>
   )
 }
 
 IconCard.propTypes = {
   icon: PropTypes.element.isRequired,
-  text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   current: PropTypes.bool.isRequired,
 }
 
 export default styled(IconCard)`
   height: 90px;
   width: 90px;
-  /* box-shadow: ${props => (props.current ? "var(--shadow2)" : "none")}; */
-  /* color: ${props => (props.current ? "var(--primary)" : "var(--black)")}; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
   background: var(--white);
   border: none;
   outline: none;
   padding: 0.75rem;
+
   & svg {
-    margin-top: 10%;
-    height: 30%;
-    width: 30%;
-    /* color: ${props =>
-      props.current ? "var(--primary)" : "var(--black)"}; */
+    /* margin-top: 10%; */
+    height: 40%;
+    width: 40%;
     margin-bottom: 0.5rem;
   }
-  & h5 {
+
+  & ${H3} {
     font-size: 0.8rem;
     text-align: center;
     margin: 0;
   }
 
   @media (min-width: 576px) {
+    height: 110px;
+    width: 110px;
+    & ${H3} {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (min-width: 662px) {
     height: 130px;
     width: 130px;
-    & svg {
-      margin-bottom: 1rem;
-    }
-    & h5 {
-      font-size: 1.2rem;
+
+    & ${H3} {
+      font-size: 1.05rem;
     }
   }
 `

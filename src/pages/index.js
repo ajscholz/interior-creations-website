@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { useTransition, animated } from "react-spring"
 
@@ -7,42 +7,25 @@ import HeroBanner from "../components/HeroBanner"
 import { graphql } from "gatsby"
 import IconCard from "../components/IconCard"
 import GridGroup from "../components/GridGroup"
+import { P } from "../components/Typography"
 
 import { MdComputer } from "react-icons/md"
 import { FaHammer, FaInfinity } from "react-icons/fa"
 import Section from "../components/Section"
-import Avatar from "../components/Avatar"
-import TeamMember from "../components/TeamMember"
+import Title from "../components/Title"
+import FlexContainer from "../components/FlexContainer"
 
-import avImg from "../images/avatarsquare.jpg"
+const AnimatedP = animated(P)
 
-const text = [
-  ({ style }) => (
-    <animated.p style={{ ...style }}>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur,
-      quisquam? Consectetur voluptates debitis harum quibusdam sunt, cumque
-      provident magni culpa a, iusto placeat ex cum architecto, perferendis modi
-      ipsam ullam.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p style={{ ...style }}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quae
-      enim, voluptatibus illo deserunt quia, natus in sunt, harum aperiam alias!
-      Eveniet, tenetur. Quos ea quas sapiente nihil facilis alias?
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p style={{ ...style }}>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
-      molestiae sint quis doloremque perspiciatis odio facilis consequuntur eius
-      facere voluptates quaerat rem officiis cumque temporibus, qui natus in,
-      mollitia eligendi.
-    </animated.p>
-  ),
-]
+const icons = [<MdComputer />, <FaHammer />, <FaInfinity />]
+
+let text = []
 
 const IndexPage = props => {
+  const { data } = props
+
+  const { page, section1, section2 } = data
+
   const [index, setIndex] = useState(0)
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(-100%,0,0)" },
@@ -50,44 +33,33 @@ const IndexPage = props => {
     leave: { opacity: 0, transform: "translate3d(50%,0,0)" },
   })
 
-  const { data } = props
   return (
     <>
       <SEO title="Home" />
 
-      <HeroBanner
-        image={data.file.image.fluid}
-        text="Quality, Custom Cabinets"
-      />
+      <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
-      <Section>
-        <TeamMember name="Andrew Scholz" image={ avImg } text={ `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturimolestiae sint quis doloremque perspiciatis odio facilis consequuntur eius facere voluptates quaerat rem officiis cumque temporibus.`} />
-      </Section>
+      <Section style={{ maxWidth: "700px" }}>
+        <Title style={{ textAlign: "center" }}>{section1.title}</Title>
+        <StyledFlexContainer>
+          {section1.content.map((item, i) => {
+            text[i] = ({ style }) => (
+              <AnimatedP style={{ ...style }}>
+                {item.information.information}
+              </AnimatedP>
+            )
 
-      <Section>
-        <FlexContainer>
-          <IconCard
-            current={index === 0}
-            icon={<MdComputer />}
-            text={"Your Dream"}
-            click={setIndex}
-            cardNumber={0}
-          />
-          <IconCard
-            current={index === 1}
-            icon={<FaHammer />}
-            text={"Hand-crafted"}
-            click={setIndex}
-            cardNumber={1}
-          />
-          <IconCard
-            current={index === 2}
-            icon={<FaInfinity />}
-            text={"Built To Last"}
-            click={setIndex}
-            cardNumber={2}
-          />
-        </FlexContainer>
+            return (
+              <IconCard
+                current={index === i}
+                icon={icons[i]}
+                title={item.title}
+                click={setIndex}
+                cardNumber={i}
+              />
+            )
+          })}
+        </StyledFlexContainer>
         <TextWrapper>
           {transitions.map(({ item, props, key }) => {
             const Text = text[item]
@@ -95,9 +67,22 @@ const IndexPage = props => {
           })}
         </TextWrapper>
       </Section>
+
+      <Section>
+        <Title>{section2.title}</Title>
+      </Section>
     </>
   )
 }
+
+const StyledFlexContainer = styled(FlexContainer)`
+  /* max-width: 0; */
+  justify-content: space-evenly;
+
+  @media (min-width: 662px) {
+    justify-content: space-between;
+  }
+`
 
 const StyledGridGroup = styled(GridGroup)`
   grid-gap: 0.25rem;
@@ -110,29 +95,16 @@ const StyledGridGroup = styled(GridGroup)`
 const TextWrapper = styled.div`
   position: relative;
   margin: 1rem auto 0;
-  width: 500px;
-  /* border: 1px solid black; */
-  height: 120px;
+  height: 90px;
   overflow: hidden;
-  max-width: 100%;
+
   & > p {
     font-size: 0.8rem;
     margin-bottom: 0;
+    text-align: center;
     @media (min-width: 576px) {
       font-size: 1rem;
-    }
-  }
-`
-
-const FlexContainer = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  & > ${IconCard} {
-    &:nth-of-type(2) {
-      margin: 0 0.5rem;
+      height: 80px;
     }
   }
 `
@@ -141,10 +113,47 @@ export default IndexPage
 
 export const query = graphql`
   {
-    file(name: { eq: "01" }) {
-      image: childImageSharp {
+    page: contentfulPage(title: { eq: "Home" }) {
+      contentful_id
+      bannerText
+      bannerImage {
+        fluid(quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+        file {
+          details {
+            image {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+    section1: contentfulPageSection(
+      contentful_id: { eq: "phe9grYPyoLRJzY6IoY2d" }
+    ) {
+      title: sectionTitle
+      content: contentReferences {
+        ... on ContentfulInformationText {
+          contentful_id
+          title
+          information {
+            information
+          }
+        }
+      }
+    }
+    section2: contentfulPageSection(
+      contentful_id: { eq: "2uDsJfL05E53ZgLz9jN2fy" }
+    ) {
+      title: sectionTitle
+      text: sectionText {
+        text: sectionText
+      }
+      image: sectionImage {
         fluid {
-          ...GatsbyImageSharpFluid
+          ...GatsbyContentfulFluid
         }
       }
     }

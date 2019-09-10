@@ -1,9 +1,7 @@
 import styled from "styled-components"
 
-const scale = 1.2
-
 const TypeBase = {
-  margin: "2.75rem 0 1rem",
+  margin: "0 0 1rem",
   fontFamily: "Cinzel, serif",
   fontWeight: "400",
   lineHeight: "1.15",
@@ -11,7 +9,6 @@ const TypeBase = {
 
 export const H1 = styled.h1`
   ${TypeBase}
-  margin-top: 0;
   font-size: 2.441em;
   text-align: ${props => props.textAlign};
   color: ${props => props.color};
@@ -25,6 +22,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   ${TypeBase}
   font-size: 1.953em;
+  margin-bottom: 2rem;
   text-align: ${props => props.textAlign};
   color: ${props => props.color};
 
