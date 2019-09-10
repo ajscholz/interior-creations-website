@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export default styled.button`
   outline: none;
+  display: block;
   border: 2px solid var(--primary);
   color: ${props => props.color || "var(--primary)"};
   text-transform: uppercase;
@@ -11,4 +12,5 @@ export default styled.button`
   background: ${props => (props.solid ? "var(--primary)" : "transparent")};
   letter-spacing: 1.5px;
   font-weight: 400;
+  margin: ${props => props.center && "0 auto"};
 `

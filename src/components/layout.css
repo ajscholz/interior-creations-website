@@ -636,3 +636,7 @@ pre tt:after {
 a:visited {
   color: inherit;
 }
+
+a {
+  color: inherit;
+}

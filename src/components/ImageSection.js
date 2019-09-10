@@ -18,7 +18,7 @@ const ImageSection = props => {
       <div className="wrapper">
         <Title>{title}</Title>
         <P>{text.sectionText}</P>
-        <StyledImg fluid={image.fluid} />
+        <Img fluid={image.fluid} />
         <Button>
           <Link to={link}>{buttonText}</Link>
         </Button>
@@ -41,9 +41,11 @@ ImageSection.propTypes = {
   link: PropTypes.string.isRequired,
 }
 
-const StyledImg = styled(Img)``
-
 export default styled(ImageSection)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
   & .gatsby-image-wrapper {
     max-height: 350px;
   }
@@ -53,18 +55,19 @@ export default styled(ImageSection)`
     width: 100%;
   }
 
-  @media (min-width: 576px) {
+  /* @media (min-width: 900px) {
     & ${Button} {
       width: unset;
     }
-  }
+  } */
 
   @media (min-width: 900px) {
     position: relative;
     padding: 6rem calc(50% + 4rem) 6rem 4rem;
+    background: var(--lightestgray);
 
     & .wrapper {
-      margin: 0 auto;
+      align-self: flex-end;
       max-width: 500px;
     }
 
@@ -79,6 +82,29 @@ export default styled(ImageSection)`
 
     & ${Button} {
       margin-top: 0;
+      width: unset;
     }
+
+    &:nth-of-type(even) {
+      padding: 6rem 4rem 6rem calc(50% + 4rem);
+      text-align: right;
+
+      & .wrapper {
+        align-self: flex-start;
+      }
+
+      & .gatsby-image-wrapper {
+        left: 0;
+        right: unset;
+      }
+      & ${Button} {
+        margin-left: auto;
+      }
+    }
+  }
+
+  @media (min-width: 1000px) {
+    padding-top: 8rem !important;
+    padding-bottom: 8rem !important;
   }
 `
