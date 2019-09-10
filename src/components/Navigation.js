@@ -58,7 +58,7 @@ const DesktopWrapper = styled.nav`
 `
 
 const MobileWrapper = styled(animated.nav)`
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;

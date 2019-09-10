@@ -8,6 +8,7 @@ import "./layout.css"
 import ExpandCloseButton from "./ExpandCloseButton"
 import { MobileNavigation } from "./Navigation"
 import Footer from "./Footer"
+import ScrollYBlocker from "./ScrollYBlocker"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,6 +29,7 @@ const Layout = ({ children }) => {
       <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
+      {menuOpen && <ScrollYBlocker />}
     </LayoutWrapper>
   )
 }
