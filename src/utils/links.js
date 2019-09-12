@@ -11,7 +11,7 @@ export default [
   },
   {
     title: `start your project`,
-    path: () => alert("clicked start project"),
+    path: () => {},
     key: `zbgadhg123dv`,
   },
 ]

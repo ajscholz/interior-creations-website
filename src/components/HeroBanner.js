@@ -1,5 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import BackgroundImage from "gatsby-background-image"
@@ -7,7 +7,6 @@ import { H1 } from "./Typography"
 
 const HeroBanner = props => {
   const { image, text, className } = props
-  console.log(props)
   return (
     // <ImageWrapper>
     <BackgroundImage fluid={image} className={className}>

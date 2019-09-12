@@ -6,8 +6,6 @@ import HeroBanner from "../components/HeroBanner"
 import Section from "../components/Section"
 import Title from "../components/Title"
 import { P } from "../components/Typography"
-import ImageSection from "../components/ImageSection"
-import Button from "../components/Button"
 import TeamMember from "../components/TeamMember"
 
 const AboutInteriorCreations = props => {

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 
 const ScrollYBlocker = () => {
   useEffect(() => {
     document.body.style.overflowY = "hidden"
     return () => {
-      console.log(document.body.removeAttribute("style"))
+      document.body.removeAttribute("style")
     }
   })
 

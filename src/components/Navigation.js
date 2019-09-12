@@ -5,20 +5,18 @@ import links from "../utils/links"
 import { Link } from "gatsby"
 import { useSpring, animated } from "react-spring"
 
-const NavList = ({ click }) => (
+const NavList = ({ click, openModal }) => (
   <List>
     {links.map(link => (
-      <>
+      <React.Fragment key={link.key}>
         {typeof link.path === "function" ? (
-          <NavLink key={link.key} onClick={link.path}>
-            {link.title}
-          </NavLink>
+          <NavLink onClick={() => openModal(true)}>{link.title}</NavLink>
         ) : (
-          <NavLink key={link.key} onClick={click ? () => click(false) : null}>
+          <NavLink onClick={click ? () => click(false) : null}>
             <Link to={link.path}>{link.title}</Link>
           </NavLink>
         )}
-      </>
+      </React.Fragment>
     ))}
   </List>
 )
@@ -41,10 +39,10 @@ export const MobileNavigation = props => {
   )
 }
 
-export const DesktopNavigation = () => {
+export const DesktopNavigation = ({ openModal }) => {
   return (
     <DesktopWrapper>
-      <NavList />
+      <NavList openModal={openModal} />
     </DesktopWrapper>
   )
 }

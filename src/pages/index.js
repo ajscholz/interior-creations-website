@@ -14,7 +14,6 @@ import Section from "../components/Section"
 import Title from "../components/Title"
 import FlexContainer from "../components/FlexContainer"
 import ImageSection from "../components/ImageSection"
-import Button from "../components/Button"
 
 const AnimatedP = animated(P)
 

@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, openModal }) => (
   <StyledHeader>
     <Wrapper>
       <StyledLink
@@ -17,7 +17,7 @@ const Header = ({ siteTitle }) => (
         <Logo />
         {/* {siteTitle} */}
       </StyledLink>
-      <DesktopNavigation />
+      <DesktopNavigation openModal={openModal} />
     </Wrapper>
   </StyledHeader>
 )

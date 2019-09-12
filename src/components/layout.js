@@ -9,9 +9,12 @@ import ExpandCloseButton from "./ExpandCloseButton"
 import { MobileNavigation } from "./Navigation"
 import Footer from "./Footer"
 import ScrollYBlocker from "./ScrollYBlocker"
+import Modal from "./Modal"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(true)
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,12 +27,25 @@ const Layout = ({ children }) => {
 
   return (
     <LayoutWrapper>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <MobileNavigation open={menuOpen} click={setMenuOpen} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        openModal={setModalOpen}
+      />
+      <MobileNavigation
+        open={menuOpen}
+        click={setMenuOpen}
+        openModal={setModalOpen}
+      />
       <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
       {menuOpen && <ScrollYBlocker />}
+      {modalOpen && (
+        <>
+          <Modal setModalOpen={setModalOpen} />
+          <ScrollYBlocker />
+        </>
+      )}
     </LayoutWrapper>
   )
 }
