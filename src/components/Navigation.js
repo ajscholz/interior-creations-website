@@ -5,21 +5,19 @@ import links from "../utils/links"
 import { Link } from "gatsby"
 import { useSpring, animated } from "react-spring"
 
-const NavList = ({ click, openModal }) => (
-  <List>
-    {links.map(link => (
-      <React.Fragment key={link.key}>
-        {typeof link.path === "function" ? (
-          <NavLink onClick={() => openModal(true)}>{link.title}</NavLink>
-        ) : (
-          <NavLink onClick={click ? () => click(false) : null}>
-            <Link to={link.path}>{link.title}</Link>
-          </NavLink>
-        )}
-      </React.Fragment>
-    ))}
-  </List>
-)
+import { NavbarButton } from "./Button"
+
+const NavList = ({ click }) => {
+  return (
+    <List>
+      {links.map(link => (
+        <NavItem onClick={click ? () => click(false) : null}>
+          <Link to={link.path}>{link.title}</Link>
+        </NavItem>
+      ))}
+    </List>
+  )
+}
 
 export const MobileNavigation = props => {
   const { open, click } = props
@@ -34,15 +32,18 @@ export const MobileNavigation = props => {
 
   return (
     <MobileWrapper open={open} style={expandMenu}>
-      <NavList click={click} />
+      <nav>
+        <NavList click={click} />
+      </nav>
+      <StyledNavbarButton>Start My Project</StyledNavbarButton>
     </MobileWrapper>
   )
 }
 
-export const DesktopNavigation = ({ openModal }) => {
+export const DesktopNavigation = () => {
   return (
     <DesktopWrapper>
-      <NavList openModal={openModal} />
+      <NavList />
     </DesktopWrapper>
   )
 }
@@ -55,7 +56,7 @@ const DesktopWrapper = styled.nav`
   }
 `
 
-const MobileWrapper = styled(animated.nav)`
+const MobileWrapper = styled(animated.div)`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -81,7 +82,7 @@ const List = styled.ul`
   }
 `
 
-const NavLink = styled.li`
+const NavItem = styled.li`
   font-family: Cinzel;
   font-size: 1.5rem;
   color: var(--black);
@@ -112,14 +113,18 @@ const NavLink = styled.li`
     text-align: right;
     font-size: 0.8rem;
     color: var(--black);
-    &:not(:last-of-type) {
-      margin-right: 1rem;
-    }
+    margin-right: 1rem;
   }
   @media (min-width: 768px) {
     font-size: 0.9rem;
   }
   @media (min-width: 992px) {
     font-size: 1rem;
+  }
+`
+
+const StyledNavbarButton = styled(NavbarButton)`
+  @media (min-width: 662px) {
+    display: none;
   }
 `

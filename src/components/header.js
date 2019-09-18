@@ -1,26 +1,36 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
+import { NavbarButton } from "./Button"
+import { ModalContext } from "../context/ModalContext"
 
-const Header = ({ siteTitle, openModal }) => (
-  <StyledHeader>
-    <Wrapper>
-      <StyledLink
-        to="/"
-        // style={{
-        //   width: "200px",
-        // }}
-      >
-        <Logo />
-        {/* {siteTitle} */}
-      </StyledLink>
-      <DesktopNavigation openModal={openModal} />
-    </Wrapper>
-  </StyledHeader>
-)
+const Header = ({ siteTitle }) => {
+  const [, setModalOpen] = useContext(ModalContext)
+  return (
+    <StyledHeader>
+      <Wrapper>
+        <StyledLink
+          to="/"
+          // style={{
+          //   width: "200px",
+          // }}
+        >
+          <Logo />
+          {/* {siteTitle} */}
+        </StyledLink>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <DesktopNavigation />
+          <StyledNavbarButton onClick={() => setModalOpen(true)}>
+            Start My Project
+          </StyledNavbarButton>
+        </div>
+      </Wrapper>
+    </StyledHeader>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -64,5 +74,12 @@ const StyledLink = styled(Link)`
   @media (min-width: 662px) {
     width: 150px;
     margin-right: 3rem;
+  }
+`
+
+const StyledNavbarButton = styled(NavbarButton)`
+  display: none;
+  @media (min-width: 662px) {
+    display: block;
   }
 `

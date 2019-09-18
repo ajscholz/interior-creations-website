@@ -9,9 +9,4 @@ export default [
     path: `/view-our-projects`,
     key: `joi0823jks`,
   },
-  {
-    title: `start your project`,
-    path: () => {},
-    key: `zbgadhg123dv`,
-  },
 ]

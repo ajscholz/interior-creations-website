@@ -6,5 +6,12 @@
 
 // You can delete this file if you're not using it
 
-require("typeface-cinzel")
-require("typeface-prompt")
+import "typeface-cinzel"
+import "typeface-prompt"
+
+import React from "react"
+import { ModalContextProvider } from "./src/context/ModalContext"
+
+export const wrapRootElement = ({ element }) => (
+  <ModalContextProvider>{element}</ModalContextProvider>
+)

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
@@ -7,6 +7,8 @@ import Title from "../components/Title"
 import { P } from "../components/Typography"
 import ImageSection from "../components/ImageSection"
 import Button from "../components/Button"
+
+import { ModalContext } from "../context/ModalContext"
 
 const ViewOurProjects = props => {
   const { data } = props
@@ -19,6 +21,8 @@ const ViewOurProjects = props => {
     section5,
     section6,
   } = data
+
+  const [, setModalOpen] = useContext(ModalContext)
 
   const imageSections = [
     {
@@ -57,7 +61,9 @@ const ViewOurProjects = props => {
       <Section style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{section1.title}</Title>
         <P style={{ textAlign: "center" }}>{section1.text.sectionText}</P>
-        <Button center>Start My Project Now</Button>
+        <Button center onClick={() => setModalOpen(true)}>
+          Start My Project Now
+        </Button>
       </Section>
 
       {imageSections.map(section => {
