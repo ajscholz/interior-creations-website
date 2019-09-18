@@ -1,3 +1,4 @@
+var proxy = require("http-proxy-middleware")
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -7,17 +8,29 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteEmail: `jeff@interiorcreationsco.com`,
+  },
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions",
+      proxy({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
   },
   plugins: [
     `gatsby-plugin-netlify`,
-    "gatsby-plugin-netlify-cache",
-    // {
-    //   resolve: `gatsby-plugin-netlify-functions`,
-    //   options: {
-    //     functionsSrc: `${__dirname}/src/functions`,
-    //     functionsOutput: `${__dirname}/functions`,
-    //   },
-    // },
+    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: `gatsby-plugin-netlify-functions`,
+      options: {
+        functionsSrc: `${__dirname}/src/functions`,
+        functionsOutput: `${__dirname}/.netlify/functions`,
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {

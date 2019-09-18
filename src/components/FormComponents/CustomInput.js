@@ -26,7 +26,7 @@ const CustomInput = ({
 }
 
 const StyledInput = styled.input`
-  height: 40%;
+  height: 60%;
   border: none;
   outline: none;
   width: 100%;

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Formik, Form } from "formik"
 
 import getFieldsArray from "./getFieldsArray"
@@ -14,11 +14,19 @@ const isValidEmail = value =>
 const isValidValue = value => (!value ? true : false)
 
 const ProjectForm = ({ fields, question, setQuestion }) => {
+  const [submitted, setSubmitted] = useState(false)
+  const [accepted, setAccepted] = useState(false)
+
   return (
     <div style={{ marginBottom: ".75rem" }}>
       <Formik
         isInitialValid={false}
-        initialValues={{ type: "", name: "", email: "", phone: "" }}
+        initialValues={{
+          type: "Mudroom",
+          name: "Andrew",
+          email: "andrew@citynorth.church",
+          phone: "614-560-1176",
+        }}
         // validate={ values => {
         //   let errors = {};
         //   if (!values.email) {
@@ -30,11 +38,37 @@ const ProjectForm = ({ fields, question, setQuestion }) => {
         //   }
         //   return errors;
         // } }
-        onSubmit={(values, { setSubmitting }) => {
+
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          try {
+            const response = await fetch("/functions/contactUs", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                ...values,
+                // siteEmail: siteEmail,
+              }),
+            })
+            const data = await response.json()
+            if (response.ok) {
+              setAccepted(true)
+            } else {
+              setAccepted(false)
+              throw data.msg
+            }
+          } catch (err) {
+            console.log(err)
+          }
+          setSubmitted(true)
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
+            if (accepted) resetForm()
             setSubmitting(false)
-          }, 400)
+          }, 2000)
+          setTimeout(() => {
+            setSubmitted(false)
+          }, 5000)
         }}
       >
         {props => {
@@ -46,7 +80,16 @@ const ProjectForm = ({ fields, question, setQuestion }) => {
             isValidValue
           )
 
-          return <Form>{fieldsArray[question]}</Form>
+          return (
+            <>
+              {props.isSubmitting ? (
+                "Submitting..."
+              ) : (
+                <Form>{fieldsArray[question]}</Form>
+              )}
+              {accepted && "Message accepted"}
+            </>
+          )
         }}
       </Formik>
     </div>

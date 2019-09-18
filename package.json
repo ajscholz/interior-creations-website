@@ -1,12 +1,11 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "interior-creations-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "The website of Interior Creations, Co.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Andrew Scholz <andrew@citynorth.church>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "dotenv": "^8.1.0",
     "formik": "^1.5.8",
     "gatsby": "^2.15.8",
     "gatsby-background-image": "^0.8.9",
@@ -23,6 +22,9 @@
     "gatsby-source-contentful": "^2.1.33",
     "gatsby-source-filesystem": "^2.1.21",
     "gatsby-transformer-sharp": "^2.2.13",
+    "googleapis": "^43.0.0",
+    "netlify-lambda": "^1.6.3",
+    "nodemailer": "^6.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -36,6 +38,8 @@
     "typeface-prompt": "^0.0.72"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^0.20.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2"
   },
   "keywords": [
@@ -43,18 +47,20 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "run-p build:**",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build src/functions",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "run-p start:**",
+    "start:app": "gatsby develop",
+    "start:lambda": "netlify-lambda serve src/functions",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
+  "repository": "https://github.com/ajscholz/interior-creations-website",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "main": "index.js"
 }
