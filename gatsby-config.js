@@ -25,13 +25,6 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cache`,
     {
-      resolve: `gatsby-plugin-netlify-functions`,
-      options: {
-        functionsSrc: `${__dirname}/src/functions`,
-        functionsOutput: `${__dirname}/.netlify/functions`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: `${__dirname}/src/components/layout`,
