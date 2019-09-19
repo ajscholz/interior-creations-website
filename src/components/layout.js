@@ -17,8 +17,6 @@ const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useContext(ModalContext)
 
-  console.log("layout modalopen", modalOpen)
-
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

@@ -11,7 +11,7 @@ const NavList = ({ click }) => {
   return (
     <List>
       {links.map(link => (
-        <NavItem onClick={click ? () => click(false) : null}>
+        <NavItem onClick={click ? () => click(false) : null} key={link.key}>
           <Link to={link.path}>{link.title}</Link>
         </NavItem>
       ))}

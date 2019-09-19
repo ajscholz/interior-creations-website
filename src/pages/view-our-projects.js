@@ -66,13 +66,14 @@ const ViewOurProjects = props => {
         </Button>
       </Section>
 
-      {imageSections.map(section => {
+      {imageSections.map((section, index) => {
         return (
           <ImageSection
             data={section.data}
             key={section.data.id}
             buttonText={section.bText}
             link={section.link}
+            reverse={index % 2 === 0 ? false : true}
           />
         )
       })}

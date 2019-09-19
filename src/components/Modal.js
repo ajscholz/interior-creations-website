@@ -3,7 +3,6 @@ import styled from "styled-components"
 // import PropTypes from "prop-types"
 
 import { P, H1 } from "./Typography"
-import ProjectForm from "./FormComponents/ProjectForm"
 import ProgressBar from "./FormComponents/ProgressBar"
 import FormContainer from "./FormComponents/FormContainer"
 import { CloseButton, PrevButton } from "./FormComponents/Buttons"

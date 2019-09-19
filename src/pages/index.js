@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { useTransition, animated } from "react-spring"
 
@@ -14,6 +14,8 @@ import Section from "../components/Section"
 import Title from "../components/Title"
 import FlexContainer from "../components/FlexContainer"
 import ImageSection from "../components/ImageSection"
+import Reviews from "../components/ReviewComponents/Reviews"
+import { ModalContext } from "../context/ModalContext"
 
 const AnimatedP = animated(P)
 
@@ -24,13 +26,15 @@ let text = []
 const IndexPage = props => {
   const { data } = props
 
-  const { page, section1, section2 } = data
+  const { page, section1, section2, section3, section4 } = data
 
   const [index, setIndex] = useState(0)
+  const [, setModalOpen] = useContext(ModalContext)
+
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: "translate3d(-100%,0,0)" },
+    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(50%,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
   })
 
   return (
@@ -73,6 +77,18 @@ const IndexPage = props => {
         data={section2}
         buttonText={`View Our Projects`}
         link={"/view-our-projects/"}
+      />
+
+      <Section>
+        <Title style={{ textAlign: "center" }}>{section3.sectionTitle}</Title>
+        <Reviews reviewData={section3.reviewData} />
+      </Section>
+
+      <ImageSection
+        data={section4}
+        buttonText={`Start the Process Now`}
+        link={setModalOpen}
+        reverse
       />
     </>
   )
@@ -140,6 +156,33 @@ export const query = graphql`
     }
     section2: contentfulPageSection(
       contentful_id: { eq: "2uDsJfL05E53ZgLz9jN2fy" }
+    ) {
+      sectionTitle
+      sectionText {
+        sectionText
+      }
+      sectionImage {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
+    }
+    section3: contentfulPageSection(
+      contentful_id: { eq: "6wpdhdbMpZnZw3558QnaT7" }
+    ) {
+      sectionTitle
+      reviewData: contentReferences {
+        ... on ContentfulReview {
+          contentful_id
+          person
+          text {
+            text
+          }
+        }
+      }
+    }
+    section4: contentfulPageSection(
+      contentful_id: { eq: "33v3fTT7KSZgAD5KTmHCh" }
     ) {
       sectionTitle
       sectionText {

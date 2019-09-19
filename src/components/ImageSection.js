@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import Section from "./Section"
 import Title from "./Title"
@@ -19,9 +19,17 @@ const ImageSection = props => {
         <Title>{title}</Title>
         <P>{text.sectionText}</P>
         <Img fluid={image.fluid} />
-        <Button>
-          <Link to={link}>{buttonText}</Link>
-        </Button>
+        {typeof link === "function" ? (
+          <Button
+            onClick={typeof link === "function" ? () => link(true) : null}
+          >
+            {buttonText}
+          </Button>
+        ) : (
+          <Button>
+            <Link to={link}>{buttonText}</Link>
+          </Button>
+        )}
       </div>
     </Section>
   )
@@ -38,7 +46,6 @@ ImageSection.propTypes = {
     }).isRequired,
   }).isRequired,
   buttonText: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 }
 
 export default styled(ImageSection)`
@@ -85,22 +92,25 @@ export default styled(ImageSection)`
       width: unset;
     }
 
-    &:nth-of-type(even) {
-      padding: 6rem 4rem 6rem calc(50% + 4rem);
-      text-align: right;
+    ${props =>
+      props.reverse &&
+      css`
+        padding: 6rem 4rem 6rem calc(50% + 4rem);
+        text-align: right;
 
-      & .wrapper {
-        align-self: flex-start;
-      }
+        & .wrapper {
+          align-self: flex-start;
+        }
 
-      & .gatsby-image-wrapper {
-        left: 0;
-        right: unset;
-      }
-      & ${Button} {
-        margin-left: auto;
-      }
-    }
+        & .gatsby-image-wrapper {
+          left: 0;
+          right: unset;
+        }
+        & ${Button} {
+          margin-left: auto;
+        }
+      `}
+    
   }
 
   @media (min-width: 1000px) {
