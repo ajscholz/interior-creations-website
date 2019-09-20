@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 // import PropTypes from "prop-types"
 
@@ -7,6 +7,9 @@ import ProgressBar from "./FormComponents/ProgressBar"
 import FormContainer from "./FormComponents/FormContainer"
 import { CloseButton, PrevButton } from "./FormComponents/Buttons"
 import { Formik, Form } from "formik"
+import { ModalContext } from "../context/ModalContext"
+// import { useLockBodyScroll } from "../utils/hooks"
+import { useSpring, animated } from "react-spring"
 
 import getFieldsArray from "./FormComponents/getFieldsArray"
 
@@ -27,9 +30,19 @@ const Modal = props => {
 
   var fieldsArray = []
 
-  const { className, setModalOpen } = props
+  const [modalOpen, setModalOpen] = useContext(ModalContext)
+
+  const showModal = useSpring({
+    to: async next => {
+      await next(modalOpen ? { display: "flex" } : { opacity: 0 })
+      await next(modalOpen ? { opacity: 1 } : { display: "none" })
+    },
+    from: { display: "none", opacity: 0 },
+  })
+
+  const { className } = props
   return (
-    <div className={className}>
+    <animated.div className={className} style={showModal}>
       <Overlay onClick={() => setModalOpen(false)} />
       <Frame>
         <Header>
@@ -78,13 +91,16 @@ const Modal = props => {
                     }
                   )
                   const data = await response.json()
+
                   if (response.ok) {
                     setAccepted(true)
                   } else {
                     setAccepted(false)
+
                     throw data.msg
                   }
                 } catch (err) {
+                  setQuestion(question - 1)
                   console.log(err)
                 }
                 setSubmitted(true)
@@ -105,7 +121,15 @@ const Modal = props => {
                   isValidEmail,
                   isValidValue
                 )
-                return <Form>{fieldsArray[question]}</Form>
+                return (
+                  <>
+                    {props.isSubmitting ? (
+                      <div>submitting</div>
+                    ) : (
+                      <Form>{fieldsArray[question]}</Form>
+                    )}
+                  </>
+                )
               }}
             </Formik>
           </div>
@@ -115,7 +139,7 @@ const Modal = props => {
         <CloseButton onClick={() => setModalOpen(false)} />
         <PrevButton onClick={() => setQuestion(question - 1)} />
       </Frame>
-    </div>
+    </animated.div>
   )
 }
 
@@ -147,22 +171,30 @@ const Frame = styled.div`
   background: var(--white);
   width: 600px;
   z-index: 1000;
-  padding: 3.5rem 5rem;
+  padding: 3.5rem 1.5rem 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 662px) {
+    padding: 3.5rem 5rem;
+  }
 `
 
 const Header = styled.div`
   text-align: center;
   & ${H1} {
     text-align: center;
-    font-size: xx-large;
+    font-size: x-large;
     margin-bottom: 0.25rem;
   }
 
   & ${P} {
     font-size: small;
+  }
+
+  @media (min-width: 662px) {
+    font-size: xx-large;
   }
 `

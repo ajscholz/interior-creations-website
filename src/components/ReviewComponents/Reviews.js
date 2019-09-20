@@ -67,12 +67,34 @@ const Reviews = props => {
 
 export default styled(Reviews)`
   display: flex;
-  height: 150px;
+  height: 350px;
   max-width: 900px;
   margin: 0 auto;
   align-items: stretch;
   justify-content: space-between;
   position: relative;
+
+  @media (min-width: 350px) {
+    height: 300px;
+  }
+  @media (min-width: 400px) {
+    height: 275px;
+  }
+  @media (min-width: 450px) {
+    height: 250px;
+  }
+  @media (min-width: 500px) {
+    height: 230px;
+  }
+  @media (min-width: 575px) {
+    height: 220px;
+  }
+  @media (min-width: 662px) {
+    height: 210px;
+  }
+  @media (min-width: 900px) {
+    height: 150px;
+  }
 `
 
 const DirectionalArrow = styled.button`

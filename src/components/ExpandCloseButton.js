@@ -6,7 +6,7 @@ import { useSpring, animated } from "react-spring"
 const ExpandCloseButton = props => {
   const { open, click } = props
   const topChev = useSpring({ top: open ? "64%" : "40%" })
-  const bottomChev = useSpring({ top: open ? "36%" : "60%" })
+  const bottomChev = useSpring({ top: open ? "37%" : "60%" })
 
   const AnimatedChevUp = animated(ChevronUp)
   const AnimatedChevDown = animated(ChevronDown)

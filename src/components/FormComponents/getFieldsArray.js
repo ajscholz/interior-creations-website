@@ -12,10 +12,12 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
   <>
     <Label>What kind of project are you interested in?</Label>
     <InputWithNextButton>
-      <Field name="type" component={CustomSelect} validate={isValidValue}>
-        <option hidden selected disabled value>
-          Please select one option
-        </option>
+      <Field
+        name="type"
+        component={CustomSelect}
+        validate={isValidValue}
+        // defaultValue="Please select one"
+      >
         <option value="bathroom">Bathroom</option>
         <option value="kitchen">Kitchen</option>
         <option value="mudroom">Mudroom</option>
@@ -27,7 +29,10 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
         solid
         disabled={!props.isValid}
         type="button"
-        onClick={() => setQuestion(question + 1)}
+        onClick={e => {
+          e.preventDefault()
+          setQuestion(question + 1)
+        }}
       >
         Next
       </InlineButton>
@@ -41,7 +46,10 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
         solid
         disabled={!props.isValid}
         type="button"
-        onClick={() => setQuestion(question + 1)}
+        onClick={e => {
+          e.preventDefault()
+          setQuestion(question + 1)
+        }}
       >
         Next
       </InlineButton>
@@ -55,7 +63,10 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
         solid
         disabled={!props.isValid}
         type="button"
-        onClick={() => setQuestion(question + 1)}
+        onClick={e => {
+          e.preventDefault()
+          setQuestion(question + 1)
+        }}
       >
         Next
       </InlineButton>
@@ -70,7 +81,16 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
         type="phone"
         validate={isValidValue}
       />
-      <InlineButton solid disabled={!props.isValid} type="submit">
+      <InlineButton
+        solid
+        disabled={!props.isValid}
+        type="submit"
+        onClick={e => {
+          e.preventDefault()
+          setQuestion(question + 1)
+          props.submitForm()
+        }}
+      >
         Submit
       </InlineButton>
     </InputWithNextButton>

@@ -37,10 +37,14 @@ const StyledInput = styled.input`
 `
 
 export default styled(CustomInput)`
-  height: 100%;
+  height: 50%;
   width: 100%;
-  border: 1px solid var(--lightgray);
-  border-right: none;
+  /* border: 1px solid var(--lightgray); */
+  /* border-right: none; */
   display: flex;
   align-items: center;
+
+  @media (min-width: 662px) {
+    height: 100%;
+  }
 `

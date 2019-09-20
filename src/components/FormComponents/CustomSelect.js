@@ -46,10 +46,10 @@ const StyledSelect = styled.select`
 `
 
 export default styled(CustomSelect)`
-  height: 100%;
+  height: 50%;
   width: 100%;
-  border: 1px solid var(--lightgray);
-  border-right: none;
+  /* border: 1px solid var(--lightgray); */
+  /* border-bottom: none; */
   display: flex;
   align-items: center;
   position: relative;
@@ -68,5 +68,11 @@ export default styled(CustomSelect)`
     & > svg {
       color: var(--lightgray);
     }
+  }
+
+  @media (min-width: 662px) {
+    height: 100%;
+    border: 1px solid var(--lightgray);
+    border-right: none;
   }
 `

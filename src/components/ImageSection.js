@@ -13,6 +13,11 @@ const ImageSection = props => {
   const { data, link, buttonText, className } = props
   const { sectionTitle: title, sectionText: text, sectionImage: image } = data
 
+  const handleClick = e => {
+    e.preventDefault()
+    link(true)
+  }
+
   return (
     <Section className={className}>
       <div className="wrapper">
@@ -21,7 +26,7 @@ const ImageSection = props => {
         <Img fluid={image.fluid} />
         {typeof link === "function" ? (
           <Button
-            onClick={typeof link === "function" ? () => link(true) : null}
+            onClick={typeof link === "function" ? e => handleClick(e) : null}
           >
             {buttonText}
           </Button>

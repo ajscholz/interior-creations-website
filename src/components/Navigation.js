@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import links from "../utils/links"
 import { Link } from "gatsby"
 import { useSpring, animated } from "react-spring"
+
+import { ModalContext } from "../context/ModalContext"
 
 import { NavbarButton } from "./Button"
 
@@ -20,7 +22,14 @@ const NavList = ({ click }) => {
 }
 
 export const MobileNavigation = props => {
+  const [, setModalOpen] = useContext(ModalContext)
+
   const { open, click } = props
+
+  const handleClick = () => {
+    click(false)
+    setModalOpen(true)
+  }
 
   const expandMenu = useSpring({
     to: async next => {
@@ -35,7 +44,9 @@ export const MobileNavigation = props => {
       <nav>
         <NavList click={click} />
       </nav>
-      <StyledNavbarButton>Start My Project</StyledNavbarButton>
+      <StyledNavbarButton onClick={handleClick}>
+        Start My Project
+      </StyledNavbarButton>
     </MobileWrapper>
   )
 }

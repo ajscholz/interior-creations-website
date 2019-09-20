@@ -8,10 +8,10 @@ import "./layout.css"
 import ExpandCloseButton from "./ExpandCloseButton"
 import { MobileNavigation } from "./Navigation"
 import Footer from "./Footer"
-import ScrollYBlocker from "./ScrollYBlocker"
 import Modal from "./Modal"
 
 import { ModalContext } from "../context/ModalContext"
+import GlobalStyle from "./GlobalStyle"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -29,10 +29,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        openModal={setModalOpen}
-      />
+      <GlobalStyle lockScroll={modalOpen} />
+      <Header siteTitle={data.site.siteMetadata.title} />
       <MobileNavigation
         open={menuOpen}
         click={setMenuOpen}
@@ -41,13 +39,7 @@ const Layout = ({ children }) => {
       <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
-      {menuOpen && <ScrollYBlocker />}
-      {modalOpen && (
-        <>
-          <Modal setModalOpen={setModalOpen} />
-          <ScrollYBlocker />
-        </>
-      )}
+      <Modal />
     </>
   )
 }
