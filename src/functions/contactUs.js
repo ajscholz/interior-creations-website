@@ -41,7 +41,39 @@ exports.handler = async event => {
     to: `Andrew Scholz <andrew@citynorth.church>`,
     subject: "Website Form Submission",
     generateTextFromHTML: true,
-    html: `<html><h1>You've recieved a new form submission!</h1><hr><p><b>Project Type: </b>${data.type}</p><p><b>Name: </b>${data.name}</p><p><b>Email: </b><a href="mailto:${data.email}">${data.email}</a></p><p><b>Phone: </b><a href="tel:${data.phone}">${data.phone}</a></p><hr><h4>To reply to your message simply reply to this email directly!</h4><html>`,
+    html: `
+    <html>
+      <style>
+        span {
+          font-weight: 700;
+        }
+      </style>
+      <h1>
+        You've recieved a new form submission!
+      </h1>
+      <hr>
+      <p>
+        <span>Project Type: </span>
+        ${data.type}
+      </p>
+      <p>
+        <span>Name: </span>
+        ${data.name}
+      </p>
+      <p>
+        <span>Email: </span>
+        <a href="mailto: ${data.email}">${data.email}</a>
+      </p>
+      <p>
+        <span>Phone: </span>
+        <a href="tel: ${data.phone}">${data.phone}</a>
+      </p>
+      <br>
+      <hr>
+      <h4>
+        To reply to your message simply reply to this email directly!
+      </h4>
+    </html>`,
   }
 
   try {
