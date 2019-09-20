@@ -17,6 +17,8 @@ import ImageSection from "../components/ImageSection"
 import Reviews from "../components/ReviewComponents/Reviews"
 import { ModalContext } from "../context/ModalContext"
 
+import { Container, Row, Col } from "react-grid-system"
+
 const AnimatedP = animated(P)
 
 const icons = [<MdComputer />, <FaHammer />, <FaInfinity />]
@@ -43,34 +45,53 @@ const IndexPage = props => {
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
-      <Section style={{ maxWidth: "700px" }}>
-        <Title style={{ textAlign: "center" }}>{section1.title}</Title>
-        <StyledFlexContainer>
-          {section1.content.map((item, i) => {
-            text[i] = ({ style }) => (
-              <AnimatedP style={{ ...style }}>
-                {item.information.information}
-              </AnimatedP>
-            )
+      <Section destyle={{ maxWidth: "700px" }}>
+        <Container>
+          <Row justify="center">
+            <Col>
+              <Title style={{ textAlign: "center" }}>{section1.title}</Title>
+            </Col>
+          </Row>
+          <Row justify="stretch">
+            <StyledFlexContainer>
+              {section1.content.map((item, i) => {
+                text[i] = ({ style }) => (
+                  <AnimatedP style={{ ...style }}>
+                    {item.information.information}
+                  </AnimatedP>
+                )
 
-            return (
-              <IconCard
-                key={item.contentful_id}
-                current={index === i}
-                icon={icons[i]}
-                title={item.title}
-                click={setIndex}
-                cardNumber={i}
-              />
-            )
-          })}
-        </StyledFlexContainer>
-        <TextWrapper>
-          {transitions.map(({ item, props, key }) => {
-            const Text = text[item]
-            return <Text key={key} style={{ ...props, position: "absolute" }} />
-          })}
-        </TextWrapper>
+                return (
+                  <Col>
+                    <IconCard
+                      key={item.contentful_id}
+                      current={index === i}
+                      icon={icons[i]}
+                      title={item.title}
+                      click={setIndex}
+                      cardNumber={i}
+                    />
+                  </Col>
+                )
+              })}
+            </StyledFlexContainer>
+          </Row>
+          <Row justify="center">
+            <Col lg={8} md={10}>
+              <TextWrapper>
+                {transitions.map(({ item, props, key }) => {
+                  const Text = text[item]
+                  return (
+                    <Text
+                      key={key}
+                      style={{ ...props, position: "absolute" }}
+                    />
+                  )
+                })}
+              </TextWrapper>
+            </Col>
+          </Row>
+        </Container>
       </Section>
 
       <ImageSection

@@ -28,27 +28,27 @@ const ViewOurProjects = props => {
     {
       data: section2,
       bText: `view ${section2.sectionTitle}`,
-      link: `/view-our-projects/bathrooms`,
+      link: `/view-our-projects/bathrooms/`,
     },
     {
       data: section3,
       bText: `view ${section3.sectionTitle}`,
-      link: `/view-our-projects/kitchens`,
+      link: `/view-our-projects/kitchens/`,
     },
     {
       data: section4,
       bText: `view ${section4.sectionTitle}`,
-      link: `/view-our-projects/mudrooms`,
+      link: `/view-our-projects/mudrooms/`,
     },
     {
       data: section5,
       bText: `view ${section5.sectionTitle}`,
-      link: `/view-our-projects/home-office`,
+      link: `/view-our-projects/home-offices/`,
     },
     {
       data: section6,
       bText: `view cabinet refacing`,
-      link: `/view-our-projects/cabinet-refacing`,
+      link: `/view-our-projects/cabinet-refacing/`,
     },
   ]
 
@@ -61,7 +61,7 @@ const ViewOurProjects = props => {
       <Section style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{section1.title}</Title>
         <P style={{ textAlign: "center" }}>{section1.text.sectionText}</P>
-        <Button center onClick={() => setModalOpen(true)}>
+        <Button center onClick={() => setModalOpen("form")}>
           Start My Project Now
         </Button>
       </Section>

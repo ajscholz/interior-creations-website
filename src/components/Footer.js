@@ -6,38 +6,6 @@ import IconBadge from "./IconBadge"
 import GridGroup from "./GridGroup"
 import IconList from "./IconList"
 
-// const InputContainer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   font-size: 0.8rem;
-//   background: var(--white);
-//   padding: 0.5rem;
-//   color: var(--lightgray);
-//   & > svg {
-//     height: 14px;
-//     width: 14px;
-//     margin-right: 0.5rem;
-//     color: inherit;
-//   }
-// `
-
-// const Input = styled.input`
-//   border: 0;
-//   outline: 0;
-//   width: 100%;
-// `
-
-// const InputWithIcon = props => {
-//   const { placeholder } = props
-//   return (
-//     <InputContainer>
-//       <Icon icon={<FiSearch />} />
-//       <Input type="text" placeholder={placeholder} />
-//     </InputContainer>
-//   )
-// }
-
 const Footer = ({ className }) => {
   return (
     <footer className={className}>
@@ -58,7 +26,6 @@ const Footer = ({ className }) => {
             iColor={"var(--secondary)"}
           />
         </StyledGridGroup>
-        {/* <InputWithIcon placeholder="Search" /> */}
         <CompanyInformation>
           <h3>Interior Creations</h3>
           <IconList>
@@ -100,13 +67,14 @@ const Footer = ({ className }) => {
 export default styled(Footer)`
   width: 100%;
   /* to deal with fab laying over copyright text on xxs screens */
-  padding: 2rem 2rem 7rem;
+
+  padding: 2rem 5vw 7rem;
   background: var(--secondary);
   @media (min-width: 400px) {
-    padding: 2rem;
+    padding: 2rem 5vw;
   }
   @media (min-width: 662px) {
-    padding: 4rem 2rem;
+    padding: 4rem;
   }
 `
 
@@ -121,7 +89,7 @@ const Container = styled.div`
     margin: 0;
   }
   @media (min-width: 662px) {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -68,6 +68,8 @@ const Reviews = props => {
 export default styled(Reviews)`
   display: flex;
   height: 350px;
+  width: 100%;
+  width: 700px;
   max-width: 900px;
   margin: 0 auto;
   align-items: stretch;

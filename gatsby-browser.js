@@ -11,7 +11,10 @@ import "typeface-prompt"
 
 import React from "react"
 import { ModalContextProvider } from "./src/context/ModalContext"
+import { ScreenClassProvider } from "react-grid-system"
 
 export const wrapRootElement = ({ element }) => (
-  <ModalContextProvider>{element}</ModalContextProvider>
+  <ScreenClassProvider>
+    <ModalContextProvider>{element}</ModalContextProvider>
+  </ScreenClassProvider>
 )

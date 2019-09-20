@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
 import { NavbarButton } from "./Button"
+import { Hidden } from "react-grid-system"
 import { ModalContext } from "../context/ModalContext"
 
 const Header = ({ siteTitle }) => {
@@ -12,18 +13,13 @@ const Header = ({ siteTitle }) => {
   return (
     <StyledHeader>
       <Wrapper>
-        <StyledLink
-          to="/"
-          // style={{
-          //   width: "200px",
-          // }}
-        >
+        <StyledLink to="/">
           <Logo />
           {/* {siteTitle} */}
         </StyledLink>
         <div style={{ display: "flex", alignItems: "center" }}>
           <DesktopNavigation />
-          <StyledNavbarButton onClick={() => setModalOpen(true)}>
+          <StyledNavbarButton onClick={() => setModalOpen("form")}>
             Start My Project
           </StyledNavbarButton>
         </div>
@@ -56,7 +52,7 @@ const StyledHeader = styled.header`
 `
 
 const Wrapper = styled.div`
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: center;

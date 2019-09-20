@@ -28,7 +28,7 @@ export const MobileNavigation = props => {
 
   const handleClick = () => {
     click(false)
-    setModalOpen(true)
+    setModalOpen("form")
   }
 
   const expandMenu = useSpring({

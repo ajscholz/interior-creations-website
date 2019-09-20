@@ -44,21 +44,20 @@ const Overlay = styled.div`
   height: 50%;
   display: flex;
   align-items: flex-end;
-  padding: 1rem;
+  padding: 5vw 5vw;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
   z-index: 1;
   color: var(--white);
 
-  @media (min-width: 576px) {
-    padding: 2rem;
-  }
   @media (min-width: 662px) {
+    padding: 2rem 4rem;
+    width: 100%;
     height: 26%;
   }
 `
 
 const Wrapper = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 `

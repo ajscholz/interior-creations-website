@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
@@ -24,14 +23,16 @@ const AboutInteriorCreations = props => {
         <P>{section1.sectionText.sectionText}</P>
       </Section>
 
-      <SectionTwo>
-        <Title>{section2.sectionTitle}</Title>
-        <TeamWrapper>
+      <Section>
+        <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
+          {section2.sectionTitle}
+        </Title>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           {section2.teamMembers.map(person => (
             <TeamMember person={person} key={person.contentful_id} />
           ))}
-        </TeamWrapper>
-      </SectionTwo>
+        </div>
+      </Section>
 
       <Section>
         <Title>{section3.sectionTitle}</Title>
@@ -40,21 +41,6 @@ const AboutInteriorCreations = props => {
     </>
   )
 }
-
-const TeamWrapper = styled.div`
-  max-width: 700px;
-`
-
-const SectionTwo = styled(Section)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & ${Title} {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-`
 
 export default AboutInteriorCreations
 
