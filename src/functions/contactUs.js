@@ -41,7 +41,7 @@ exports.handler = async event => {
     to: `Andrew Scholz <andrew@citynorth.church>`,
     subject: "Website Form Submission",
     generateTextFromHTML: true,
-    html: `<html><h1>You've recieved a new form submission!</h1><hr><p><b>Project Type: </b>${data.type}</p><p><b>Name: </b>${data.name}</p><p><b>Email: </b>${data.email}</p><p><b>Phone: </b>${data.phone}</p><hr><h4>To reply to your message simply reply to this email directly!</h4><html>`,
+    html: `<html><h1>You've recieved a new form submission!</h1><hr><p><b>Project Type: </b>${data.type}</p><p><b>Name: </b>${data.name}</p><p><b>Email: </b><a href="mailto:${data.email}">${data.email}</a></p><p><b>Phone: </b><a href="tel:${data.phone}">${data.phone}</a></p><hr><h4>To reply to your message simply reply to this email directly!</h4><html>`,
   }
 
   try {

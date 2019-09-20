@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <GlobalStyle lockScroll={modalOpen} />
+      <GlobalStyle lockScroll={modalOpen || menuOpen} />
       <Header siteTitle={data.site.siteMetadata.title} />
       <MobileNavigation
         open={menuOpen}
