@@ -10,7 +10,7 @@ import TeamMember from "../components/TeamMember"
 
 const AboutInteriorCreations = props => {
   const { data } = props
-  const { page, section1, section2, section3 } = data
+  const { page, section1, section3 } = data
 
   return (
     <>
@@ -25,18 +25,13 @@ const AboutInteriorCreations = props => {
 
       <Section>
         <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
-          {section2.sectionTitle}
+          {section3.sectionTitle}
         </Title>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          {section2.teamMembers.map(person => (
+          {section3.teamMembers.map(person => (
             <TeamMember person={person} key={person.contentful_id} />
           ))}
         </div>
-      </Section>
-
-      <Section>
-        <Title>{section3.sectionTitle}</Title>
-        map goes here
       </Section>
     </>
   )
@@ -76,7 +71,7 @@ export const data = graphql`
         }
       }
     }
-    section2: contentfulPageSection(
+    section3: contentfulPageSection(
       contentful_id: { eq: "1YpQ8d5wL8XkhoCZsxXD5B" }
     ) {
       sectionTitle
@@ -94,11 +89,6 @@ export const data = graphql`
           }
         }
       }
-    }
-    section3: contentfulPageSection(
-      contentful_id: { eq: "4Nep2cQrOTN3DL9IQ4zs9m" }
-    ) {
-      sectionTitle
     }
   }
 `

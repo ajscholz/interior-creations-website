@@ -1,7 +1,62 @@
 import React from "react"
+import { graphql } from "gatsby"
 
-const kitchens = () => {
-  return <div style={{ paddingTop: "10rem" }}>hi from kitchens</div>
+import ProjectPageTemplate from "../../components/ProjectPageTemplate"
+
+const kitchens = props => {
+  const { data } = props
+  const { page } = data
+
+  return (
+    <>
+      <ProjectPageTemplate page={page} />
+    </>
+  )
 }
 
 export default kitchens
+
+export const data = graphql`
+  query {
+    page: contentfulPage(title: { eq: "Kitchens" }) {
+      contentful_id
+      bannerText
+      bannerImage {
+        fluid(quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+        file {
+          details {
+            image {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+    projects: allContentfulProject(
+      filter: { projectType: { eq: "Kitchens" } }
+    ) {
+      projects: edges {
+        project: node {
+          contentful_id
+          title
+          projectType
+          cabinetType
+          style
+          color
+          location {
+            lat
+            lon
+          }
+          gallery {
+            fluid {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`

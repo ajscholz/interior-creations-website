@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import { ModalContext } from "../context/ModalContext"
@@ -8,8 +8,6 @@ import ImageModal from "./ImageModal"
 
 const Modal = props => {
   const [modalOpen, setModalOpen] = useContext(ModalContext)
-
-  console.log(modalOpen)
 
   const showModal = useSpring({
     to: async next => {

@@ -5,6 +5,7 @@ import { useTransition, animated } from "react-spring"
 import Quote from "./Quote"
 import QuoteAuthor from "./QuoteAuthor"
 import Stars from "./Stars"
+import ProgressBubbles from "../ProgressBubbles"
 
 const Reviews = props => {
   const { className, reviewData } = props
@@ -61,15 +62,20 @@ const Reviews = props => {
       >
         <FaChevronRight />
       </Right>
+      <StyledProgressBubbles
+        number={reviewData.length}
+        current={review}
+        set={setReview}
+      />
     </div>
   )
 }
 
 export default styled(Reviews)`
   display: flex;
+  flex-wrap: wrap;
   height: 350px;
   width: 100%;
-  width: 700px;
   max-width: 900px;
   margin: 0 auto;
   align-items: stretch;
@@ -127,4 +133,11 @@ const Right = styled(DirectionalArrow)`
   @media (min-width: 662px) {
     margin-left: 2rem;
   }
+`
+
+const StyledProgressBubbles = styled(ProgressBubbles)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 `

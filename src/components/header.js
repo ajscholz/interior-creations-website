@@ -5,7 +5,6 @@ import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
 import { NavbarButton } from "./Button"
-import { Hidden } from "react-grid-system"
 import { ModalContext } from "../context/ModalContext"
 
 const Header = ({ siteTitle }) => {

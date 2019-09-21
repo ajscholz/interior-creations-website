@@ -10367,13 +10367,6 @@ react-full-screen@^0.2.2:
     "@types/react" "*"
     fscreen "^1.0.1"
 
-react-grid-system@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/react-grid-system/-/react-grid-system-5.0.2.tgz#ffe03ba57840271a6bfafc9856a9ca0633bf79b9"
-  integrity sha512-UJMPhI+/wsclsD+G6l0Z8hF1cq25SIW3VLmp+gLDaNs9hsMBvJHFKzTnf6KMZd++YpiB26aZr4ykhQDe/uPE7Q==
-  dependencies:
-    prop-types "^15.7.2"
-
 react-helmet@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
@@ -10842,6 +10835,11 @@ resize-observer-polyfill@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
   integrity sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

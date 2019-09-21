@@ -1,21 +1,65 @@
-import React, { useContext } from "react"
-import Button from "../../components/Button"
-import { ModalContext } from "../../context/ModalContext"
+import React from "react"
+import { graphql } from "gatsby"
 
-const Bathrooms = () => {
-  const [, setModalOpen] = useContext(ModalContext)
+import ProjectPageTemplate from "../../components/ProjectPageTemplate"
+
+const Bathrooms = props => {
+  const { data } = props
+  const { page, projects } = data
+
+  console.log(data)
 
   return (
     <>
-      <div style={{}}>hi from bathrooms</div>
-      <Button
-        style={{ marginTop: "10rem" }}
-        onClick={() => setModalOpen("image")}
-      >
-        Open Lightbox
-      </Button>
+      <ProjectPageTemplate page={page} projects={projects.projects} />
     </>
   )
 }
 
 export default Bathrooms
+
+export const query = graphql`
+  query {
+    page: contentfulPage(title: { eq: "Bathrooms" }) {
+      contentful_id
+      bannerText
+      bannerImage {
+        fluid(quality: 100) {
+          ...GatsbyContentfulFluid
+        }
+        file {
+          details {
+            image {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+    projects: allContentfulProject(
+      filter: { projectType: { eq: "Bathrooms" } }
+      sort: { fields: createdAt, order: DESC }
+    ) {
+      projects: edges {
+        project: node {
+          contentful_id
+          title
+          projectType
+          cabinetType
+          style
+          color
+          location {
+            lat
+            lon
+          }
+          gallery {
+            fluid {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`

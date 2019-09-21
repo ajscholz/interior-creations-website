@@ -10,7 +10,7 @@ const Button = styled.button`
     props.large ? "1rem" : props.small ? ".7rem" : ".85rem"};
   padding: 0.5rem 3rem;
   background: ${props => (props.solid ? "var(--primary)" : "transparent")};
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   font-weight: 400;
   margin: ${props => props.center && "0 auto"};
   cursor: pointer;
