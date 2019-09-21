@@ -5,11 +5,11 @@ import ProjectPageTemplate from "../../components/ProjectPageTemplate"
 
 const kitchens = props => {
   const { data } = props
-  const { page } = data
+  const { page, projects } = data
 
   return (
     <>
-      <ProjectPageTemplate page={page} />
+      <ProjectPageTemplate page={page} projects={projects.projects} />
     </>
   )
 }
@@ -37,6 +37,7 @@ export const data = graphql`
     }
     projects: allContentfulProject(
       filter: { projectType: { eq: "Kitchens" } }
+      sort: { fields: createdAt, order: DESC }
     ) {
       projects: edges {
         project: node {

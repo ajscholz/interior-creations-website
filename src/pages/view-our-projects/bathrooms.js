@@ -7,8 +7,6 @@ const Bathrooms = props => {
   const { data } = props
   const { page, projects } = data
 
-  console.log(data)
-
   return (
     <>
       <ProjectPageTemplate page={page} projects={projects.projects} />

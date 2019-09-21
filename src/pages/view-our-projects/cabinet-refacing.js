@@ -4,11 +4,11 @@ import ProjectPageTemplate from "../../components/ProjectPageTemplate"
 
 const cabinetRefacing = props => {
   const { data } = props
-  const { page } = data
+  const { page, projects } = data
 
   return (
     <>
-      <ProjectPageTemplate page={page} />
+      <ProjectPageTemplate page={page} projects={projects.projects} />
     </>
   )
 }
@@ -29,6 +29,30 @@ export const data = graphql`
             image {
               height
               width
+            }
+          }
+        }
+      }
+    }
+    projects: allContentfulProject(
+      filter: { projectType: { eq: "Cabinet Refacing" } }
+      sort: { fields: createdAt, order: DESC }
+    ) {
+      projects: edges {
+        project: node {
+          contentful_id
+          title
+          projectType
+          cabinetType
+          style
+          color
+          location {
+            lat
+            lon
+          }
+          gallery {
+            fluid {
+              src
             }
           }
         }
