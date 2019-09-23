@@ -1,6 +1,41 @@
+import React from "react"
 import styled from "styled-components"
+import { a, useSpring } from "react-spring"
 
-const Button = styled.button`
+const focused = {
+  color: "#fff",
+  background: "rgba(5, 133, 176, 1)",
+  transform: "scale(1.05)",
+  boxShadow: "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)",
+}
+
+const blurred = {
+  color: "rgba(5, 133, 176, 1)",
+  background: "rgba(5, 133, 176, 0)",
+  transform: "scale(1)",
+  boxShadow: "0 1px 1px rgba(0, 0, 0, 0), 0 1px 1px rgba(0, 0, 0, 0)",
+}
+
+const Button = props => {
+  const { children, className, style, onClick } = props
+  const [hoverProps, set] = useSpring(() => blurred)
+
+  return (
+    <a.button
+      className={className}
+      style={{ ...style, ...hoverProps }}
+      onClick={onClick}
+      onMouseOver={() => set(focused)}
+      onFocus={() => set(focused)}
+      onMouseOut={() => set(blurred)}
+      onBlur={() => set(blurred)}
+    >
+      {children}
+    </a.button>
+  )
+}
+
+export default styled(Button)`
   outline: none;
   display: block;
   border: 2px solid var(--primary);
@@ -15,8 +50,6 @@ const Button = styled.button`
   margin: ${props => props.center && "0 auto"};
   cursor: pointer;
 `
-
-export default Button
 
 export const NavbarButton = styled(Button)`
   font-family: Cinzel;

@@ -30,9 +30,9 @@ const ImageSection = props => {
             {buttonText}
           </Button>
         ) : (
-          <Button>
-            <Link to={link}>{buttonText}</Link>
-          </Button>
+          <Link to={link}>
+            <Button>{buttonText}</Button>
+          </Link>
         )}
       </div>
     </section>

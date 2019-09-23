@@ -5,6 +5,7 @@ import { H2 } from "./Typography"
 import Img from "gatsby-image"
 
 import Carousel, { Modal, ModalGateway } from "react-images"
+import Button from "./Button"
 
 // const CustomView = ({ data }) => {
 //   console.log(data)
@@ -20,10 +21,6 @@ const ProjectCard = props => {
   const images = data.gallery.map(({ image }) => {
     return { src: image.url }
   })
-  // const images = data.gallery.map(image => {
-  //   console.log(image)
-  //   return { src: image }
-  // })
 
   const openModal = index => {
     setIndex(index)
@@ -36,18 +33,18 @@ const ProjectCard = props => {
         <H2>{data.title}</H2>
       </div>
       <div className="body">
-        <button className="image-btn" onClick={() => openModal(0)}>
+        <Button className="image-btn" onClick={() => openModal(0)}>
           <Img fluid={data.gallery[0].fluid} />
-        </button>
-        <button className="image-btn" onClick={() => openModal(1)}>
+        </Button>
+        <Button className="image-btn" onClick={() => openModal(1)}>
           <Img fluid={data.gallery[1].fluid} />
-        </button>
-        <button className="image-btn" onClick={() => openModal(2)}>
+        </Button>
+        <Button className="image-btn" onClick={() => openModal(2)}>
           <Img fluid={data.gallery[2].fluid} />
-        </button>
-        <button className="overlay" onClick={() => openModal(3)}>
+        </Button>
+        <Button className="overlay" onClick={() => openModal(3)}>
           <Img fluid={data.gallery[3].fluid} />
-        </button>
+        </Button>
       </div>
 
       <ModalGateway>
@@ -135,6 +132,7 @@ export default styled(ProjectCard)`
       padding: 0;
       background: none;
       overflow: hidden;
+      border: none;
 
       & .gatsby-image-wrapper {
         z-index: -1;
@@ -143,10 +141,15 @@ export default styled(ProjectCard)`
     }
 
     & .overlay {
-      background: rgba(0, 0, 0, 0.6);
-      /* display: flex;
-      justify-content: center;
-      align-items: center; */
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
       &::after {
         content: "view more";
         font-family: "Cinzel";

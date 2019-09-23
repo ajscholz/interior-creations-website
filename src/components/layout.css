@@ -1,5 +1,5 @@
 * {
-  --primary: #0585b0;
+  --primary: rgb(5, 133, 176);
   --secondary: #00234e;
   --lightBlue: #dae3ee;
   --black: #222526;
@@ -134,6 +134,13 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
+}
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 }
 button,
 input,
