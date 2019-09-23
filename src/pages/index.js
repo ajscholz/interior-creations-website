@@ -141,8 +141,8 @@ export const query = graphql`
       contentful_id
       bannerText
       bannerImage {
-        fluid(quality: 100) {
-          ...GatsbyContentfulFluid
+        fluid(quality: 60) {
+          ...GatsbyContentfulFluid_withWebp
         }
         file {
           details {
@@ -177,7 +177,7 @@ export const query = graphql`
       }
       sectionImage {
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
@@ -204,7 +204,7 @@ export const query = graphql`
       }
       sectionImage {
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
