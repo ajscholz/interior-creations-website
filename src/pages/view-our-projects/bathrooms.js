@@ -53,7 +53,10 @@ export const query = graphql`
           }
           gallery {
             fluid {
-              src
+              ...GatsbyContentfulFluid
+            }
+            image: file {
+              url
             }
           }
         }

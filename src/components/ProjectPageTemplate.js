@@ -25,7 +25,12 @@ const ProjectPageTemplate = props => {
         ))}
       </Section>
       <Section>
-        <Button onClick={() => setModalOpen("image")}>Open Lightbox</Button>
+        <Button
+          onClick={() => setModalOpen("form")}
+          style={{ margin: "0 auto" }}
+        >
+          Start Your Project Now
+        </Button>
       </Section>
     </>
   )
