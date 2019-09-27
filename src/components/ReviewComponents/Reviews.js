@@ -38,6 +38,7 @@ const Reviews = props => {
   return (
     <div className={className}>
       <Left
+        aria-label="View previous review"
         onClick={() =>
           review === 0
             ? setReview(reviewData.length - 1)
@@ -54,6 +55,7 @@ const Reviews = props => {
       })}
 
       <Right
+        aria-label="View next review"
         onClick={() =>
           review + 1 === reviewData.length
             ? setReview(0)

@@ -15,6 +15,7 @@ const ExpandCloseButton = props => {
     <Button
       onClick={() => click(!open)}
       alt={`${open ? "close" : "open"} navigation menu`}
+      aria-label={`${open ? "close" : "open"} navigation menu`}
     >
       <AnimatedChevUp style={topChev} open={open} />
       <AnimatedChevDown style={bottomChev} open={open} />
