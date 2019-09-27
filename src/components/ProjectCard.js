@@ -7,8 +7,10 @@ import Img from "gatsby-image"
 import Carousel, { Modal, ModalGateway } from "react-images"
 import Button from "./Button"
 
-import Lightbox from "react-spring-lightbox"
+// import Lightbox from "react-spring-lightbox"
 import CoolLightbox from "./CoolLightbox"
+
+import Lightbox from "./Lightbox2Components/Lightbox"
 
 // const CustomView = ({ data }) => {
 //   console.log(data)
@@ -50,13 +52,21 @@ const ProjectCard = props => {
         </Button>
       </div>
 
-      <CoolLightbox
+      <Lightbox
+        images={data.gallery}
+        onClose={setModalIsOpen}
+        index={index}
+        setIndex={setIndex}
+        open={modalIsOpen}
+      />
+
+      {/* <CoolLightbox
         isOpen={modalIsOpen}
         currentImageIndex={index}
         setCurrentIndex={setIndex}
         images={images}
         close={setModalIsOpen}
-      />
+      /> */}
 
       {/* <ModalGateway>
         {modalIsOpen ? (
