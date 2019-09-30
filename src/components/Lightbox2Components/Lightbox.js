@@ -8,6 +8,7 @@ import { useTransition, useSpring, a } from "react-spring"
 import ProgressBubbles from "../ProgressBubbles"
 
 import Img from "gatsby-image"
+import LockBody from "./LockBody"
 
 const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
   const handleClick = dir => {
@@ -66,6 +67,7 @@ const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
         current={index}
         set={setIndex}
       />
+      {open && <LockBody />}
     </a.div>
   )
 }

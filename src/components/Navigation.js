@@ -7,7 +7,7 @@ import { useSpring, animated } from "react-spring"
 
 import { ModalContext } from "../context/ModalContext"
 
-import { NavbarButton } from "./Button"
+import { NavbarButton } from "./header"
 
 const NavList = ({ click }) => {
   return (
@@ -44,9 +44,9 @@ export const MobileNavigation = props => {
       <nav>
         <NavList click={click} />
       </nav>
-      <StyledNavbarButton onClick={handleClick}>
+      <NavbarButton onClick={handleClick} solid>
         Start My Project
-      </StyledNavbarButton>
+      </NavbarButton>
     </MobileWrapper>
   )
 }
@@ -79,7 +79,7 @@ const MobileWrapper = styled(animated.div)`
   align-items: center;
   justify-content: center;
   color: var(--white);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
   @media (min-width: 662px) {
     display: none;
   }
@@ -131,11 +131,5 @@ const NavItem = styled.li`
   }
   @media (min-width: 992px) {
     font-size: 1rem;
-  }
-`
-
-const StyledNavbarButton = styled(NavbarButton)`
-  @media (min-width: 662px) {
-    display: none;
   }
 `

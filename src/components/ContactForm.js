@@ -121,7 +121,9 @@ const ContactForm = () => {
         <ProgressBar length={4} current={question} />
       </FormContainer>
       <CloseButton onClick={() => setModalOpen(false)} />
-      <PrevButton onClick={() => setQuestion(question - 1)} />
+      {question !== 0 && (
+        <PrevButton onClick={() => setQuestion(question - 1)} />
+      )}
     </Frame>
   )
 }

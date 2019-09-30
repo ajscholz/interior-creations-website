@@ -28,7 +28,8 @@ HeroBanner.propTypes = {
 export default styled(HeroBanner)`
   width: 100%;
   height: 63vw;
-  max-height: 100vh;
+  min-height: 50vh;
+  max-height: 80vh;
   background-position: center;
   background-repeat: repeat-y;
   background-size: cover;

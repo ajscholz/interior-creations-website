@@ -28,6 +28,7 @@ const ProjectPageTemplate = props => {
         <Button
           onClick={() => setModalOpen("form")}
           style={{ margin: "0 auto" }}
+          solid
         >
           Start Your Project Now
         </Button>

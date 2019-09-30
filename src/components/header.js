@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
-import { NavbarButton } from "./Button"
+import Button from "./Button"
 import { ModalContext } from "../context/ModalContext"
 
 const Header = ({ siteTitle }) => {
@@ -16,12 +16,12 @@ const Header = ({ siteTitle }) => {
           <Logo />
           {/* {siteTitle} */}
         </StyledLink>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <NavContainer>
           <DesktopNavigation />
-          <StyledNavbarButton onClick={() => setModalOpen("form")}>
+          <NavbarButton onClick={() => setModalOpen("form")} solid>
             Start My Project
-          </StyledNavbarButton>
-        </div>
+          </NavbarButton>
+        </NavContainer>
       </Wrapper>
     </StyledHeader>
   )
@@ -72,9 +72,30 @@ const StyledLink = styled(Link)`
   }
 `
 
-const StyledNavbarButton = styled(NavbarButton)`
+const NavContainer = styled.div`
   display: none;
+  align-items: center;
+
   @media (min-width: 662px) {
-    display: block;
+    display: flex;
+  }
+`
+
+export const NavbarButton = styled(Button)`
+  font-family: Cinzel;
+  padding: 0.5rem 3rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+
+  @media (min-width: 662px) {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.35rem 1.5rem;
+  }
+  @media (min-width: 992px) {
+    font-size: 1rem;
   }
 `
