@@ -1,7 +1,6 @@
-import React, { useContext } from "react"
+import React from "react"
 // import PropTypes from "prop-types"
 
-import { ModalContext } from "../context/ModalContext"
 import SEO from "./seo"
 import HeroBanner from "./HeroBanner"
 import ProjectForm from "./FormComponents/ProjectForm"
@@ -11,7 +10,6 @@ import ModalController from "./ModalComponents/ModalController"
 
 const ProjectPageTemplate = props => {
   const { page, projects } = props
-  const [, setModalOpen] = useContext(ModalContext)
 
   return (
     <>

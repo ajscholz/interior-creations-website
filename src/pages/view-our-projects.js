@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 
 import SEO from "../components/seo"
@@ -7,7 +7,6 @@ import Section from "../components/Section"
 import Title from "../components/Title"
 import { P } from "../components/Typography"
 import ImageSection from "../components/ImageSection"
-import Button from "../components/Button"
 
 import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"

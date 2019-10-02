@@ -6,19 +6,11 @@ import Title from "./Title"
 import { P } from "./Typography"
 import Img from "gatsby-image"
 import Button from "./Button"
-import { Link } from "gatsby"
 import LinkButton from "./LinkButton"
 
 const ImageSection = props => {
   const { data, link, className, button } = props
   const { sectionTitle: title, sectionText: text, sectionImage: image } = data
-
-  const handleClick = e => {
-    e.preventDefault()
-    link("form")
-  }
-
-  const StyledLink = styled(Link)``
 
   return (
     <section className={className}>
@@ -26,18 +18,6 @@ const ImageSection = props => {
         <Title>{title}</Title>
         <P>{text.sectionText}</P>
         <Img fluid={image.fluid} />
-        {/* {button} */}
-        {/* {typeof link === "function" ? (
-          <Button
-            onClick={typeof link === "function" ? e => handleClick(e) : null}
-          >
-            {buttonText}
-          </Button>
-        ) : (
-          <Link to={link}>
-            <Button ref={modalRef}>{buttonText}</Button>
-          </Link>
-        )} */}
         {typeof button === "string" ? (
           <LinkButton link={link}>{button}</LinkButton>
         ) : (

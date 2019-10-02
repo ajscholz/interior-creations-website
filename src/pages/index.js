@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { useTransition, animated } from "react-spring"
 
@@ -18,7 +18,6 @@ import Reviews from "../components/ReviewComponents/Reviews"
 
 import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"
-import Button from "../components/Button"
 
 const AnimatedP = animated(P)
 
@@ -28,7 +27,6 @@ let text = []
 
 const IndexPage = props => {
   const { data } = props
-  const buttonRef = useRef()
 
   const { page, section1, section2, section3, section4 } = data
 

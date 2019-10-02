@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
@@ -10,19 +10,6 @@ const ModalController = props => {
   const [open, setOpen] = useState(false)
 
   const buttonRef = useRef()
-
-  // useEffect(() => {
-  //   buttonRef.current.focus()
-  // })
-
-  // useEffect(() => {
-  //   console.log("mounted Modal Controller")
-  //   return () => {
-  //     console.log("unmounted ModalController")
-  //   }
-  // })
-
-  // console.log(document.activeElement)
 
   return (
     <>

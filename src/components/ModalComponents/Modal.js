@@ -1,17 +1,24 @@
-import React, { useEffect, useState, useRef, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
 import FocusTrapReact from "focus-trap-react"
 import { useTransition, a, config } from "react-spring"
-import { FiX } from "react-icons/fi"
 
 import Overlay from "./Overlay"
-import CloseButton from "./CloseButton"
 
 import { ModalContext } from "../../context/ModalContext"
 
 const Modal = props => {
-  const { className, children, setOpen, sourceRef } = props
+  const { className, children, setOpen } = props
+
+  const [, setModalOpen] = useContext(ModalContext)
+
+  useEffect(() => {
+    setModalOpen(true)
+    return () => {
+      setModalOpen(false)
+    }
+  })
 
   // local state to help with animations
   const [show, setShow] = useState(true)
@@ -28,13 +35,6 @@ const Modal = props => {
   // animate close which then unmounts the component in the onDestroyed() method of "transitions"
   const handleClose = () => {
     setShow(false)
-  }
-
-  // dummy function to handle form submission
-  const handleSubmit = e => {
-    e.preventDefault()
-    alert("submitted")
-    handleClose()
   }
 
   // handle escape keypress to exit modal
@@ -66,9 +66,8 @@ const Modal = props => {
               onKeyDown={e => onKeyDown(e)}
             >
               <Overlay onClick={handleClose} />
-              {clonedChildren}
 
-              <CloseButton handleClose={handleClose} />
+              {clonedChildren}
             </a.aside>
           </FocusTrapReact>
         )

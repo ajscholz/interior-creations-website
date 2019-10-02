@@ -49,9 +49,19 @@ const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
       <Img fluid={images[index].fluid} />
       {transitions.map(({ item, key, props }) =>
         item ? (
-          <AnimatedImg style={props} fluid={images[item].fluid} unique={true} />
+          <AnimatedImg
+            style={props}
+            fluid={images[item].fluid}
+            unique={true}
+            key={key}
+          />
         ) : (
-          <AnimatedImg style={props} fluid={images[item].fluid} unique={true} />
+          <AnimatedImg
+            style={props}
+            fluid={images[item].fluid}
+            unique={true}
+            key={key}
+          />
         )
       )}
 
