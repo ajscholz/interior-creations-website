@@ -12,7 +12,7 @@ export default Logo
 export const logo = graphql`
   {
     image: contentfulAsset(title: { eq: "Interior Creations Logo" }) {
-      fluid {
+      fluid(maxWidth: 150) {
         ...GatsbyContentfulFluid
       }
     }

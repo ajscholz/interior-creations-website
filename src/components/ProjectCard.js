@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import { H2 } from "./Typography"
 import Img from "gatsby-image"
 
-import Carousel, { Modal, ModalGateway } from "react-images"
+// import Carousel, { Modal, ModalGateway } from "react-images"
 import Button from "./Button"
 
 // import Lightbox from "react-spring-lightbox"
-import CoolLightbox from "./CoolLightbox"
+// import CoolLightbox from "./CoolLightbox"
 
 import Lightbox from "./Lightbox2Components/Lightbox"
 
@@ -23,9 +23,9 @@ const ProjectCard = props => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [index, setIndex] = useState(0)
 
-  const images = data.gallery.map(({ image }) => {
-    return { src: image.url, alt: "image" }
-  })
+  // const images = data.gallery.map(({ image }) => {
+  //   return { src: image.url, alt: "image" }
+  // })
 
   const openModal = index => {
     setIndex(index)

@@ -14,13 +14,13 @@ const ProgressBubbles = props => {
     <div className={className}>
       {circles.map((circle, index) => {
         return (
-          <>
+          <React.Fragment key={index}>
             {index === current ? (
-              <FaCircle key={index} />
+              <FaCircle />
             ) : (
-              <FaRegCircle onClick={() => set(index)} key={index} />
+              <FaRegCircle onClick={() => set(index)} />
             )}
-          </>
+          </React.Fragment>
         )
       })}
     </div>

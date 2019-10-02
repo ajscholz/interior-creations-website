@@ -8,14 +8,17 @@ import "./layout.css"
 import ExpandCloseButton from "./ExpandCloseButton"
 import { MobileNavigation } from "./Navigation"
 import Footer from "./Footer"
-import Modal from "./Modal"
+// import Modal from "./Modal"
 
 import { ModalContext } from "../context/ModalContext"
 import GlobalStyle from "./GlobalStyle"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [modalOpen, setModalOpen] = useContext(ModalContext)
+  // const [modalOpen, setModalOpen] = useContext(ModalContext)
+  // const [modalOpen] = useContext(ModalContext)
+
+  let modalOpen
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -27,6 +30,8 @@ const Layout = ({ children }) => {
     }
   `)
 
+  console.log("rendering layout")
+
   return (
     <>
       <GlobalStyle lockScroll={modalOpen || menuOpen} />
@@ -34,12 +39,12 @@ const Layout = ({ children }) => {
       <MobileNavigation
         open={menuOpen}
         click={setMenuOpen}
-        openModal={setModalOpen}
+        // openModal={setModalOpen}
       />
       <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
-      <Modal />
+      {/* <Modal /> */}
     </>
   )
 }

@@ -6,6 +6,7 @@
   "author": "Andrew Scholz <andrew@citynorth.church>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
+    "focus-trap-react": "^6.0.0",
     "formik": "^1.5.8",
     "gatsby": "^2.15.8",
     "gatsby-background-image": "^0.8.9",
@@ -33,6 +34,7 @@
     "react-images": "^1.0.0",
     "react-spring": "^8.0.27",
     "react-spring-lightbox": "^1.1.7",
+    "react-use-gesture": "^6.0.1",
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.23.0",
     "styled-components": "^4.3.2",

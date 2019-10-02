@@ -1,26 +1,25 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { DesktopNavigation } from "./Navigation"
 import Logo from "./Logo"
 import Button from "./Button"
-import { ModalContext } from "../context/ModalContext"
+import ModalController from "./ModalComponents/ModalController"
+import ProjectForm from "./FormComponents/ProjectForm"
 
-const Header = ({ siteTitle }) => {
-  const [, setModalOpen] = useContext(ModalContext)
+const Header = () => {
   return (
     <StyledHeader>
       <Wrapper>
         <StyledLink to="/">
           <Logo />
-          {/* {siteTitle} */}
         </StyledLink>
         <NavContainer>
           <DesktopNavigation />
-          <NavbarButton onClick={() => setModalOpen("form")} solid>
-            Start My Project
-          </NavbarButton>
+          <ModalController buttonText="Start Project">
+            <ProjectForm />
+          </ModalController>
         </NavContainer>
       </Wrapper>
     </StyledHeader>

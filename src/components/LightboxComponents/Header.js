@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { IoIosClose } from "react-icons/io"
-import Color from "color"
+// import Color from "color"
 import ButtonControl from "./ButtonControl"
 
 const LightboxHeader = ({ onClose }) => (

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useRef } from "react"
 import styled from "styled-components"
 import { useTransition, animated } from "react-spring"
 
@@ -15,7 +15,10 @@ import Title from "../components/Title"
 import FlexContainer from "../components/FlexContainer"
 import ImageSection from "../components/ImageSection"
 import Reviews from "../components/ReviewComponents/Reviews"
-import { ModalContext } from "../context/ModalContext"
+
+import ModalController from "../components/ModalComponents/ModalController"
+import ProjectForm from "../components/FormComponents/ProjectForm"
+import Button from "../components/Button"
 
 const AnimatedP = animated(P)
 
@@ -25,11 +28,11 @@ let text = []
 
 const IndexPage = props => {
   const { data } = props
+  const buttonRef = useRef()
 
   const { page, section1, section2, section3, section4 } = data
 
   const [index, setIndex] = useState(0)
-  const [, setModalOpen] = useContext(ModalContext)
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
@@ -80,7 +83,7 @@ const IndexPage = props => {
 
       <ImageSection
         data={section2}
-        buttonText={`View Our Projects`}
+        button={`View Our Projects`}
         link={"/view-our-projects/"}
       />
 
@@ -91,8 +94,11 @@ const IndexPage = props => {
 
       <ImageSection
         data={section4}
-        buttonText={`Start the Process Now`}
-        link={setModalOpen}
+        button={
+          <ModalController buttonText={`Start the Process Now`}>
+            <ProjectForm />
+          </ModalController>
+        }
         reverse
       />
     </>
@@ -100,7 +106,7 @@ const IndexPage = props => {
 }
 
 const StyledFlexContainer = styled(FlexContainer)`
-  justify-content: space-between;
+  justify-content: space-around;
 
   @media (min-width: 662px) {
     justify-content: space-around;

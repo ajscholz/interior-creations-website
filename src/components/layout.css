@@ -18,7 +18,7 @@
   /* width: 100%; */
 }
 html {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   box-sizing: border-box;
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -27,16 +27,7 @@ html {
 
   font-size: 100%;
 }
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--white);
-  height: 100%;
-  font-family: "Prompt", sans-serif;
-  font-weight: 200;
-  line-height: 1.45;
-}
+
 article,
 aside,
 details,
@@ -228,17 +219,7 @@ textarea {
 *:after {
   box-sizing: inherit;
 }
-body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: Prompt, Arial, Helvetica, sans-serif;
-  font-weight: 200;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
-}
+
 img {
   max-width: 100%;
   margin-left: 0;

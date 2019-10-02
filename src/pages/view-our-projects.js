@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import styled from "styled-components"
 
 import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
@@ -8,7 +9,8 @@ import { P } from "../components/Typography"
 import ImageSection from "../components/ImageSection"
 import Button from "../components/Button"
 
-import { ModalContext } from "../context/ModalContext"
+import ModalController from "../components/ModalComponents/ModalController"
+import ProjectForm from "../components/FormComponents/ProjectForm"
 
 const ViewOurProjects = props => {
   const { data } = props
@@ -21,8 +23,6 @@ const ViewOurProjects = props => {
     section5,
     section6,
   } = data
-
-  const [, setModalOpen] = useContext(ModalContext)
 
   const imageSections = [
     {
@@ -58,20 +58,20 @@ const ViewOurProjects = props => {
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
-      <Section style={{ maxWidth: "1000px" }}>
+      <StyledSection style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{section1.title}</Title>
         <P style={{ textAlign: "center" }}>{section1.text.sectionText}</P>
-        <Button center onClick={() => setModalOpen("form")}>
-          Start My Project Now
-        </Button>
-      </Section>
+        <ModalController buttonText="Start My Project">
+          <ProjectForm />
+        </ModalController>
+      </StyledSection>
 
       {imageSections.map((section, index) => {
         return (
           <ImageSection
             data={section.data}
             key={section.data.id}
-            buttonText={section.bText}
+            button={section.bText}
             link={section.link}
             reverse={index % 2 === 0 ? false : true}
           />
@@ -80,6 +80,17 @@ const ViewOurProjects = props => {
     </>
   )
 }
+
+const StyledSection = styled(Section)`
+  & button {
+    width: 100%;
+
+    @media (min-width: 662px) {
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+`
 
 export default ViewOurProjects
 

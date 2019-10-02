@@ -1,12 +1,13 @@
 import React, { useContext } from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 
 import { ModalContext } from "../context/ModalContext"
 import SEO from "./seo"
 import HeroBanner from "./HeroBanner"
-import Button from "./Button"
+import ProjectForm from "./FormComponents/ProjectForm"
 import Section from "./Section"
 import ProjectCard from "./ProjectCard"
+import ModalController from "./ModalComponents/ModalController"
 
 const ProjectPageTemplate = props => {
   const { page, projects } = props
@@ -25,13 +26,9 @@ const ProjectPageTemplate = props => {
         ))}
       </Section>
       <Section>
-        <Button
-          onClick={() => setModalOpen("form")}
-          style={{ margin: "0 auto" }}
-          solid
-        >
-          Start Your Project Now
-        </Button>
+        <ModalController buttonText="Start Your Project Now">
+          <ProjectForm />
+        </ModalController>
       </Section>
     </>
   )

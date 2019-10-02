@@ -7,9 +7,10 @@ import { P } from "./Typography"
 import Img from "gatsby-image"
 import Button from "./Button"
 import { Link } from "gatsby"
+import LinkButton from "./LinkButton"
 
 const ImageSection = props => {
-  const { data, link, buttonText, className } = props
+  const { data, link, className, button } = props
   const { sectionTitle: title, sectionText: text, sectionImage: image } = data
 
   const handleClick = e => {
@@ -17,13 +18,16 @@ const ImageSection = props => {
     link("form")
   }
 
+  const StyledLink = styled(Link)``
+
   return (
     <section className={className}>
       <div className="wrapper">
         <Title>{title}</Title>
         <P>{text.sectionText}</P>
         <Img fluid={image.fluid} />
-        {typeof link === "function" ? (
+        {/* {button} */}
+        {/* {typeof link === "function" ? (
           <Button
             onClick={typeof link === "function" ? e => handleClick(e) : null}
           >
@@ -31,8 +35,13 @@ const ImageSection = props => {
           </Button>
         ) : (
           <Link to={link}>
-            <Button>{buttonText}</Button>
+            <Button ref={modalRef}>{buttonText}</Button>
           </Link>
+        )} */}
+        {typeof button === "string" ? (
+          <LinkButton link={link}>{button}</LinkButton>
+        ) : (
+          button
         )}
       </div>
     </section>
@@ -49,7 +58,11 @@ ImageSection.propTypes = {
       sectionText: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  buttonText: PropTypes.string.isRequired,
+  button: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+}
+
+ImageSection.defaultProps = {
+  button: "Generic Button",
 }
 
 export default styled(ImageSection)`
@@ -67,9 +80,10 @@ export default styled(ImageSection)`
     max-height: 350px;
   }
 
-  & ${Button} {
+  & a, button {
     margin-top: 1.25rem;
     width: 100%;
+    text-align: center;
   }
 
   /* @media (min-width: 900px) {
@@ -103,9 +117,12 @@ export default styled(ImageSection)`
       max-height: unset;
     }
 
-    & ${Button} {
+    & a, button {
       margin-top: 0;
       width: unset;
+      display: inline-block;
+      text-align: unset;
+      margin-right: auto;
     }
 
     ${props =>
@@ -123,7 +140,8 @@ export default styled(ImageSection)`
           left: 0;
           right: unset;
         }
-        & ${Button} {
+        & a,
+        button {
           margin-left: auto;
         }
       `}

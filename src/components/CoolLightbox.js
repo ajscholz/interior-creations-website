@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Lightbox from "react-spring-lightbox"
 import Header from "./LightboxComponents/Header"
 import Footer from "./LightboxComponents/Footer"

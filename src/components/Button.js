@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { a, useSpring } from "react-spring"
 
-const focused = solid => {
+export const hovering = solid => {
   let styles = {
-    color: "#fff",
+    color: "#FFF",
     background: "rgba(5, 133, 176, 1)",
     transform: "scale(1.05)",
     boxShadow: "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)",
@@ -16,7 +16,7 @@ const focused = solid => {
   return styles
 }
 
-const blurred = solid => {
+export const blurred = solid => {
   let styles = {
     color: "rgba(5, 133, 176, 1)",
     background: "rgba(5, 133, 176, 0)",
@@ -34,15 +34,13 @@ const Button = props => {
   const { children, className, style, onClick, solid } = props
   const [hoverProps, set] = useSpring(() => blurred(solid))
 
-  // try passing "solid" as an argment to "set" and adapting focused and blurred based on that argument
-
   return (
     <a.button
       className={className}
       style={{ ...style, ...hoverProps }}
       onClick={onClick}
-      onMouseOver={() => set(() => focused(solid))}
-      onFocus={() => set(() => focused(solid))}
+      onMouseOver={() => set(() => hovering(solid))}
+      onFocus={() => set(() => hovering(solid))}
       onMouseOut={() => set(() => blurred(solid))}
       onBlur={() => set(() => blurred(solid))}
     >
@@ -53,8 +51,10 @@ const Button = props => {
 
 export default styled(Button)`
   outline: none;
+  /* outline-color: var(--secondary); */
   display: block;
   border: 2px solid var(--primary);
+  width: 100%;
   color: ${props => props.color || "var(--primary)"};
   text-transform: uppercase;
   font-size: ${props =>
@@ -65,4 +65,8 @@ export default styled(Button)`
   font-weight: 400;
   margin: ${props => props.center && "0 auto"};
   cursor: pointer;
+
+  @media (min-width: 662px) {
+    width: auto;
+  }
 `

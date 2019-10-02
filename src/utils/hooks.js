@@ -3,7 +3,8 @@ import ResizeObserver from "resize-observer-polyfill"
 
 export const useLockBodyScroll = () => {
   useLayoutEffect(() => {
-    document.body.style.position = "fixed"
+    // document.body.style.position = "fixed"
+    document.body.style.overflow = "hidden"
 
     return () => document.body.removeAttribute("style")
   }, [])
@@ -18,6 +19,6 @@ export const useMeasure = () => {
   useEffect(() => {
     if (ref.current) ro.observe(ref.current)
     return () => ro.disconnect()
-  }, [])
+  })
   return [{ ref }, bounds]
 }
