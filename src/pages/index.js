@@ -40,7 +40,12 @@ const IndexPage = props => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO title="Home">
+        <meta
+          name="description"
+          content="this is a description I want to test"
+        />
+      </SEO>
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
