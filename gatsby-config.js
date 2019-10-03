@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: "./src/logoFinal.png",
+        logo: "./src/images/logoFinal.png",
 
         // WebApp Manifest Configuration
         dir: "auto",
