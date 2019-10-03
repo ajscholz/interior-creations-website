@@ -34,7 +34,11 @@ export const MobileNavigation = props => {
         <NavList click={click} />
       </nav>
 
-      <ModalController buttonText="Start Your Project" buttonStyle="solid">
+      <ModalController
+        buttonText="Start Project"
+        buttonStyle="solid"
+        parentClick={click}
+      >
         <ProjectForm />
       </ModalController>
     </MobileWrapper>
@@ -115,7 +119,9 @@ const MobileWrapper = styled(animated.div)`
     color: var(--black);
     text-transform: capitalize;
     text-align: center;
-    width: 80%;
+    width: 90%;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 `
 

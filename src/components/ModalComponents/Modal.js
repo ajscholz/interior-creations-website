@@ -82,7 +82,7 @@ export default styled(Modal)`
   bottom: 0;
   height: 100%;
   width: 100%;
-  z-index: 10;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -68,7 +68,7 @@ export default styled(Footer)`
   width: 100%;
   /* to deal with fab laying over copyright text on xxs screens */
 
-  padding: 2rem 5vw 7rem;
+  padding: 4rem 5vw 7rem;
   background: var(--secondary);
   @media (min-width: 400px) {
     padding: 2rem 5vw;

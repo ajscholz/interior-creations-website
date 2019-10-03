@@ -6,16 +6,21 @@ import Modal from "./Modal"
 import Button from "../Button"
 
 const ModalController = props => {
-  const { buttonText, children, buttonStyle } = props
+  const { buttonText, children, buttonStyle, parentClick } = props
   const [open, setOpen] = useState(false)
 
   const buttonRef = useRef()
+
+  const handleClick = () => {
+    setOpen(true)
+    parentClick(false)
+  }
 
   return (
     <>
       {/* Controller button */}
       <Button
-        onClick={() => setOpen(true)}
+        onClick={() => handleClick()}
         className="modal-controller-button"
         solid={buttonStyle === "solid"}
       >

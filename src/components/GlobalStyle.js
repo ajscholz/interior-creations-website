@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   body {
+    overflow-x: hidden;
     overflow: ${props => props.lockScroll && "hidden"};
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -21,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
     font-feature-settings: "kern", "liga", "clig", "calt";
   }
+
 `
 
 export default GlobalStyle

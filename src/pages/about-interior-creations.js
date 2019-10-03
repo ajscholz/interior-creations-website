@@ -9,6 +9,7 @@ import Title from "../components/Title"
 import { P } from "../components/Typography"
 import TeamMember from "../components/TeamMember"
 import LinkButton from "../components/LinkButton"
+import MDX from "../components/MDX"
 
 const AboutInteriorCreations = props => {
   const { data } = props
@@ -22,10 +23,10 @@ const AboutInteriorCreations = props => {
 
       <Section>
         <Title>{section1.sectionTitle}</Title>
-        <P>{section1.sectionText.sectionText}</P>
+        <MDX>{section1.sectionText.childMdx.body}</MDX>
       </Section>
 
-      <Section>
+      <StyledSection>
         <Title style={{ textAlign: "center" }}>Our Awards</Title>
         <GridContainer>
           <img
@@ -56,7 +57,7 @@ const AboutInteriorCreations = props => {
         >
           View us on Houzz
         </LinkButton>
-      </Section>
+      </StyledSection>
 
       <Section>
         <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
@@ -72,15 +73,33 @@ const AboutInteriorCreations = props => {
   )
 }
 
+const StyledSection = styled(Section)`
+  /* & ${LinkButton} {
+
+  } */
+`
+
 const GridContainer = styled.div`
+  width: 100%;
+  max-width: 600px;
   display: grid;
-  grid-template-columns: 120px 160px 120px;
-  grid-gap: 1.5rem;
+  grid-template-columns: 0.75fr 1fr 0.75fr;
+  grid-gap: 0.8rem;
   height: auto;
+  max-height: 160px;
   margin: 0 auto;
   justify-content: center;
   & img {
     margin-bottom: 0;
+  }
+  @media (min-width: 576px) {
+    grid-template-columns: 96px 128px 96px;
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 662px) {
+    grid-template-columns: 120px 160px 120px;
+    grid-gap: 1.5rem;
   }
 `
 
@@ -110,7 +129,9 @@ export const data = graphql`
     ) {
       sectionTitle
       sectionText {
-        sectionText
+        childMdx {
+          body
+        }
       }
       sectionImage {
         fluid {
