@@ -6,7 +6,7 @@ import Modal from "./Modal"
 import Button from "../Button"
 
 const ModalController = props => {
-  const { buttonText, children } = props
+  const { buttonText, children, buttonStyle } = props
   const [open, setOpen] = useState(false)
 
   const buttonRef = useRef()
@@ -14,7 +14,13 @@ const ModalController = props => {
   return (
     <>
       {/* Controller button */}
-      <Button onClick={() => setOpen(true)}>{buttonText}</Button>
+      <Button
+        onClick={() => setOpen(true)}
+        className="modal-controller-button"
+        solid={buttonStyle === "solid"}
+      >
+        {buttonText}
+      </Button>
 
       {/* Modal logic */}
       {open && (
@@ -30,11 +36,13 @@ const ModalController = props => {
 ModalController.propTypes = {
   buttonText: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
+  buttonStyle: PropTypes.oneOf(["solid", "regular"]),
 }
 
 ModalController.defaultProps = {
   buttonText: "Modal Button",
   children: "Modal content",
+  // buttonStyle: "regular",
 }
 
 export default styled(ModalController)`

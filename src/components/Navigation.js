@@ -1,35 +1,24 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
-
-import links from "../utils/links"
 import { Link } from "gatsby"
 import { useSpring, animated } from "react-spring"
 
-import { ModalContext } from "../context/ModalContext"
+import links from "../utils/links"
+import ModalController from "./ModalComponents/ModalController"
+import ProjectForm from "./FormComponents/ProjectForm"
 
-import { NavbarButton } from "./header"
-
-const NavList = ({ click }) => {
-  return (
-    <List>
-      {links.map(link => (
-        <NavItem onClick={click ? () => click(false) : null} key={link.key}>
-          <Link to={link.path}>{link.title}</Link>
-        </NavItem>
-      ))}
-    </List>
-  )
-}
+const NavList = ({ click }) => (
+  <List>
+    {links.map(link => (
+      <NavItem onClick={click ? () => click(false) : null} key={link.key}>
+        <Link to={link.path}>{link.title}</Link>
+      </NavItem>
+    ))}
+  </List>
+)
 
 export const MobileNavigation = props => {
-  const [, setModalOpen] = useContext(ModalContext)
-
   const { open, click } = props
-
-  const handleClick = () => {
-    click(false)
-    setModalOpen("form")
-  }
 
   const expandMenu = useSpring({
     to: async next => {
@@ -40,24 +29,60 @@ export const MobileNavigation = props => {
   })
 
   return (
-    <MobileWrapper open={open} style={expandMenu}>
+    <MobileWrapper style={expandMenu}>
       <nav>
         <NavList click={click} />
       </nav>
-      <NavbarButton onClick={handleClick} solid>
-        Start My Project
-      </NavbarButton>
+
+      <ModalController buttonText="Start Your Project" buttonStyle="solid">
+        <ProjectForm />
+      </ModalController>
     </MobileWrapper>
   )
 }
 
-export const DesktopNavigation = () => {
+const Navigation = props => {
+  const { className } = props
+
   return (
-    <DesktopWrapper>
-      <NavList />
-    </DesktopWrapper>
+    <div className={className}>
+      <DesktopWrapper>
+        <NavList />
+      </DesktopWrapper>
+      <ModalController buttonText="Start Project" buttonStyle="solid">
+        <ProjectForm />
+      </ModalController>
+    </div>
   )
 }
+
+export default styled(Navigation)`
+  display: none;
+  align-items: center;
+
+  @media (min-width: 662px) {
+    display: flex;
+  }
+
+  & .modal-controller-button {
+    font-family: Cinzel;
+    padding: 0.5rem 3rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+
+    @media (min-width: 662px) {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
+    }
+    @media (min-width: 768px) {
+      font-size: 0.9rem;
+      padding: 0.35rem 1.5rem;
+    }
+    @media (min-width: 992px) {
+      font-size: 1rem;
+    }
+  }
+`
 
 const DesktopWrapper = styled.nav`
   display: none;
@@ -82,6 +107,15 @@ const MobileWrapper = styled(animated.div)`
   backdrop-filter: blur(4px);
   @media (min-width: 662px) {
     display: none;
+  }
+
+  & .modal-controller-button {
+    font-family: Cinzel;
+    font-size: 1.5rem;
+    color: var(--black);
+    text-transform: capitalize;
+    text-align: center;
+    width: 80%;
   }
 `
 

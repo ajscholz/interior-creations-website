@@ -5,8 +5,8 @@ import FocusTrapReact from "focus-trap-react"
 import { useTransition, a, config } from "react-spring"
 
 import Overlay from "./Overlay"
-
 import { ModalContext } from "../../context/ModalContext"
+import { onKeyPress } from "../../utils/helpers"
 
 const Modal = props => {
   const { className, children, setOpen } = props
@@ -38,11 +38,11 @@ const Modal = props => {
   }
 
   // handle escape keypress to exit modal
-  const onKeyDown = e => {
-    if (e.keyCode === 27) {
-      handleClose()
-    }
-  }
+  // const onKeyDown = e => {
+  //   if (e.keyCode === 27) {
+  //     handleClose()
+  //   }
+  // }
 
   // clone children to pass props from parent
   // https://medium.com/better-programming/passing-data-to-props-children-in-react-5399baea0356
@@ -63,7 +63,7 @@ const Modal = props => {
               aria-modal="true"
               role="dialog"
               tabIndex="-1"
-              onKeyDown={e => onKeyDown(e)}
+              onKeyDown={e => onKeyPress(e, handleClose)}
             >
               <Overlay onClick={handleClose} />
 

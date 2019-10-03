@@ -24,7 +24,10 @@ const ProjectPageTemplate = props => {
         ))}
       </Section>
       <Section>
-        <ModalController buttonText="Start Your Project Now">
+        <ModalController
+          buttonText="Start Your Project Now"
+          buttonStyle="solid"
+        >
           <ProjectForm />
         </ModalController>
       </Section>
