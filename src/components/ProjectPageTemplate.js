@@ -1,5 +1,5 @@
 import React from "react"
-// import PropTypes from "prop-types"
+import styled from "styled-components"
 
 import SEO from "./seo"
 import HeroBanner from "./HeroBanner"
@@ -23,20 +23,22 @@ const ProjectPageTemplate = props => {
           </ProjectCard>
         ))}
       </Section>
-      <Section>
+      <StyledSection>
         <ModalController
           buttonText="Start Your Project Now"
           buttonStyle="solid"
         >
           <ProjectForm />
         </ModalController>
-      </Section>
+      </StyledSection>
     </>
   )
 }
 
-ProjectPageTemplate.propTypes = {
-  // page: PropTypes.isRequired,
-}
+const StyledSection = styled(Section)`
+  & button {
+    margin: 0 auto;
+  }
+`
 
 export default ProjectPageTemplate

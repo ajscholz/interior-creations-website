@@ -32,7 +32,7 @@ const Badge = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: none;
+  /* outline: none; */
   cursor: pointer;
 
   & > svg {

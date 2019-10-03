@@ -42,7 +42,7 @@ export default styled(IconCard)`
   cursor: pointer;
   background: var(--white);
   border: none;
-  outline: none;
+  /* outline: none;  */
   padding: 0.75rem;
 
   & svg {

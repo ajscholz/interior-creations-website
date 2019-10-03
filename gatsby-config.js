@@ -21,6 +21,7 @@ module.exports = {
     )
   },
   plugins: [
+    `gatsby-plugin-mdx`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cache`,
     {
@@ -53,16 +54,32 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-plugin-favicon`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        logo: "./src/logoFinal.png",
+
+        // WebApp Manifest Configuration
+        dir: "auto",
+        lang: "en-US",
+        background: "#ff00234ef",
+        theme_color: "#0585b0",
+        display: "minimal-ui",
+        orientation: "any",
+        start_url: "/",
+        version: "1.0",
+
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: true,
+        },
       },
     },
   ],

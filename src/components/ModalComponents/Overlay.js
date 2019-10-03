@@ -11,4 +11,5 @@ export default styled(Overlay)`
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
 `

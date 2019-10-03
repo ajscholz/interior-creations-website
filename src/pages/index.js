@@ -177,7 +177,9 @@ export const query = graphql`
     ) {
       sectionTitle
       sectionText {
-        sectionText
+        childMdx {
+          body
+        }
       }
       sectionImage {
         fluid {
@@ -204,7 +206,9 @@ export const query = graphql`
     ) {
       sectionTitle
       sectionText {
-        sectionText
+        childMdx {
+          body
+        }
       }
       sectionImage {
         fluid {

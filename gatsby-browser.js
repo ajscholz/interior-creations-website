@@ -11,7 +11,11 @@ import "typeface-prompt"
 
 import React from "react"
 import { ModalContextProvider } from "./src/context/ModalContext"
+import { MDXProvider } from "@mdx-js/react"
+import { P } from "./src/components/Typography"
 
 export const wrapRootElement = ({ element }) => (
-  <ModalContextProvider>{element}</ModalContextProvider>
+  <ModalContextProvider>
+    <MDXProvider components={{ p: P }}>{element}</MDXProvider>
+  </ModalContextProvider>
 )

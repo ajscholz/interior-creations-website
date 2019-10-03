@@ -5,11 +5,11 @@ import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
 import Section from "../components/Section"
 import Title from "../components/Title"
-import { P } from "../components/Typography"
 import ImageSection from "../components/ImageSection"
 
 import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"
+import MDX from "../components/MDX"
 
 const ViewOurProjects = props => {
   const { data } = props
@@ -59,7 +59,9 @@ const ViewOurProjects = props => {
 
       <StyledSection style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{section1.title}</Title>
-        <P style={{ textAlign: "center" }}>{section1.text.sectionText}</P>
+        <MDX style={{ textAlign: "center" }}>
+          {section1.sectionText.childMdx.body}
+        </MDX>
         <ModalController buttonText="Start My Project">
           <ProjectForm />
         </ModalController>
@@ -89,6 +91,10 @@ const StyledSection = styled(Section)`
       margin: 0 auto;
     }
   }
+
+  & p {
+    text-align: center;
+  }
 `
 
 export default ViewOurProjects
@@ -98,7 +104,9 @@ export const data = graphql`
     id: contentful_id
     sectionTitle
     sectionText {
-      sectionText
+      childMdx {
+        body
+      }
     }
     sectionImage {
       fluid {
@@ -133,8 +141,10 @@ export const data = graphql`
       contentful_id: { eq: "6o3jtETVFN4sift2xvotta" }
     ) {
       title: sectionTitle
-      text: sectionText {
-        sectionText
+      sectionText {
+        childMdx {
+          body
+        }
       }
     }
     section2: contentfulPageSection(

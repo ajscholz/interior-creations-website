@@ -108,7 +108,7 @@ export default styled(Reviews)`
 `
 
 const DirectionalArrow = styled.button`
-  outline: none;
+  /* outline: none; */
   border: none;
   background: none;
   padding: 0;

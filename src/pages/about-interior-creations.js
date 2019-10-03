@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
@@ -7,6 +8,7 @@ import Section from "../components/Section"
 import Title from "../components/Title"
 import { P } from "../components/Typography"
 import TeamMember from "../components/TeamMember"
+import LinkButton from "../components/LinkButton"
 
 const AboutInteriorCreations = props => {
   const { data } = props
@@ -24,6 +26,39 @@ const AboutInteriorCreations = props => {
       </Section>
 
       <Section>
+        <Title style={{ textAlign: "center" }}>Our Awards</Title>
+        <GridContainer>
+          <img
+            src="https://st.hzcdn.com/static/badge_44_8@2x.png"
+            alt="Jeff Blevins in New Albany, OH on Houzz"
+          />
+
+          <img
+            src="https://st.hzcdn.com/static/badge_47_8@2x.png"
+            alt="Jeff Blevins in New Albany, OH on Houzz"
+          />
+
+          <img
+            src="https://st.hzcdn.com/static/badge_41_8@2x.png"
+            alt="Jeff Blevins in New Albany, OH on Houzz"
+          />
+        </GridContainer>
+        <LinkButton
+          style={{
+            textAlign: "center",
+            maxWidth: "300px",
+            margin: "2rem auto 0",
+          }}
+          type="external"
+          link="https://www.houzz.com/pro/jeff2413"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View us on Houzz
+        </LinkButton>
+      </Section>
+
+      <Section>
         <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
           {section3.sectionTitle}
         </Title>
@@ -36,6 +71,18 @@ const AboutInteriorCreations = props => {
     </>
   )
 }
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 120px 160px 120px;
+  grid-gap: 1.5rem;
+  height: auto;
+  margin: 0 auto;
+  justify-content: center;
+  & img {
+    margin-bottom: 0;
+  }
+`
 
 export default AboutInteriorCreations
 

@@ -3,20 +3,27 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 import Title from "./Title"
-import { P } from "./Typography"
 import Img from "gatsby-image"
 import Button from "./Button"
 import LinkButton from "./LinkButton"
+import MDX from "./MDX"
 
 const ImageSection = props => {
   const { data, link, className, button } = props
-  const { sectionTitle: title, sectionText: text, sectionImage: image } = data
+  const {
+    sectionTitle: title,
+    sectionText: {
+      childMdx: { body },
+    },
+    sectionImage: image,
+  } = data
 
   return (
     <section className={className}>
       <div className="wrapper">
         <Title>{title}</Title>
-        <P>{text.sectionText}</P>
+        <MDX>{body}</MDX>
+        {/* <P>{text.sectionText}</P> */}
         <Img fluid={image.fluid} />
         {typeof button === "string" ? (
           <LinkButton link={link}>{button}</LinkButton>
@@ -35,9 +42,11 @@ ImageSection.propTypes = {
     }).isRequired,
     sectionTitle: PropTypes.string.isRequired,
     sectionText: PropTypes.shape({
-      sectionText: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+      childMdx: PropTypes.shape({
+        body: PropTypes.string.isRequired,
+      }),
+    }),
+  }),
   button: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 }
 
@@ -79,7 +88,7 @@ export default styled(ImageSection)`
 
   @media (min-width: 900px) {
     position: relative;
-    padding: 6rem 50% 6rem 4rem;
+    padding: 6rem calc(50% + 1rem) 6rem 4rem;
     background: var(--lightestgray);
 
     & .wrapper {
@@ -108,7 +117,7 @@ export default styled(ImageSection)`
     ${props =>
       props.reverse &&
       css`
-        padding: 6rem 4rem 6rem 50%;
+        padding: 6rem 4rem 6rem calc(50% + 1rem);
         text-align: right;
 
         & .wrapper {
