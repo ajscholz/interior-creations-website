@@ -54,32 +54,16 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-
     {
-      resolve: `gatsby-plugin-favicon`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        logo: "./src/images/logoFinal.png",
-
-        // WebApp Manifest Configuration
-        dir: "auto",
-        lang: "en-US",
-        background: "#ff00234ef",
-        theme_color: "#0585b0",
-        display: "minimal-ui",
-        orientation: "any",
-        start_url: "/",
-        version: "1.0",
-
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          yandex: false,
-          windows: true,
-        },
+        name: `Interior Creations Co.`,
+        short_name: `iCreations`,
+        start_url: `/`,
+        background_color: `#00234e`,
+        theme_color: `#0585b0`,
+        display: `minimal-ui`,
+        icon: `src/images/logoFinal.png`, // This path is relative to the root of the site.
       },
     },
   ],
