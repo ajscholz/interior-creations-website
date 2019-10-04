@@ -112,7 +112,7 @@ export const data = graphql`
       bannerText
       bannerImage {
         fluid(quality: 100) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
         file {
           details {
@@ -135,7 +135,7 @@ export const data = graphql`
       }
       sectionImage {
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
@@ -152,7 +152,7 @@ export const data = graphql`
           }
           image {
             fluid {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 
 import ProjectPageTemplate from "../../components/ProjectPageTemplate"
 
+// we'll remodel your kitchen without destroying your life
+
 const homeOffices = props => {
   const { data } = props
   const { page, projects } = data
@@ -23,7 +25,7 @@ export const data = graphql`
       bannerText
       bannerImage {
         fluid(quality: 100) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
         file {
           details {
@@ -53,7 +55,7 @@ export const data = graphql`
           }
           gallery {
             fluid {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
             image: file {
               url

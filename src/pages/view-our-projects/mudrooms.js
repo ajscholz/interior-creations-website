@@ -23,7 +23,7 @@ export const data = graphql`
       bannerText
       bannerImage {
         fluid(quality: 100) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
         file {
           details {
@@ -53,7 +53,7 @@ export const data = graphql`
           }
           gallery {
             fluid {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
             image: file {
               url
