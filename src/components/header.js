@@ -61,4 +61,8 @@ const StyledLink = styled(Link)`
     width: 150px;
     margin-right: 3rem;
   }
+  @media (min-width: 768px) {
+    width: 200px;
+    margin-right: 3rem;
+  }
 `

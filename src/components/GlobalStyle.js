@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
   body {
     overflow-x: hidden;
+    position: relative;
     overflow: ${props => props.lockScroll && "hidden"};
     margin: 0;
     -webkit-font-smoothing: antialiased;
