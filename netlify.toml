@@ -5,7 +5,7 @@ command = "yarn run build"
 publish = "public/"
 
 [[redirects]]
-  from = "*"
+  from = "/*"
   to = "/renovating"
   status = 302
   force = true
