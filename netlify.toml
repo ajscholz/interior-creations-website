@@ -8,4 +8,3 @@ publish = "public/"
   from = "*"
   to = "/renovating"
   status = 200
-  force = true
