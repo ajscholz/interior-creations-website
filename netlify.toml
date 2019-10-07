@@ -3,9 +3,3 @@
 functions = ".netlify/functions"
 command = "yarn run build"
 publish = "public/"
-
-[[redirects]]
-  from = "/*"
-  to = "/renovating"
-  status = 302
-  force = true

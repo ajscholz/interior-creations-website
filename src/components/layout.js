@@ -12,7 +12,7 @@ import Footer from "./Footer"
 import { ModalContext } from "../context/ModalContext"
 import GlobalStyle from "./GlobalStyle"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageContext }) => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const [modalOpen] = useContext(ModalContext)
@@ -27,14 +27,22 @@ const Layout = ({ children }) => {
     }
   `)
 
+  if (pageContext.layout === "landing") {
+    return (
+      <>
+        <GlobalStyle lockScroll={modalOpen || menuOpen} />
+        <Main>{children}</Main>
+      </>
+    )
+  }
   return (
     <>
       <GlobalStyle lockScroll={modalOpen || menuOpen} />
-      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-      {/* <MobileNavigation open={menuOpen} click={setMenuOpen} /> */}
-      {/* <ExpandCloseButton open={menuOpen} click={setMenuOpen} /> */}
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <MobileNavigation open={menuOpen} click={setMenuOpen} />
+      <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
