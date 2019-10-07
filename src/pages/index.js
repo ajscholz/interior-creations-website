@@ -18,8 +18,6 @@ import SocialButtons from "../components/SocialButtons"
 const IndexPage = props => {
   const { data } = props
 
-  const width = window.innerWidth
-
   const infoBoxIn = useSpring({
     delay: 2000,
     from: {
