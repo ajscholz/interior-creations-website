@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import GridGroup from "./GridGroup"
@@ -10,17 +11,25 @@ const SocialButtons = props => {
   return (
     <div className={className}>
       <StyledGridGroup gap={1} mb={2}>
-        <StyledIconBadge
+        <IconBadge
+          outline={outline}
           icon={<FaFacebookF />}
           url={`https://www.facebook.com/interiorcreationsco/`}
+          size="2.25rem"
         />
-        <StyledIconBadge
+        <IconBadge
+          outline={outline}
           icon={<FaHouzz />}
           url={`https://www.houzz.com/pro/jeff2413`}
+          size="2.25rem"
         />
       </StyledGridGroup>
     </div>
   )
+}
+
+SocialButtons.propTypes = {
+  outline: PropTypes.bool,
 }
 
 export default styled(SocialButtons)``
@@ -31,11 +40,4 @@ const StyledGridGroup = styled(GridGroup)`
     margin: 0;
     justify-self: end;
   }
-`
-
-const StyledIconBadge = styled(IconBadge)`
-  height: 2.25rem;
-  width: 2.25rem;
-  border: 2px solid var(--secondary);
-  background: transparent;
 `

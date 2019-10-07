@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const IconBadge = props => {
-  const { icon, size, url, color, iColor, className } = props
+  const { icon, size, url, color, iColor, className, outline } = props
   return (
     <a
       size={size}
@@ -11,8 +11,9 @@ const IconBadge = props => {
       target="_blank"
       rel="noopener noreferrer"
       color={color}
-      iColor={iColor}
+      icolor={iColor}
       className={className}
+      outline={outline}
     >
       {icon}
     </a>
@@ -21,7 +22,7 @@ const IconBadge = props => {
 
 IconBadge.propTypes = {
   icon: PropTypes.element.isRequired,
-  // size: PropTypes.number.isRequired,
+  outline: PropTypes.bool,
   url: PropTypes.string.isRequired,
 }
 
@@ -29,15 +30,16 @@ export default styled(IconBadge)`
   height: ${props => props.size};
   width: ${props => props.size};
   border-radius: 50%;
-  background: ${props => props.color || "var(--white)"};
+  background: ${props =>
+    props.outline ? "transparent" : props.color || "var(--white)"};
   display: flex;
   justify-content: center;
   align-items: center;
-  /* outline: none; */
+  border: ${props => props.outline && "2px solid var(--secondary)"};
   cursor: pointer;
 
   & > svg {
-    color: ${props => props.iColor || "var(--secondary)"};
+    color: ${props => props.icolor || "var(--secondary)"};
     height: 50%;
     width: 50%;
   }
