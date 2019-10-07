@@ -31,10 +31,10 @@ const ProjectForm = props => {
 
   const focusRef = useRef()
 
-  useEffect(() => {
-    const focusCurrent = focusRef.current
-    focusCurrent.focus()
-  })
+  // useEffect(() => {
+  //   const focusCurrent = focusRef.current
+  //   focusCurrent.focus()
+  // })
 
   var fieldsArray = []
 
@@ -55,10 +55,10 @@ const ProjectForm = props => {
             <Formik
               isInitialValid={false}
               initialValues={{
-                type: "Mudroom",
-                name: "Andrew",
-                email: "andrew@citynorth.church",
-                phone: "614-560-1176",
+                type: "",
+                name: "",
+                email: "",
+                phone: "",
               }}
               // validate={ values => {
               //   let errors = {};
@@ -153,6 +153,7 @@ const Frame = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* border: 5px solid var(--secondary); */
 
   @media (min-width: 662px) {
     width: 80%;
