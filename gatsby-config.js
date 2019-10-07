@@ -70,7 +70,7 @@ module.exports = {
       options: {
         name: `Interior Creations Co.`,
         short_name: `iCreations`,
-        start_url: `/`,
+        start_url: `/renovating`,
         background_color: `#00234e`,
         theme_color: `#0585b0`,
         display: `minimal-ui`,
