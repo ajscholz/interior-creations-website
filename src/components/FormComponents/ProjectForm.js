@@ -1,9 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
+import FocusTrapReact from "focus-trap-react"
+
 import ProgressBar from "./ProgressBar"
 import FormContainer from "./FormContainer"
-import { CloseButton, PrevButton } from "./Buttons"
+import { PrevButton } from "./Buttons"
 import { Formik, Form } from "formik"
+import CloseButton from "../ModalComponents/CloseButton"
+import { onKeyPress } from "../../utils/helpers"
 
 import { P, H1 } from "../Typography"
 
@@ -25,103 +29,115 @@ const ProjectForm = props => {
   const [submitted, setSubmitted] = useState(false)
   const [accepted, setAccepted] = useState(false)
 
+  const focusRef = useRef()
+
+  useEffect(() => {
+    const focusCurrent = focusRef.current
+    focusCurrent.focus()
+  })
+
   var fieldsArray = []
 
   return (
-    <Frame>
-      <Header>
-        <H1>Bring Your Dream To Life</H1>
-        <P>Complete these few simple questions and we'll get in touch</P>
-      </Header>
-      <FormContainer>
-        {/* <ProjectForm
+    <FocusTrapReact>
+      <Frame tabIndex="-1" onKeyDown={e => onKeyPress(e, handleClose)}>
+        <Header>
+          <H1>Bring Your Dream To Life</H1>
+          <P>Complete these few simple questions and we'll get in touch</P>
+        </Header>
+        <FormContainer>
+          {/* <ProjectForm
             // fields={questionFields[question]}
             setQuestion={setQuestion}
             question={question}
           /> */}
-        <div style={{ marginBottom: ".75rem" }}>
-          <Formik
-            isInitialValid={false}
-            initialValues={{
-              type: "Mudroom",
-              name: "Andrew",
-              email: "andrew@citynorth.church",
-              phone: "614-560-1176",
-            }}
-            // validate={ values => {
-            //   let errors = {};
-            //   if (!values.email) {
-            //     errors.email = 'Required';
-            //   } else if (
-            //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            //   ) {
-            //     errors.email = 'Invalid email address';
-            //   }
-            //   return errors;
-            // } }
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
-              try {
-                const response = await fetch("/.netlify/functions/contactUs", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    ...values,
-                    // siteEmail: siteEmail,
-                  }),
-                })
-                const data = await response.json()
+          <div style={{ marginBottom: ".75rem" }}>
+            <Formik
+              isInitialValid={false}
+              initialValues={{
+                type: "Mudroom",
+                name: "Andrew",
+                email: "andrew@citynorth.church",
+                phone: "614-560-1176",
+              }}
+              // validate={ values => {
+              //   let errors = {};
+              //   if (!values.email) {
+              //     errors.email = 'Required';
+              //   } else if (
+              //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              //   ) {
+              //     errors.email = 'Invalid email address';
+              //   }
+              //   return errors;
+              // } }
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                try {
+                  const response = await fetch(
+                    "/.netlify/functions/contactUs",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        ...values,
+                        // siteEmail: siteEmail,
+                      }),
+                    }
+                  )
+                  const data = await response.json()
 
-                if (response.ok) {
-                  setAccepted(true)
-                } else {
-                  setAccepted(false)
+                  if (response.ok) {
+                    setAccepted(true)
+                  } else {
+                    setAccepted(false)
 
-                  throw data.msg
+                    throw data.msg
+                  }
+                } catch (err) {
+                  setQuestion(question - 1)
+                  console.log(err)
                 }
-              } catch (err) {
-                setQuestion(question - 1)
-                console.log(err)
-              }
-              setSubmitted(true)
-              setTimeout(() => {
-                if (accepted) resetForm()
-                setSubmitting(false)
-              }, 2000)
-              setTimeout(() => {
-                setSubmitted(false)
-              }, 5000)
-            }}
-          >
-            {props => {
-              fieldsArray = getFieldsArray(
-                props,
-                question,
-                setQuestion,
-                isValidEmail,
-                isValidValue
-              )
-              return (
-                <>
-                  {props.isSubmitting ? (
-                    <div>submitting</div>
-                  ) : (
-                    <Form>{fieldsArray[question]}</Form>
-                  )}
-                </>
-              )
-            }}
-          </Formik>
-        </div>
+                setSubmitted(true)
+                setTimeout(() => {
+                  if (accepted) resetForm()
+                  setSubmitting(false)
+                }, 2000)
+                setTimeout(() => {
+                  setSubmitted(false)
+                }, 5000)
+              }}
+            >
+              {props => {
+                fieldsArray = getFieldsArray(
+                  props,
+                  question,
+                  setQuestion,
+                  isValidEmail,
+                  isValidValue
+                )
+                return (
+                  <>
+                    {props.isSubmitting ? (
+                      <div>submitting</div>
+                    ) : (
+                      <Form>{fieldsArray[question]}</Form>
+                    )}
+                  </>
+                )
+              }}
+            </Formik>
+          </div>
 
-        <ProgressBar length={4} current={question} />
-      </FormContainer>
-      <CloseButton onClick={() => handleClose()} />
-      {question !== 0 && (
-        <PrevButton onClick={() => setQuestion(question - 1)} />
-      )}
-    </Frame>
+          <ProgressBar length={4} current={question} />
+        </FormContainer>
+        <CloseButton handleClose={() => handleClose()} ref={focusRef} />
+        {question !== 0 && (
+          <PrevButton onClick={() => setQuestion(question - 1)} />
+        )}
+      </Frame>
+    </FocusTrapReact>
   )
 }
 

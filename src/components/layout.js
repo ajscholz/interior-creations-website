@@ -30,11 +30,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle lockScroll={modalOpen || menuOpen} />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <MobileNavigation open={menuOpen} click={setMenuOpen} />
-      <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
+      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+      {/* <MobileNavigation open={menuOpen} click={setMenuOpen} /> */}
+      {/* <ExpandCloseButton open={menuOpen} click={setMenuOpen} /> */}
       <Main>{children}</Main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

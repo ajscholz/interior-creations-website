@@ -6,7 +6,7 @@ import BackgroundImage from "gatsby-background-image"
 import { H1 } from "./Typography"
 
 const HeroBanner = props => {
-  const { image, text, className } = props
+  const { image, text, className, children } = props
   return (
     // <ImageWrapper>
     <BackgroundImage fluid={image} className={className}>
@@ -15,6 +15,7 @@ const HeroBanner = props => {
           <H1 style={{ margin: "0" }}>{text}</H1>
         </Wrapper>
       </Overlay>
+      {children}
     </BackgroundImage>
     // </ImageWrapper>
   )

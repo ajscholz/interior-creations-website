@@ -3,18 +3,19 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const IconBadge = props => {
-  const { icon, size, url, color, iColor } = props
+  const { icon, size, url, color, iColor, className } = props
   return (
-    <Badge
+    <a
       size={size}
       href={url}
       target="_blank"
       rel="noopener noreferrer"
       color={color}
       iColor={iColor}
+      className={className}
     >
       {icon}
-    </Badge>
+    </a>
   )
 }
 
@@ -24,7 +25,7 @@ IconBadge.propTypes = {
   url: PropTypes.string.isRequired,
 }
 
-const Badge = styled.a`
+export default styled(IconBadge)`
   height: ${props => props.size};
   width: ${props => props.size};
   border-radius: 50%;
@@ -41,5 +42,3 @@ const Badge = styled.a`
     width: 50%;
   }
 `
-
-export default IconBadge

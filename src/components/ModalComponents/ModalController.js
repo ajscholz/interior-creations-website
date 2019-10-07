@@ -13,7 +13,7 @@ const ModalController = props => {
 
   const handleClick = () => {
     setOpen(true)
-    parentClick(false)
+    if (typeof parentClick === "function") parentClick(false)
   }
 
   return (

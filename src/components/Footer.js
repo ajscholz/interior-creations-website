@@ -1,31 +1,15 @@
 import React from "react"
 import styled from "styled-components"
 import { FiMapPin, FiPhone, FiMail } from "react-icons/fi"
-import { FaFacebookF, FaHouzz } from "react-icons/fa"
-import IconBadge from "./IconBadge"
-import GridGroup from "./GridGroup"
+
+import SocialButtons from "./SocialButtons"
 import IconList from "./IconList"
 
 const Footer = ({ className }) => {
   return (
     <footer className={className}>
       <Container>
-        <StyledGridGroup gap={1} mb={2} style={{ gridArea: "social" }}>
-          <IconBadge
-            icon={<FaFacebookF />}
-            url={`https://facebook.com`}
-            size={"2.25rem"}
-            color={"var(--white)"}
-            iColor={"var(--secondary)"}
-          />
-          <IconBadge
-            icon={<FaHouzz />}
-            url={`https://houzz.com`}
-            size={"2.25rem"}
-            color={"var(--white)"}
-            iColor={"var(--secondary)"}
-          />
-        </StyledGridGroup>
+        <StyledSocialButtons />
         <CompanyInformation>
           <h3>Interior Creations</h3>
           <IconList>
@@ -101,12 +85,8 @@ const Container = styled.div`
   }
 `
 
-const StyledGridGroup = styled(GridGroup)`
-  margin: 0 auto 2rem auto;
-  @media (min-width: 662px) {
-    margin: 0;
-    justify-self: end;
-  }
+const StyledSocialButtons = styled(SocialButtons)`
+  grid-area: social;
 `
 
 const Copyright = styled.div`

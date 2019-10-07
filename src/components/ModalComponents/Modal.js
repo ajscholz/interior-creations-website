@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
-import FocusTrapReact from "focus-trap-react"
 import { useTransition, a, config } from "react-spring"
 
 import Overlay from "./Overlay"
 import { ModalContext } from "../../context/ModalContext"
-import { onKeyPress } from "../../utils/helpers"
 
 const Modal = props => {
   const { className, children, setOpen } = props
@@ -56,20 +54,17 @@ const Modal = props => {
     transitions.map(
       ({ item, key, props }) =>
         item && (
-          <FocusTrapReact key={key}>
-            <a.aside
-              className={className}
-              style={props}
-              aria-modal="true"
-              role="dialog"
-              tabIndex="-1"
-              onKeyDown={e => onKeyPress(e, handleClose)}
-            >
-              <Overlay onClick={handleClose} />
+          <a.aside
+            key={key}
+            className={className}
+            style={props}
+            aria-modal="true"
+            role="dialog"
+          >
+            <Overlay onClick={handleClose} />
 
-              {clonedChildren}
-            </a.aside>
-          </FocusTrapReact>
+            {clonedChildren}
+          </a.aside>
         )
     ),
     document.body
