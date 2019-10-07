@@ -87,6 +87,7 @@ const Container = styled.div`
 
 const StyledSocialButtons = styled(SocialButtons)`
   grid-area: social;
+  margin-left: auto;
 `
 
 const Copyright = styled.div`
