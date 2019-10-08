@@ -9,10 +9,13 @@ import Title from "../components/Title"
 import TeamMember from "../components/TeamMember"
 import LinkButton from "../components/LinkButton"
 import MDX from "../components/MDX"
+import Quote from "../components/Quote"
+import ModalController from "../components/ModalComponents/ModalController"
+import ProjectForm from "../components/FormComponents/ProjectForm"
 
 const AboutInteriorCreations = props => {
   const { data } = props
-  const { page, section1, section3 } = data
+  const { page, section1, section2, section3 } = data
 
   return (
     <>
@@ -20,12 +23,15 @@ const AboutInteriorCreations = props => {
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
-      <Section>
+      <Section1>
         <Title>{section1.sectionTitle}</Title>
         <MDX>{section1.sectionText.childMdx.body}</MDX>
-      </Section>
+        <ModalController buttonText="Discover the Difference">
+          <ProjectForm />
+        </ModalController>
+      </Section1>
 
-      <StyledSection>
+      <Section2>
         <Title style={{ textAlign: "center" }}>Our Awards</Title>
         <GridContainer>
           <img
@@ -56,7 +62,15 @@ const AboutInteriorCreations = props => {
         >
           View us on Houzz
         </LinkButton>
-      </StyledSection>
+      </Section2>
+
+      {console.log(section2)}
+      <Section>
+        <Quote
+          author={section2.quotes[0].sourcePerson}
+          quote={section2.quotes[0].quote.childMdx.body}
+        />
+      </Section>
 
       <Section>
         <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
@@ -72,7 +86,13 @@ const AboutInteriorCreations = props => {
   )
 }
 
-const StyledSection = styled(Section)`
+const Section1 = styled(Section)`
+  & p:last-of-type {
+    margin-bottom: 2rem;
+  }
+`
+
+const Section2 = styled(Section)`
   /* & ${LinkButton} {
 
   } */
@@ -135,6 +155,20 @@ export const data = graphql`
       sectionImage {
         fluid {
           ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+    section2: contentfulPageSection(
+      contentful_id: { eq: "2whyWCZKNViSd2aFV07fgL" }
+    ) {
+      quotes: contentReferences {
+        ... on ContentfulQuote {
+          sourcePerson
+          quote: childContentfulQuoteQuoteTextNode {
+            childMdx {
+              body
+            }
+          }
         }
       }
     }

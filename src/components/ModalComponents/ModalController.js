@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
@@ -11,6 +11,14 @@ const ModalController = props => {
 
   const buttonRef = useRef()
 
+  useEffect(() => {
+    if (buttonStyle === "none") {
+      // setTimeout(() => {
+      setOpen(true)
+      // }, 5000)
+    }
+  }, [])
+
   const handleClick = () => {
     setOpen(true)
     if (typeof parentClick === "function") parentClick(false)
@@ -19,13 +27,15 @@ const ModalController = props => {
   return (
     <>
       {/* Controller button */}
-      <Button
-        onClick={() => handleClick()}
-        className="modal-controller-button"
-        solid={buttonStyle === "solid"}
-      >
-        {buttonText}
-      </Button>
+      {buttonStyle !== "none" && (
+        <Button
+          onClick={() => handleClick()}
+          className="modal-controller-button"
+          solid={buttonStyle === "solid"}
+        >
+          {buttonText}
+        </Button>
+      )}
 
       {/* Modal logic */}
       {open && (

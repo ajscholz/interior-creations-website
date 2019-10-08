@@ -35,7 +35,7 @@ export default styled(TeamMember)`
 
   & ${Avatar} {
     width: 80%;
-    max-width: 300px;
+    max-width: 200px;
     margin-bottom: 2rem;
   }
 
@@ -71,6 +71,7 @@ export default styled(TeamMember)`
     & ${P} {
       grid-area: bio;
       text-align: left;
+      align-self: start;
     }
   }
 `

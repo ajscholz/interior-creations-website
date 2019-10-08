@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Prompt", sans-serif;
     font-weight: 200;
     line-height: 1.45;
-    color: hsla(0, 0%, 0%, 0.8);
+    color: var(--black);
     font-family: Prompt, Arial, Helvetica, sans-serif;
     font-weight: 200;
     word-wrap: break-word;
