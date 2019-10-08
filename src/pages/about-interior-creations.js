@@ -163,7 +163,7 @@ export const data = graphql`
     ) {
       quotes: contentReferences {
         ... on ContentfulQuote {
-          sourcePerson
+          person
           quote: childContentfulQuoteQuoteTextNode {
             childMdx {
               body
