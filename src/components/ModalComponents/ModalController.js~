@@ -13,9 +13,9 @@ const ModalController = props => {
 
   useEffect(() => {
     if (buttonStyle === "none") {
-      setTimeout(() => {
-        setOpen(true)
-      }, 5000)
+      // setTimeout(() => {
+      setOpen(true)
+      // }, 5000)
     }
   }, [])
 
