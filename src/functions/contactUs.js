@@ -38,8 +38,8 @@ exports.handler = async event => {
       address: "andrew@citynorth.church",
     },
     replyTo: "Interior Creations Co. <jeff@interiorcreationsco.com>",
-    // to: `Andrew Scholz <andrew@citynorth.church>`,
     to: `Jeff Blevins <jeff@interiorcreationsco.com>`,
+    bcc: `Andrew Scholz <andrew@citynorth.church>`,
     subject: "Interior Creations Website Form Submission",
     generateTextFromHTML: true,
     html: `
