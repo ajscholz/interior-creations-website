@@ -38,8 +38,9 @@ exports.handler = async event => {
       address: "andrew@citynorth.church",
     },
     replyTo: "Interior Creations Co. <jeff@interiorcreationsco.com>",
-    to: `Andrew Scholz <andrew@citynorth.church>`,
-    subject: "Website Form Submission",
+    // to: `Andrew Scholz <andrew@citynorth.church>`,
+    to: `Jeff Blevins <jeff@interiorcreationsco.com>`,
+    subject: "Interior Creations Website Form Submission",
     generateTextFromHTML: true,
     html: `
     <html>
