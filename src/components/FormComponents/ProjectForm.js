@@ -9,9 +9,11 @@ import { Formik, Form } from "formik"
 import CloseButton from "../ModalComponents/CloseButton"
 import { onKeyPress } from "../../utils/helpers"
 
+import Submitting from "./Submitting"
 import { P, H1 } from "../Typography"
 
 import getFieldsArray from "./getFieldsArray"
+import Button from "../Button"
 
 const isValidEmail = value =>
   !value
@@ -26,25 +28,19 @@ const isValidValue = value => (!value ? true : false)
 const ProjectForm = props => {
   const { handleClose } = props
   const [question, setQuestion] = useState(0)
-  const [submitted, setSubmitted] = useState(false)
-  const [accepted, setAccepted] = useState(false)
-
-  const focusRef = useRef()
-
-  // useEffect(() => {
-  //   const focusCurrent = focusRef.current
-  //   focusCurrent.focus()
-  // })
+  const [accepted, setAccepted] = useState(null)
 
   var fieldsArray = []
 
   return (
     <FocusTrapReact>
       <Frame tabIndex="-1" onKeyDown={e => onKeyPress(e, handleClose)}>
-        <Header>
-          <H1>Bring Your Dream To Life</H1>
-          <P>Complete these few simple questions and we'll get in touch</P>
-        </Header>
+        {accepted === null && (
+          <Header>
+            <H1>Bring Your Dream To Life</H1>
+            <P>Complete these few simple questions and we'll get in touch</P>
+          </Header>
+        )}
         <FormContainer>
           {/* <ProjectForm
             // fields={questionFields[question]}
@@ -89,24 +85,15 @@ const ProjectForm = props => {
                   const data = await response.json()
 
                   if (response.ok) {
+                    setSubmitting(false)
                     setAccepted(true)
                   } else {
                     setAccepted(false)
-
                     throw data.msg
                   }
                 } catch (err) {
-                  setQuestion(question - 1)
                   console.log(err)
                 }
-                setSubmitted(true)
-                setTimeout(() => {
-                  if (accepted) resetForm()
-                  setSubmitting(false)
-                }, 2000)
-                setTimeout(() => {
-                  setSubmitted(false)
-                }, 5000)
               }}
             >
               {props => {
@@ -117,12 +104,42 @@ const ProjectForm = props => {
                   isValidEmail,
                   isValidValue
                 )
+
                 return (
                   <>
-                    {props.isSubmitting ? (
-                      <div>submitting</div>
-                    ) : (
-                      <Form>{fieldsArray[question]}</Form>
+                    {props.isSubmitting && <Submitting />}
+
+                    {accepted === null && <Form>{fieldsArray[question]}</Form>}
+                    {accepted && (
+                      <div style={{ textAlign: "center" }}>
+                        <H1>Thank You!</H1>
+                        <P>
+                          We've received your project request. We'll call you as
+                          soon as we <em>aren't</em> busy making someone else's
+                          dream come true!
+                        </P>
+                        <Button solid onClick={() => handleClose()}>
+                          Close Form
+                        </Button>
+                      </div>
+                    )}
+                    {accepted === false && (
+                      <div style={{ textAlign: "center" }}>
+                        <H1>Sorry...</H1>
+                        <P>
+                          There was a problem with your form submission. Please
+                          try submitting it again.
+                        </P>
+                        <Button
+                          solid
+                          onClick={() => {
+                            setQuestion(question - 1)
+                            setAccepted(null)
+                          }}
+                        >
+                          Go back
+                        </Button>
+                      </div>
                     )}
                   </>
                 )
@@ -132,8 +149,8 @@ const ProjectForm = props => {
 
           <ProgressBar length={4} current={question} />
         </FormContainer>
-        <CloseButton handleClose={() => handleClose()} ref={focusRef} />
-        {question !== 0 && (
+        <CloseButton handleClose={() => handleClose()} />
+        {question !== 0 && !accepted && (
           <PrevButton onClick={() => setQuestion(question - 1)} />
         )}
       </Frame>

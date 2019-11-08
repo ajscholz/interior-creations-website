@@ -32,6 +32,15 @@ exports.handler = async event => {
     },
   })
 
+  // const transporter = nodemailer.createTransport({
+  //   host: "smtp.mailtrap.io",
+  //   port: 2525,
+  //   auth: {
+  //     user: "a949c930869b32",
+  //     pass: "00f4db531864a8",
+  //   },
+  // })
+
   const message = {
     from: {
       name: "AJSolutions",
