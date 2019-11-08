@@ -89,6 +89,7 @@ const ProjectForm = props => {
                     setAccepted(true)
                   } else {
                     setAccepted(false)
+                    setSubmitting(false)
                     throw data.msg
                   }
                 } catch (err) {
@@ -118,7 +119,13 @@ const ProjectForm = props => {
                           soon as we <em>aren't</em> busy making someone else's
                           dream come true!
                         </P>
-                        <Button solid onClick={() => handleClose()}>
+                        <Button
+                          solid
+                          onClick={() => handleClose()}
+                          style={{
+                            margin: "0 auto",
+                          }}
+                        >
                           Close Form
                         </Button>
                       </div>
@@ -131,6 +138,9 @@ const ProjectForm = props => {
                           try submitting it again.
                         </P>
                         <Button
+                          style={{
+                            margin: "0 auto",
+                          }}
                           solid
                           onClick={() => {
                             setQuestion(question - 1)
