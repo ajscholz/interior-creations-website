@@ -1,6 +1,7 @@
 import React from "react"
 // import PropTypes from "prop-types"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import BackgroundImage from "gatsby-background-image"
 import { H1 } from "./Typography"
@@ -62,4 +63,23 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+`
+
+export const query = graphql`
+  fragment HeroBannerFragment on ContentfulPage {
+    bannerText
+    bannerImage {
+      fluid(quality: 80, maxWidth: 1920) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+      file {
+        details {
+          image {
+            height
+            width
+          }
+        }
+      }
+    }
+  }
 `

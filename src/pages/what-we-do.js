@@ -26,28 +26,28 @@ const ViewOurProjects = props => {
   const imageSections = [
     {
       data: section2,
-      bText: `view ${section2.sectionTitle}`,
-      link: `/view-our-projects/bathrooms/`,
+      // bText: `view ${section2.sectionTitle}`,
+      // link: `/view-our-projects/bathrooms/`,
     },
     {
       data: section3,
-      bText: `view ${section3.sectionTitle}`,
-      link: `/view-our-projects/kitchens/`,
+      // bText: `view ${section3.sectionTitle}`,
+      // link: `/view-our-projects/kitchens/`,
     },
     {
       data: section4,
-      bText: `view ${section4.sectionTitle}`,
-      link: `/view-our-projects/mudrooms/`,
+      // bText: `view ${section4.sectionTitle}`,
+      // link: `/view-our-projects/mudrooms/`,
     },
     {
       data: section5,
-      bText: `view ${section5.sectionTitle}`,
-      link: `/view-our-projects/home-offices/`,
+      // bText: `view ${section5.sectionTitle}`,
+      // link: `/view-our-projects/home-offices/`,
     },
     {
       data: section6,
-      bText: `view cabinet refacing`,
-      link: `/view-our-projects/cabinet-refacing/`,
+      // bText: `view cabinet refacing`,
+      // link: `/view-our-projects/cabinet-refacing/`,
     },
   ]
 
@@ -57,6 +57,15 @@ const ViewOurProjects = props => {
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
+      {imageSections.map((section, index) => {
+        return (
+          <ImageSection
+            data={section.data}
+            key={section.data.id}
+            reverse={index % 2 === 0 ? false : true}
+          />
+        )
+      })}
       <StyledSection style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{section1.title}</Title>
         <MDX style={{ textAlign: "center" }}>
@@ -66,23 +75,12 @@ const ViewOurProjects = props => {
           <ProjectForm />
         </ModalController>
       </StyledSection>
-
-      {imageSections.map((section, index) => {
-        return (
-          <ImageSection
-            data={section.data}
-            key={section.data.id}
-            button={section.bText}
-            link={section.link}
-            reverse={index % 2 === 0 ? false : true}
-          />
-        )
-      })}
     </>
   )
 }
 
 const StyledSection = styled(Section)`
+  background: var(--white) !important;
   & button {
     width: 100%;
 
@@ -102,36 +100,14 @@ export default ViewOurProjects
 export const data = graphql`
   fragment sectionFields on ContentfulPageSection {
     id: contentful_id
-    sectionTitle
-    sectionText {
-      childMdx {
-        body
-      }
-    }
-    sectionImage {
-      fluid {
-        ...GatsbyContentfulFluid_withWebp
-      }
-    }
+    ...ImageSectionFragment
   }
 
   query {
     page: contentfulPage(title: { eq: "View Projects" }) {
       contentful_id
-      bannerText
-      bannerImage {
-        fluid(quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        file {
-          details {
-            image {
-              height
-              width
-            }
-          }
-        }
-      }
+      ...HeroBannerFragment
+
       sections {
         contentful_id
         sectionTitle

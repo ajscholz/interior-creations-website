@@ -87,7 +87,7 @@ const IndexPage = props => {
       <ImageSection
         data={section2}
         button={`View Our Projects`}
-        link={"/view-our-projects/"}
+        link={"/what-we-do/"}
       />
 
       <StyledSection>
@@ -148,20 +148,7 @@ export const query = graphql`
   {
     page: contentfulPage(title: { eq: "Home" }) {
       contentful_id
-      bannerText
-      bannerImage {
-        fluid(quality: 60) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        file {
-          details {
-            image {
-              height
-              width
-            }
-          }
-        }
-      }
+      ...HeroBannerFragment
     }
     section1: contentfulPageSection(
       contentful_id: { eq: "phe9grYPyoLRJzY6IoY2d" }
@@ -180,17 +167,7 @@ export const query = graphql`
     section2: contentfulPageSection(
       contentful_id: { eq: "2uDsJfL05E53ZgLz9jN2fy" }
     ) {
-      sectionTitle
-      sectionText {
-        childMdx {
-          body
-        }
-      }
-      sectionImage {
-        fluid {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...ImageSectionFragment
     }
     section3: contentfulPageSection(
       contentful_id: { eq: "6wpdhdbMpZnZw3558QnaT7" }
@@ -209,17 +186,7 @@ export const query = graphql`
     section4: contentfulPageSection(
       contentful_id: { eq: "33v3fTT7KSZgAD5KTmHCh" }
     ) {
-      sectionTitle
-      sectionText {
-        childMdx {
-          body
-        }
-      }
-      sectionImage {
-        fluid {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
+      ...ImageSectionFragment
     }
   }
 `

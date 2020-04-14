@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
+
 import ProjectPageTemplate from "../../components/ProjectPageTemplate"
 
-const cabinetRefacing = props => {
+const mudrooms = props => {
   const { data } = props
   const { page, projects } = data
 
@@ -13,29 +14,16 @@ const cabinetRefacing = props => {
   )
 }
 
-export default cabinetRefacing
+export default mudrooms
 
 export const data = graphql`
   query {
-    page: contentfulPage(title: { eq: "Cabinet Refacing" }) {
+    page: contentfulPage(title: { eq: "Mudrooms" }) {
       contentful_id
-      bannerText
-      bannerImage {
-        fluid(quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        file {
-          details {
-            image {
-              height
-              width
-            }
-          }
-        }
-      }
+      ...HeroBannerFragment
     }
     projects: allContentfulProject(
-      filter: { projectType: { eq: "Cabinet Refacing" } }
+      filter: { projectType: { eq: "Mudrooms" } }
       sort: { fields: createdAt, order: DESC }
     ) {
       projects: edges {

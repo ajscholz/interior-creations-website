@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import ProjectPageTemplate from "../../components/ProjectPageTemplate"
 
-const Bathrooms = props => {
+const kitchens = props => {
   const { data } = props
   const { page, projects } = data
 
@@ -14,29 +14,16 @@ const Bathrooms = props => {
   )
 }
 
-export default Bathrooms
+export default kitchens
 
-export const query = graphql`
+export const data = graphql`
   query {
-    page: contentfulPage(title: { eq: "Bathrooms" }) {
+    page: contentfulPage(title: { eq: "Kitchens" }) {
       contentful_id
-      bannerText
-      bannerImage {
-        fluid(quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        file {
-          details {
-            image {
-              height
-              width
-            }
-          }
-        }
-      }
+      ...HeroBannerFragment
     }
     projects: allContentfulProject(
-      filter: { projectType: { eq: "Bathrooms" } }
+      filter: { projectType: { eq: "Kitchens" } }
       sort: { fields: createdAt, order: DESC }
     ) {
       projects: edges {

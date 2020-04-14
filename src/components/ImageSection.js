@@ -17,7 +17,7 @@ const ImageSection = props => {
     },
     sectionImage: image,
   } = data
-
+  console.log(button)
   return (
     <section className={className}>
       <div className="wrapper">
@@ -27,7 +27,7 @@ const ImageSection = props => {
         <Img fluid={image.fluid} />
         {typeof button === "string" ? (
           <LinkButton link={link}>{button}</LinkButton>
-        ) : (
+        ) : typeof button === "G" ? null : (
           button
         )}
       </div>
@@ -48,10 +48,6 @@ ImageSection.propTypes = {
     }),
   }),
   button: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-}
-
-ImageSection.defaultProps = {
-  button: "Generic Button",
 }
 
 export default styled(ImageSection)`
@@ -140,5 +136,20 @@ export default styled(ImageSection)`
   @media (min-width: 1000px) {
     padding-top: 8rem !important;
     padding-bottom: 8rem !important;
+  }
+`
+export const query = graphql`
+  fragment ImageSectionFragment on ContentfulPageSection {
+    sectionTitle
+    sectionText {
+      childMdx {
+        body
+      }
+    }
+    sectionImage {
+      fluid(quality: 80) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+    }
   }
 `

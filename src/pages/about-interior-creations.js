@@ -67,7 +67,7 @@ const AboutInteriorCreations = props => {
       {console.log(section2)}
       <Section>
         <Quote
-          author={section2.quotes[0].sourcePerson}
+          author={section2.quotes[0].person}
           quote={section2.quotes[0].quote.childMdx.body}
         />
       </Section>
@@ -128,20 +128,7 @@ export const data = graphql`
   {
     page: contentfulPage(title: { eq: "Get To Know Us" }) {
       contentful_id
-      bannerText
-      bannerImage {
-        fluid(quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-        file {
-          details {
-            image {
-              height
-              width
-            }
-          }
-        }
-      }
+      ...HeroBannerFragment
     }
     section1: contentfulPageSection(
       contentful_id: { eq: "6yj2OKIzUNEXCaZnq1yPF5" }

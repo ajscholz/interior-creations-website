@@ -1,12 +1,12 @@
 export default [
   {
-    title: `get to know us`,
-    path: `/about-interior-creations/`,
+    title: `who we are`,
+    path: `/about-interior-creations`,
     key: `hehjksdf88c`,
   },
   {
-    title: `view projects`,
-    path: `/view-our-projects/`,
+    title: `what we do`,
+    path: `/what-we-do`,
     key: `joi0823jks`,
   },
 ]
