@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { FiX, FiChevronLeft } from "react-icons/fi"
 
 const base = css`
-  display: block;
+  /* display: block;
   position: absolute;
   top: 1rem;
   height: 1.5rem;
@@ -12,15 +12,24 @@ const base = css`
   color: var(--lightgray);
   outline: none;
   border: none;
+  cursor: pointer; */
+  position: absolute;
+
+  top: 2rem;
+  background: none;
+  border: none;
   cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: bold;
+  line-height: 0;
 `
 
 export const CloseButton = styled(FiX)`
   ${base}
-  right: 1rem;
+  right: 2rem;
 `
 
 export const PrevButton = styled(FiChevronLeft)`
   ${base}
-  left: 1rem;
+  left: 2rem;
 `

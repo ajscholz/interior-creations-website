@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import FocusTrapReact from "focus-trap-react"
 
-import ProgressBar from "./ProgressBar"
+// import ProgressBar from "./ProgressBar"
 import FormContainer from "./FormContainer"
 import { PrevButton } from "./Buttons"
 import { Formik, Form } from "formik"
@@ -157,7 +157,7 @@ const ProjectForm = props => {
             </Formik>
           </div>
 
-          <ProgressBar length={4} current={question} />
+          {/* <ProgressBar length={4} current={question} /> */}
         </FormContainer>
         <CloseButton handleClose={() => handleClose()} />
         {question !== 0 && !accepted && (
