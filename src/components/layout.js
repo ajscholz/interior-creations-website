@@ -11,8 +11,8 @@ import Footer from "./Footer"
 
 import { ModalContext } from "../context/ModalContext"
 import GlobalStyle from "./GlobalStyle"
-// import ModalController from "./ModalComponents/ModalController"
-// import PopupInfo from "./PopupInfo"
+import ModalController from "./ModalComponents/ModalController"
+import PopupInfo from "./PopupInfo"
 
 const Layout = ({ children, pageContext }) => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -29,7 +29,7 @@ const Layout = ({ children, pageContext }) => {
     }
   `)
 
-  const infoBoxActive = false
+  const infoBoxActive = true
 
   if (pageContext.layout === "landing") {
     return (
@@ -47,11 +47,11 @@ const Layout = ({ children, pageContext }) => {
       <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
-      {/* {infoBoxActive && (
+      {infoBoxActive && (
         <ModalController buttonStyle="none">
           <PopupInfo />
         </ModalController>
-      )} */}
+      )}
     </>
   )
 }
