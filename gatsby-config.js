@@ -8,6 +8,7 @@ module.exports = {
     title: `Interior Creations Co.`,
     description: `One of central Ohio's premiere cabinet makers.`,
     siteEmail: `jeff@interiorcreationsco.com`,
+    siteUrl: `https://interiorcreationsco.com`,
   },
   developMiddleware: app => {
     app.use(
@@ -21,6 +22,13 @@ module.exports = {
     )
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        exclude: [`/404`, `/404.html`],
+        createLinkInHead: true,
+      },
+    },
     `gatsby-plugin-mdx`,
     `gatsby-plugin-netlify-cache`,
     {
