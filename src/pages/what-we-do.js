@@ -53,7 +53,11 @@ const ViewOurProjects = props => {
 
   return (
     <>
-      <SEO title="Our Projects" />
+      <SEO
+        title="What We Do"
+        description="A cabinet maker is only as good as their work. Take a look at some of our projects around the Columbus Ohio area to see the quality custom cabinets you could have in your home."
+        image={page.bannerImage.file.url}
+      />
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 

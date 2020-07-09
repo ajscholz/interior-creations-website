@@ -19,7 +19,11 @@ const AboutInteriorCreations = props => {
 
   return (
     <>
-      <SEO title="Who We Are" />
+      <SEO
+        title="Who We Are"
+        description="Hiring someone to build custom cabinets is a big decision, but it doesn't have to be a scary one."
+        image={page.bannerImage.file.url}
+      />
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 

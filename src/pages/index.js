@@ -40,12 +40,11 @@ const IndexPage = props => {
 
   return (
     <>
-      <SEO title="Home">
-        <meta
-          name="description"
-          content="this is a description I want to test"
-        />
-      </SEO>
+      <SEO
+        title="Quality Custom Cabinetry In Columbus, Ohio"
+        description="Since 2002 we have been providing the highest quality custom cabinetry to our clients all over Columbus and Central Ohio. "
+        image={page.bannerImage.file.url}
+      />
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
