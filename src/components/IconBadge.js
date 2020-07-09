@@ -2,18 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const IconBadge = props => {
-  const { icon, size, url, color, iColor, className, outline } = props
+// following props that are lighter in color are used in styled component defined in default export
+// this syntax clears up a console error for custom attrs
+const IconBadge = ({ icon, size, url, color, iColor, className, outline }) => {
   return (
     <a
-      size={size}
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      color={color}
-      icolor={iColor}
       className={className}
-      outline={outline}
     >
       {icon}
     </a>
@@ -31,11 +28,11 @@ export default styled(IconBadge)`
   width: ${props => props.size};
   border-radius: 50%;
   background: ${props =>
-    props.outline ? "transparent" : props.color || "var(--white)"};
+    props.outline === true ? "transparent" : props.color || "var(--white)"};
   display: flex;
   justify-content: center;
   align-items: center;
-  border: ${props => props.outline && "2px solid var(--secondary)"};
+  border: ${props => props.outline === true && "2px solid var(--secondary)"};
   cursor: pointer;
 
   & > svg {

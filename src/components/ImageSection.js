@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
+import { graphql } from "gatsby"
 
 import Title from "./Title"
 import Img from "gatsby-image"
@@ -17,7 +18,7 @@ const ImageSection = props => {
     },
     sectionImage: image,
   } = data
-  console.log(button)
+
   return (
     <section className={className}>
       <div className="wrapper">
@@ -27,7 +28,7 @@ const ImageSection = props => {
         <Img fluid={image.fluid} />
         {typeof button === "string" ? (
           <LinkButton link={link}>{button}</LinkButton>
-        ) : typeof button === "G" ? null : (
+        ) : typeof button === "string" ? null : (
           button
         )}
       </div>
@@ -47,7 +48,7 @@ ImageSection.propTypes = {
       }),
     }),
   }),
-  button: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  // button: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 }
 
 export default styled(ImageSection)`

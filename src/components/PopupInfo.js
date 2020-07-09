@@ -11,8 +11,6 @@ import CloseButton from "./ModalComponents/CloseButton"
 const PopupInfo = props => {
   const { className, handleClose } = props
 
-  console.log(handleClose)
-
   return (
     <div className={className}>
       <CloseButton handleClose={handleClose} />
@@ -25,7 +23,10 @@ const PopupInfo = props => {
         </P>
         <P>
           If you do decide to look around, just know you might find some odd
-          stuff here and there. We'll get it cleaned up soon, we promise! 😂
+          stuff here and there. We'll get it cleaned up soon, we promise!{" "}
+          <span role="img" aria-label="laughing">
+            😂
+          </span>
         </P>
         <ModalController
           buttonText={`Start My Project`}

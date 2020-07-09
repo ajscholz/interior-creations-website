@@ -68,7 +68,6 @@ const AboutInteriorCreations = props => {
         </LinkButton>
       </Section2>
 
-      {console.log(section2)}
       <Section>
         <Quote
           author={section2.quotes[0].person}

@@ -17,7 +17,7 @@ const ModalController = props => {
         setOpen(true)
       }, 5000)
     }
-  }, [])
+  }, [buttonStyle])
 
   const handleClick = () => {
     setOpen(true)
@@ -51,7 +51,7 @@ const ModalController = props => {
 ModalController.propTypes = {
   buttonText: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
-  buttonStyle: PropTypes.oneOf(["solid", "regular"]),
+  buttonStyle: PropTypes.oneOf(["solid", "regular", "none"]),
 }
 
 ModalController.defaultProps = {

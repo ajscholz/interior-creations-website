@@ -36,11 +36,11 @@ const Modal = props => {
   }
 
   // handle escape keypress to exit modal
-  // const onKeyDown = e => {
-  //   if (e.keyCode === 27) {
-  //     handleClose()
-  //   }
-  // }
+  const keyDown = e => {
+    if (e.keyCode === 27) {
+      handleClose()
+    }
+  }
 
   // clone children to pass props from parent
   // https://medium.com/better-programming/passing-data-to-props-children-in-react-5399baea0356
@@ -61,7 +61,7 @@ const Modal = props => {
             aria-modal="true"
             role="dialog"
           >
-            <Overlay onClick={handleClose} />
+            <Overlay onClick={handleClose} onKeyDown={keyDown} />
 
             {clonedChildren}
           </a.aside>
