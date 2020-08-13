@@ -10,6 +10,23 @@ import Label from "./Label"
 
 export default (props, question, setQuestion, isValidEmail, isValidValue) => [
   <>
+    <Label>What is your name?</Label>
+    <InputWithNextButton>
+      <Field name="name" component={CustomInput} validate={isValidValue} />
+      <InlineButton
+        solid
+        disabled={!props.isValid}
+        type="button"
+        onClick={e => {
+          e.preventDefault()
+          setQuestion(question + 1)
+        }}
+      >
+        Next
+      </InlineButton>
+    </InputWithNextButton>
+  </>,
+  <>
     <Label>What kind of project are you interested in?</Label>
     <InputWithNextButton>
       <Field
@@ -38,23 +55,7 @@ export default (props, question, setQuestion, isValidEmail, isValidValue) => [
       </InlineButton>
     </InputWithNextButton>
   </>,
-  <>
-    <Label>What is your name?</Label>
-    <InputWithNextButton>
-      <Field name="name" component={CustomInput} validate={isValidValue} />
-      <InlineButton
-        solid
-        disabled={!props.isValid}
-        type="button"
-        onClick={e => {
-          e.preventDefault()
-          setQuestion(question + 1)
-        }}
-      >
-        Next
-      </InlineButton>
-    </InputWithNextButton>
-  </>,
+
   <>
     <Label>What is your email?</Label>
     <InputWithNextButton>

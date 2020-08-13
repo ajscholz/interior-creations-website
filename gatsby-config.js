@@ -6,7 +6,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Interior Creations Co.`,
-    description: `One of central Ohio's premiere cabinet makers.`,
+    description: `One of central Ohio's premiere custom cabinet makers.`,
     siteEmail: `jeff@interiorcreationsco.com`,
     siteUrl: `https://interiorcreationsco.com`,
   },
