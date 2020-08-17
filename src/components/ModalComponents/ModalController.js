@@ -6,7 +6,14 @@ import Modal from "./Modal"
 import Button from "../Button"
 
 const ModalController = props => {
-  const { buttonText, children, buttonStyle, parentClick } = props
+  const {
+    buttonText,
+    children,
+    buttonStyle,
+    parentClick,
+    pushDown,
+    align,
+  } = props
   const [open, setOpen] = useState(false)
 
   const buttonRef = useRef()
@@ -32,6 +39,8 @@ const ModalController = props => {
           onClick={() => handleClick()}
           className="modal-controller-button"
           solid={buttonStyle === "solid"}
+          pushDown={pushDown}
+          left
         >
           {buttonText}
         </Button>
@@ -66,3 +75,4 @@ export default styled(ModalController)`
   align-items: center;
   justify-content: center;
 `
+const StyledButton = styled(Button)``

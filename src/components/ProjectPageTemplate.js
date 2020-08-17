@@ -1,12 +1,9 @@
 import React from "react"
-import styled from "styled-components"
-
 import SEO from "./seo"
 import HeroBanner from "./HeroBanner"
-import ProjectForm from "./FormComponents/ProjectForm"
 import Section from "./Section"
 import ProjectCard from "./ProjectCard"
-import ModalController from "./ModalComponents/ModalController"
+import StartProjectSection from "./StartProjectSection"
 
 const ProjectPageTemplate = props => {
   const { page, projects } = props
@@ -23,22 +20,9 @@ const ProjectPageTemplate = props => {
           </ProjectCard>
         ))}
       </Section>
-      <StyledSection>
-        <ModalController
-          buttonText="Start Your Project Now"
-          buttonStyle="solid"
-        >
-          <ProjectForm />
-        </ModalController>
-      </StyledSection>
+      <StartProjectSection />
     </>
   )
 }
-
-const StyledSection = styled(Section)`
-  & button {
-    margin: 0 auto;
-  }
-`
 
 export default ProjectPageTemplate

@@ -27,28 +27,23 @@ const ViewOurProjects = props => {
   const imageSections = [
     {
       data: section2,
-      // bText: `view ${section2.sectionTitle}`,
-      // link: `/view-our-projects/bathrooms/`,
+      bText: `view ${section2.sectionTitle}`,
+      link: `/view-our-projects/bathrooms/`,
     },
     {
       data: section3,
-      // bText: `view ${section3.sectionTitle}`,
-      // link: `/view-our-projects/kitchens/`,
+      bText: `view ${section3.sectionTitle}`,
+      link: `/view-our-projects/kitchens/`,
     },
     {
       data: section4,
-      // bText: `view ${section4.sectionTitle}`,
-      // link: `/view-our-projects/mudrooms/`,
+      bText: `view ${section4.sectionTitle}`,
+      link: `/view-our-projects/mudrooms/`,
     },
     {
       data: section5,
-      // bText: `view ${section5.sectionTitle}`,
-      // link: `/view-our-projects/home-offices/`,
-    },
-    {
-      data: section6,
-      // bText: `view cabinet refacing`,
-      // link: `/view-our-projects/cabinet-refacing/`,
+      bText: `view ${section5.sectionTitle}`,
+      link: `/view-our-projects/home-offices/`,
     },
   ]
 
@@ -67,6 +62,8 @@ const ViewOurProjects = props => {
           <ImageSection
             data={section.data}
             key={section.data.id}
+            link={section.link}
+            button={section.bText}
             reverse={index % 2 === 0 ? false : true}
           />
         )

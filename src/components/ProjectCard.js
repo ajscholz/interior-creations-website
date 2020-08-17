@@ -32,7 +32,7 @@ const ProjectCard = props => {
         <Button className="image-btn" onClick={() => openModal(2)}>
           <Img fluid={data.gallery[2].fluid} />
         </Button>
-        <Button className="overlay" onClick={() => openModal(3)}>
+        <Button className="overlay" onClick={() => openModal(0)}>
           <Img fluid={data.gallery[3].fluid} />
         </Button>
       </div>

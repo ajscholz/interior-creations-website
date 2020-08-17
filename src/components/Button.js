@@ -63,7 +63,10 @@ export default styled(Button)`
   background: ${props => (props.solid ? "var(--primary)" : "transparent")};
   letter-spacing: 2px;
   font-weight: 400;
-  margin: ${props => props.center && "0 auto"};
+  margin: ${props =>
+    props.center ? "0 auto !important" : props.left && "0 auto 0 0 !important"};
+  margin-top: ${props => props.pushDown && "2.25em"};
+  /* margin-right: auto; */
   cursor: pointer;
 
   @media (min-width: 662px) {
