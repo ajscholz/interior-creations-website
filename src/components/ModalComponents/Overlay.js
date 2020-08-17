@@ -16,6 +16,7 @@ const Overlay = props => {
       onClick={onClick}
       onKeyDown={onKeyDown}
       role="button"
+      aria-label="close"
       tabIndex={0}
     />
   )

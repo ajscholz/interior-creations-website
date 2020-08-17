@@ -77,4 +77,3 @@ export default styled(ModalController)`
   align-items: center;
   justify-content: center;
 `
-const StyledButton = styled(Button)``
