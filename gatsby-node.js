@@ -14,3 +14,34 @@ exports.onCreatePage = ({ page, actions }) => {
     createPage(page)
   }
 }
+
+exports.onCreateNode = ({ node, actions }) => {
+  if (node.internal.type === "ContentfulProjectType") {
+    actions.createNodeField({
+      node,
+      name: `slug`,
+      value: node.slug,
+    })
+  }
+}
+
+exports.createPages = async function({ actions, graphql }) {
+  const { data } = await graphql(`
+    query {
+      allContentfulProjectType {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `)
+  data.allContentfulProjectType.nodes.forEach(project => {
+    actions.createPage({
+      path: `projects/${project.fields.slug}`,
+      component: require.resolve("./src/templates/project-page-template.js"),
+      context: { slug: project.fields.slug },
+    })
+  })
+}
