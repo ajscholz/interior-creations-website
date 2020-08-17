@@ -36,7 +36,7 @@ const ViewOurProjects = ({ data: { page } }) => {
           <ImageSection
             data={section}
             key={section.id}
-            link={`/projects/${section.ref.slug}`}
+            link={`/${section.ref.slug}`}
             button={`View ${section.sectionTitle}`}
             reverse={index % 2 === 0 ? false : true}
           />
