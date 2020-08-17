@@ -110,7 +110,8 @@ const Lightbox = ({
         <FaChevronRight />
       </RightButton>
 
-      <StyledProgressBubbles number={len} current={index} set={setIndex} />
+      {/* <StyledProgressBubbles number={len} current={index} set={setIndex} /> */}
+      <StyledProgressCounter>{`${index + 1} / ${len}`}</StyledProgressCounter>
       <LockBody />
     </a.div>
   )
@@ -159,7 +160,7 @@ const Button = styled.button`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  bottom: 1rem;
+  bottom: 1.25rem;
   width: 15%;
 
   & svg {
@@ -182,7 +183,7 @@ const LeftButton = styled(Button)`
 `
 
 const CloseButton = styled(Button)`
-  bottom: 0.9rem;
+  bottom: 1.1rem;
   margin: 0 auto;
   height: auto;
   z-index: 10;
@@ -203,17 +204,38 @@ const CloseButton = styled(Button)`
   }
 `
 
-const StyledProgressBubbles = styled(ProgressBubbles)`
-  display: none;
+// const StyledProgressBubbles = styled(ProgressBubbles)`
+//   /* display: none; */
+//   display: block;
+//   position: absolute;
+//   bottom: 4rem;
+//   & > svg {
+//     color: var(--white);
+//     height: 0.75rem;
+//     width: 0.75rem;
+//     cursor: pointer;
+//   }
+
+//   @media (min-width: 662px) {
+//     bottom: 2%;
+//     & > svg {
+//       height: 1rem;
+//       width: 1rem;
+//     }
+//   }
+// `
+
+const StyledProgressCounter = styled.div`
+  /* display: none; */
+  display: block;
+  position: absolute;
+  top: 0.8rem;
+  color: var(--white);
+  font-size: 0.9rem;
+
   @media (min-width: 662px) {
-    display: block;
-    position: absolute;
-    bottom: 2%;
-    & > svg {
-      color: var(--white);
-      height: 1rem;
-      width: 1rem;
-      cursor: pointer;
-    }
+    top: unset;
+    bottom: 1.5rem;
+    font-size: 1.2rem;
   }
 `
