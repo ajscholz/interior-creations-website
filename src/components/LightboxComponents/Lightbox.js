@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled, { css } from "styled-components"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa"
 import { FiX } from "react-icons/fi"
@@ -10,10 +10,30 @@ import ProgressBubbles from "../ProgressBubbles"
 import Img from "gatsby-image"
 import LockBody from "./LockBody"
 
-const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
+const Lightbox = ({ className, images, close, index, setIndex, open }) => {
+  console.log(index)
+  useEffect(() => {
+    console.log("in effect")
+    window.addEventListener("keydown", downHandler)
+    return () => window.removeEventListener("keydown", downHandler)
+  })
   console.log("in lightbox")
+
   const len = images.length
+
+  const downHandler = e => {
+    if (e.which === 39) {
+      handleClick(1)
+    }
+    if (e.which === 37) {
+      handleClick(-1)
+    }
+    if (e.which === 27) {
+      close()
+    }
+  }
   const handleClick = dir => {
+    console.log(index)
     let next = index + dir
 
     // this routes the index to the beginning if at end, end if at beginning, etc.
@@ -38,8 +58,8 @@ const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
 
   return (
     <a.div className={className} style={showModal}>
-      <div className="blanket" onClick={() => onClose(false)}></div>
-      <CloseButton onClick={() => onClose()}>
+      <div className="blanket" onClick={() => close()}></div>
+      <CloseButton onClick={() => close()}>
         <FiX />
       </CloseButton>
 

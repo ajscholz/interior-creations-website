@@ -4,11 +4,19 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Lightbox from "./LightboxComponents/Lightbox"
 import Button from "./Button"
+// import { useKeyPress } from "../utils/hooks"
 
 const ImageGallery = ({ className, images }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [index, setIndex] = useState(0)
   // const [modalState, setModalState] = useState({ open: false, index: 0 })
+  // const esc = useKeyPress("Escape")
+  // const rtArrow = useKeyPress("ArrowRight")
+  // const ltArrow = useKeyPress("ArrowLeft")
+
+  // const key = useKeyDown()
+
+  // console.log(key)
 
   const openModal = index => {
     // setModalState({ open: true, index: index })
@@ -42,7 +50,7 @@ const ImageGallery = ({ className, images }) => {
       /> */}
       <Lightbox
         images={images}
-        onClose={setModalIsOpen}
+        close={() => setModalIsOpen(false)}
         index={index}
         setIndex={setIndex}
         open={modalIsOpen}
