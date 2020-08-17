@@ -125,6 +125,7 @@ export default styled(Lightbox)`
   color: var(--white);
   z-index: 2000;
   display: flex;
+  padding-bottom: 4em;
   align-items: center;
   justify-content: center;
 
@@ -140,8 +141,14 @@ export default styled(Lightbox)`
 
   & .gatsby-image-wrapper {
     /* height: 80%; */
-    width: 85%;
+    width: 100%;
     max-height: 85%;
+    order: -1;
+
+    @media (min-width: 662px) {
+      width: 85%;
+      margin-bottom: unset;
+    }
   }
 `
 
@@ -150,13 +157,19 @@ const Button = styled.button`
   position: absolute;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  width: 7.5%;
+  bottom: 1rem;
+  width: 15%;
 
   & svg {
     font-size: 2rem;
     cursor: pointer;
+  }
+
+  @media (min-width: 662px) {
+    align-items: center;
+    width: 7.5%;
   }
 `
 
@@ -169,20 +182,38 @@ const LeftButton = styled(Button)`
 `
 
 const CloseButton = styled(Button)`
-  top: 0;
-  right: 0;
-  top: 1rem;
+  bottom: 0.9rem;
+  margin: 0 auto;
   height: auto;
   z-index: 10;
+
+  & svg {
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+
+  @media (min-width: 662px) {
+    /* align-self: flex-start; */
+    top: 0;
+    right: 0;
+    left: unset;
+    top: 1rem;
+    bottom: unset;
+    margin: unset;
+  }
 `
 
 const StyledProgressBubbles = styled(ProgressBubbles)`
-  position: absolute;
-  bottom: 2%;
-  & > svg {
-    color: var(--white);
-    height: 1rem;
-    width: 1rem;
-    cursor: pointer;
+  display: none;
+  @media (min-width: 662px) {
+    display: block;
+    position: absolute;
+    bottom: 2%;
+    & > svg {
+      color: var(--white);
+      height: 1rem;
+      width: 1rem;
+      cursor: pointer;
+    }
   }
 `
