@@ -64,7 +64,7 @@ export default styled(Button)`
   letter-spacing: 2px;
   font-weight: 400;
   margin: ${props =>
-    props.left === true ? "0 auto 0 0 !important" : "0 auto !important"};
+    props.left === true ? "2em auto 0 0 !important" : "2em auto"};
   margin-top: ${props => props.pushDown && "2.25em"};
   /* margin-right: auto; */
   cursor: pointer;

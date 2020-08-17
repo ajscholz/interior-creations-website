@@ -57,7 +57,7 @@ const ViewOurProjects = ({ data: { page } }) => {
 }
 
 const StyledSection = styled(Section)`
-  background: var(--white) !important;
+  background: var(--lightestgray) !important;
   & button {
     width: 100%;
 
@@ -69,6 +69,10 @@ const StyledSection = styled(Section)`
 
   & p {
     text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    background: var(--white) !important;
   }
 `
 
