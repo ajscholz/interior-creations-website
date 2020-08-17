@@ -29,7 +29,7 @@ const Layout = ({ children, pageContext }) => {
     }
   `)
 
-  const infoBoxActive = true
+  const infoBoxActive = false
 
   if (pageContext.layout === "landing") {
     return (

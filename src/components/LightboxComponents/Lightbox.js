@@ -69,9 +69,9 @@ const Lightbox = ({
     <a.div className={className} style={showModal}>
       <div
         className="blanket"
-        onClick={() => closeLightbox()}
-        role="button"
-        aria-label="close"
+        // onClick={() => closeLightbox()}
+        // role="button"
+        // aria-label="close"
       />
       <CloseButton onClick={() => closeLightbox()} aria-label="close">
         <FiX />
