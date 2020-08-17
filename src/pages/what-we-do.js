@@ -12,40 +12,14 @@ import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"
 import MDX from "../components/MDX"
 
-const ViewOurProjects = props => {
-  const { data } = props
-  const {
-    page,
-    section1,
-    section2,
-    section3,
-    section4,
-    section5,
-    section6,
-  } = data
+const ViewOurProjects = ({ data: { page } }) => {
+  const sections = page.sections.slice(0, -1)
+  const buttonSection = page.sections[page.sections.length - 1]
 
-  const imageSections = [
-    {
-      data: section2,
-      bText: `view ${section2.sectionTitle}`,
-      link: `/view-our-projects/bathrooms/`,
-    },
-    {
-      data: section3,
-      bText: `view ${section3.sectionTitle}`,
-      link: `/view-our-projects/kitchens/`,
-    },
-    {
-      data: section4,
-      bText: `view ${section4.sectionTitle}`,
-      link: `/view-our-projects/mudrooms/`,
-    },
-    {
-      data: section5,
-      bText: `view ${section5.sectionTitle}`,
-      link: `/view-our-projects/home-offices/`,
-    },
-  ]
+  sections.forEach(section => {
+    section.ref = section.contentReferences[0]
+    section.sectionImage = section.ref.featuredImage
+  })
 
   return (
     <>
@@ -57,21 +31,22 @@ const ViewOurProjects = props => {
 
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
-      {imageSections.map((section, index) => {
+      {sections.map((section, index) => {
         return (
           <ImageSection
-            data={section.data}
-            key={section.data.id}
-            link={section.link}
-            button={section.bText}
+            data={section}
+            key={section.id}
+            link={`/projects/${section.ref.slug}`}
+            button={`View ${section.sectionTitle}`}
             reverse={index % 2 === 0 ? false : true}
           />
         )
       })}
+
       <StyledSection style={{ maxWidth: "1000px" }}>
-        <Title style={{ textAlign: "center" }}>{section1.title}</Title>
+        <Title style={{ textAlign: "center" }}>{buttonSection.title}</Title>
         <MDX style={{ textAlign: "center" }}>
-          {section1.sectionText.childMdx.body}
+          {buttonSection.sectionText.childMdx.body}
         </MDX>
         <ModalController buttonText="Start My Project">
           <ProjectForm />
@@ -111,44 +86,20 @@ export const data = graphql`
       ...HeroBannerFragment
 
       sections {
-        contentful_id
-        sectionTitle
-      }
-    }
-    section1: contentfulPageSection(
-      contentful_id: { eq: "6o3jtETVFN4sift2xvotta" }
-    ) {
-      title: sectionTitle
-      sectionText {
-        childMdx {
-          body
+        id: contentful_id
+        ...ImageSectionFragment
+        contentReferences {
+          ... on ContentfulProjectType {
+            type
+            slug
+            featuredImage {
+              fluid {
+                ...GatsbyContentfulFluid_withWebp
+              }
+            }
+          }
         }
       }
-    }
-    section2: contentfulPageSection(
-      contentful_id: { eq: "MaNeuszkTF2vsgMRSpEOs" }
-    ) {
-      ...sectionFields
-    }
-    section3: contentfulPageSection(
-      contentful_id: { eq: "4UM7RxbnD4PEtainIYXiLX" }
-    ) {
-      ...sectionFields
-    }
-    section4: contentfulPageSection(
-      contentful_id: { eq: "7EYPLR7j0Y44ysNKuMfnqj" }
-    ) {
-      ...sectionFields
-    }
-    section5: contentfulPageSection(
-      contentful_id: { eq: "6sICkPcRtWJqveU52g6Tnv" }
-    ) {
-      ...sectionFields
-    }
-    section6: contentfulPageSection(
-      contentful_id: { eq: "5cmTKA64ujwKa5DyCaAcF5" }
-    ) {
-      ...sectionFields
     }
   }
 `

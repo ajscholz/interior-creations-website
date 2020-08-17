@@ -83,4 +83,21 @@ export const query = graphql`
       }
     }
   }
+
+  fragment FeaturedImageFragment on ContentfulProjectType {
+    featuredImage {
+      fluid(quality: 80, maxWidth: 1920) {
+        ...GatsbyContentfulFluid_withWebp
+      }
+      file {
+        details {
+          image {
+            height
+            width
+          }
+        }
+        url
+      }
+    }
+  }
 `
