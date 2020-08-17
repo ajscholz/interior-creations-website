@@ -16,7 +16,7 @@ const StartProjectSection = () => (
       buttonText="Start Your Project Now"
       buttonStyle="solid"
       pushDown
-      align="left"
+      left
     >
       <ProjectForm />
     </ModalController>

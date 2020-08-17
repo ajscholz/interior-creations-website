@@ -12,7 +12,8 @@ const ModalController = props => {
     buttonStyle,
     parentClick,
     pushDown,
-    align,
+    left,
+    center,
   } = props
   const [open, setOpen] = useState(false)
 
@@ -40,7 +41,8 @@ const ModalController = props => {
           className="modal-controller-button"
           solid={buttonStyle === "solid"}
           pushDown={pushDown}
-          left
+          left={left ? true : false}
+          center={center ? true : false}
         >
           {buttonText}
         </Button>
