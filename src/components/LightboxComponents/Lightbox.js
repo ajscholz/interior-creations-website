@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import styled, { css } from "styled-components"
+import React, { useEffect, useState } from "react"
+import styled from "styled-components"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa"
 import { FiX } from "react-icons/fi"
 
@@ -10,14 +10,21 @@ import ProgressBubbles from "../ProgressBubbles"
 import Img from "gatsby-image"
 import LockBody from "./LockBody"
 
-const Lightbox = ({ className, images, close, index, setIndex, open }) => {
-  console.log(index)
+const Lightbox = ({
+  className,
+  images,
+  close,
+  index,
+  setIndex,
+  open: shouldOpen,
+}) => {
+  const [open, setOpen] = useState(shouldOpen)
   useEffect(() => {
-    console.log("in effect")
     window.addEventListener("keydown", downHandler)
     return () => window.removeEventListener("keydown", downHandler)
   })
-  console.log("in lightbox")
+
+  const closeLightbox = () => setOpen(false)
 
   const len = images.length
 
@@ -29,11 +36,10 @@ const Lightbox = ({ className, images, close, index, setIndex, open }) => {
       handleClick(-1)
     }
     if (e.which === 27) {
-      close()
+      closeLightbox()
     }
   }
   const handleClick = dir => {
-    console.log(index)
     let next = index + dir
 
     // this routes the index to the beginning if at end, end if at beginning, etc.
@@ -46,6 +52,9 @@ const Lightbox = ({ className, images, close, index, setIndex, open }) => {
       await next(open ? { opacity: 1 } : { display: "none" })
     },
     from: { display: "none", opacity: 0 },
+    onRest: () => {
+      if (!open) close()
+    },
   })
 
   const transitions = useTransition(index, null, {
@@ -58,8 +67,13 @@ const Lightbox = ({ className, images, close, index, setIndex, open }) => {
 
   return (
     <a.div className={className} style={showModal}>
-      <div className="blanket" onClick={() => close()}></div>
-      <CloseButton onClick={() => close()}>
+      <div
+        className="blanket"
+        onClick={() => closeLightbox()}
+        role="button"
+        aria-label="close"
+      />
+      <CloseButton onClick={() => closeLightbox()} aria-label="close">
         <FiX />
       </CloseButton>
 
@@ -70,7 +84,7 @@ const Lightbox = ({ className, images, close, index, setIndex, open }) => {
         <FaChevronLeft />
       </LeftButton>
 
-      <Img fluid={images[index].fluid} />
+      {/* <Img fluid={images[index].fluid} /> */}
       {transitions.map(({ item, key, props }) =>
         item ? (
           <AnimatedImg
@@ -97,7 +111,7 @@ const Lightbox = ({ className, images, close, index, setIndex, open }) => {
       </RightButton>
 
       <StyledProgressBubbles number={len} current={index} set={setIndex} />
-      {open && <LockBody />}
+      <LockBody />
     </a.div>
   )
 }
