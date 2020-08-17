@@ -11,12 +11,13 @@ import Img from "gatsby-image"
 import LockBody from "./LockBody"
 
 const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
+  console.log("in lightbox")
+  const len = images.length
   const handleClick = dir => {
-    const next = index + dir
-    if (next < 0 || next > images.length + 1) {
-      return
-    }
-    setIndex(next)
+    let next = index + dir
+
+    // this routes the index to the beginning if at end, end if at beginning, etc.
+    setIndex(next < 0 ? len - 1 : next > len - 1 ? 0 : next)
   }
 
   const showModal = useSpring({
@@ -38,11 +39,14 @@ const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
   return (
     <a.div className={className} style={showModal}>
       <div className="blanket" onClick={() => onClose(false)}></div>
-      <CloseButton onClick={() => onClose(false)}>
+      <CloseButton onClick={() => onClose()}>
         <FiX />
       </CloseButton>
 
-      <LeftButton onClick={() => handleClick(-1)} disabled={index === 0}>
+      <LeftButton
+        onClick={() => handleClick(-1)}
+        // disabled={index === 0}
+      >
         <FaChevronLeft />
       </LeftButton>
 
@@ -67,16 +71,12 @@ const Lightbox = ({ className, images, onClose, index, setIndex, open }) => {
 
       <RightButton
         onClick={() => handleClick(1)}
-        disabled={index === images.length - 1}
+        // disabled={index === len - 1}
       >
         <FaChevronRight />
       </RightButton>
 
-      <StyledProgressBubbles
-        number={images.length}
-        current={index}
-        set={setIndex}
-      />
+      <StyledProgressBubbles number={len} current={index} set={setIndex} />
       {open && <LockBody />}
     </a.div>
   )
@@ -124,15 +124,6 @@ const Button = styled.button`
     font-size: 2rem;
     cursor: pointer;
   }
-
-  ${props =>
-    props.disabled &&
-    css`
-      & svg {
-        opacity: 0.2;
-        cursor: default;
-      }
-    `}
 `
 
 const RightButton = styled(Button)`

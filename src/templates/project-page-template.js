@@ -21,7 +21,7 @@ const ProjectPage = ({ data }) => {
 
       <HeroBanner image={featuredImage.fluid} text={`${type} Projects`} />
       <Section>
-        <ImageGallery gallery={gallery} />
+        <ImageGallery images={gallery} />
       </Section>
       <StartProjectSection />
     </>

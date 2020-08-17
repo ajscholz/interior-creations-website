@@ -86,6 +86,7 @@ export const query = graphql`
 
   fragment FeaturedImageFragment on ContentfulProjectType {
     featuredImage {
+      id: contentful_id
       fluid(quality: 80, maxWidth: 1920) {
         ...GatsbyContentfulFluid_withWebp
       }
