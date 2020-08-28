@@ -73,7 +73,7 @@ const CallTextButtons = ({ className, setMenuOpen }) => {
             <AnimatedMenu key={key} style={props}>
               <StyledButton
                 as="a"
-                href="tel:6145601176"
+                href="tel:+6149893503"
                 solid
                 onClick={() => handleClick()}
               >
@@ -84,7 +84,7 @@ const CallTextButtons = ({ className, setMenuOpen }) => {
               </StyledButton>
               <StyledButton
                 as="a"
-                href="sms:6145601176"
+                href="sms:+6149893503"
                 solid
                 onClick={() => handleClick()}
               >

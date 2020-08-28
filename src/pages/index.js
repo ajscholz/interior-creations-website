@@ -8,7 +8,7 @@ import { graphql } from "gatsby"
 import IconCard from "../components/IconCard"
 import { P } from "../components/Typography"
 
-import { MdComputer } from "react-icons/md"
+import { BsCloud } from "react-icons/bs"
 import { FaHammer, FaInfinity } from "react-icons/fa"
 import Section from "../components/Section"
 import Title from "../components/Title"
@@ -21,7 +21,7 @@ import ProjectForm from "../components/FormComponents/ProjectForm"
 
 const AnimatedP = animated(P)
 
-const icons = [<MdComputer />, <FaHammer />, <FaInfinity />]
+const icons = [<BsCloud />, <FaHammer />, <FaInfinity />]
 
 let text = []
 
