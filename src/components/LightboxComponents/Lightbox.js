@@ -5,7 +5,7 @@ import { FiX } from "react-icons/fi"
 
 import { useTransition, useSpring, a } from "react-spring"
 
-import ProgressBubbles from "../ProgressBubbles"
+// import ProgressBubbles from "../ProgressBubbles"
 
 import Img from "gatsby-image"
 import LockBody from "./LockBody"

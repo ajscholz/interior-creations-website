@@ -1,20 +1,20 @@
 import React from "react"
-import styled from "styled-components"
+// import styled from "styled-components"
 import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
-import Section from "../components/Section"
-import Title from "../components/Title"
+// import Section from "../components/Section"
+// import Title from "../components/Title"
 import ImageSection from "../components/ImageSection"
 
-import ModalController from "../components/ModalComponents/ModalController"
-import ProjectForm from "../components/FormComponents/ProjectForm"
-import MDX from "../components/MDX"
+// import ModalController from "../components/ModalComponents/ModalController"
+// import ProjectForm from "../components/FormComponents/ProjectForm"
+// import MDX from "../components/MDX"
 
 const ViewOurProjects = ({ data: { page } }) => {
   const sections = page.sections.slice(0, -1)
-  const buttonSection = page.sections[page.sections.length - 1]
+  // const buttonSection = page.sections[page.sections.length - 1]
 
   sections.forEach(section => {
     section.ref = section.contentReferences[0]
@@ -56,25 +56,25 @@ const ViewOurProjects = ({ data: { page } }) => {
   )
 }
 
-const StyledSection = styled(Section)`
-  background: var(--lightestgray) !important;
-  & button {
-    width: 100%;
+// const StyledSection = styled(Section)`
+//   background: var(--lightestgray) !important;
+//   & button {
+//     width: 100%;
 
-    @media (min-width: 662px) {
-      width: auto;
-      margin: 0 auto;
-    }
-  }
+//     @media (min-width: 662px) {
+//       width: auto;
+//       margin: 0 auto;
+//     }
+//   }
 
-  & p {
-    text-align: center;
-  }
+//   & p {
+//     text-align: center;
+//   }
 
-  @media (min-width: 900px) {
-    background: var(--white) !important;
-  }
-`
+//   @media (min-width: 900px) {
+//     background: var(--white) !important;
+//   }
+// `
 
 export default ViewOurProjects
 

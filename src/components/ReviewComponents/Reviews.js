@@ -77,7 +77,7 @@ export default styled(Reviews)`
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  height: 350px;
+  height: 360px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;

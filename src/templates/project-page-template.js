@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
 import Section from "../components/Section"
-import StartProjectSection from "../components/StartProjectSection"
+// import StartProjectSection from "../components/StartProjectSection"
 import ImageGallery from "../components/ImageGallery"
 import Lightbox from "../components/LightboxComponents/Lightbox"
 

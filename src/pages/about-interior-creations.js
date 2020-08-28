@@ -6,17 +6,17 @@ import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
 import Section from "../components/Section"
 import Title from "../components/Title"
-import TeamMember from "../components/TeamMember"
+// import TeamMember from "../components/TeamMember"
 import LinkButton from "../components/LinkButton"
 import MDX from "../components/MDX"
 import Quote from "../components/Quote"
-import ModalController from "../components/ModalComponents/ModalController"
-import ProjectForm from "../components/FormComponents/ProjectForm"
+// import ModalController from "../components/ModalComponents/ModalController"
+// import ProjectForm from "../components/FormComponents/ProjectForm"
 import Image from "gatsby-image"
 
 const AboutInteriorCreations = props => {
   const { data } = props
-  const { page, section1, section2, section3 } = data
+  const { page, section1, section2 } = data
 
   return (
     <>

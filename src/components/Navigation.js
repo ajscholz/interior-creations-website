@@ -9,10 +9,13 @@ import links from "../utils/links"
 
 import CallTextButtons from "./CallTextButtons"
 
-const NavList = ({ click }) => (
+const NavList = ({ setMenuOpen }) => (
   <List>
     {links.map(link => (
-      <NavItem onClick={click ? () => click(false) : null} key={link.key}>
+      <NavItem
+        onClick={setMenuOpen ? () => setMenuOpen(false) : null}
+        key={link.key}
+      >
         <Link to={link.path}>{link.title}</Link>
       </NavItem>
     ))}
