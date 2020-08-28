@@ -43,8 +43,8 @@ const Layout = ({ children, pageContext }) => {
     <>
       <GlobalStyle lockScroll={modalOpen || menuOpen} />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <MobileNavigation open={menuOpen} click={setMenuOpen} />
-      <ExpandCloseButton open={menuOpen} click={setMenuOpen} />
+      <MobileNavigation open={menuOpen} setMenuOpen={setMenuOpen} />
+      <ExpandCloseButton open={menuOpen} setMenuOpen={setMenuOpen} />
       <Main>{children}</Main>
       <Footer />
       {infoBoxActive && (

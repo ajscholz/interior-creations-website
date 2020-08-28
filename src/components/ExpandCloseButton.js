@@ -5,8 +5,7 @@ import { useSpring, animated } from "react-spring"
 
 import { onKeyPress } from "../utils/helpers"
 
-const ExpandCloseButton = props => {
-  const { open, click } = props
+const ExpandCloseButton = ({ open, setMenuOpen }) => {
   const topChev = useSpring({ top: open ? "64%" : "40%" })
   const bottomChev = useSpring({ top: open ? "37%" : "60%" })
 
@@ -15,10 +14,10 @@ const ExpandCloseButton = props => {
 
   return (
     <Button
-      onClick={() => click(!open)}
+      onClick={() => setMenuOpen(!open)}
       alt={`${open ? "close" : "open"} navigation menu`}
       aria-label={`${open ? "close" : "open"} navigation menu`}
-      onKeyDown={e => onKeyPress(e, () => click(false))}
+      onKeyDown={e => onKeyPress(e, () => setMenuOpen(false))}
     >
       <AnimatedChevUp style={topChev} open={open} />
       <AnimatedChevDown style={bottomChev} open={open} />
@@ -28,7 +27,7 @@ const ExpandCloseButton = props => {
 
 ExpandCloseButton.propTypes = {
   open: PropTypes.bool.isRequired,
-  click: PropTypes.func.isRequired,
+  setMenuOpen: PropTypes.func.isRequired,
 }
 
 const Button = styled.button`

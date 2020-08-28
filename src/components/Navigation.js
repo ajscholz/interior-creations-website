@@ -4,8 +4,10 @@ import { Link } from "gatsby"
 import { useSpring, animated } from "react-spring"
 
 import links from "../utils/links"
-import ModalController from "./ModalComponents/ModalController"
-import ProjectForm from "./FormComponents/ProjectForm"
+// import ModalController from "./ModalComponents/ModalController"
+// import ProjectForm from "./FormComponents/ProjectForm"
+
+import CallTextButtons from "./CallTextButtons"
 
 const NavList = ({ click }) => (
   <List>
@@ -17,9 +19,7 @@ const NavList = ({ click }) => (
   </List>
 )
 
-export const MobileNavigation = props => {
-  const { open, click } = props
-
+export const MobileNavigation = ({ open, setMenuOpen }) => {
   const expandMenu = useSpring({
     to: async next => {
       await next(open ? { display: "flex" } : { opacity: 0 })
@@ -31,31 +31,31 @@ export const MobileNavigation = props => {
   return (
     <MobileWrapper style={expandMenu}>
       <nav>
-        <NavList click={click} />
+        <NavList setMenuOpen={setMenuOpen} />
       </nav>
 
-      <ModalController
+      {/* <ModalController
         buttonText="Start Project"
         buttonStyle="solid"
         parentClick={click}
-      >
+      > 
         <ProjectForm />
-      </ModalController>
+      </ModalController> */}
+      <CallTextButtons setMenuOpen={setMenuOpen} />
     </MobileWrapper>
   )
 }
 
-const Navigation = props => {
-  const { className } = props
-
+const Navigation = ({ className }) => {
   return (
     <div className={className}>
       <DesktopWrapper>
         <NavList />
       </DesktopWrapper>
-      <ModalController buttonText="Start Project" buttonStyle="solid">
+      {/* <ModalController buttonText="Start Project" buttonStyle="solid">
         <ProjectForm />
-      </ModalController>
+      </ModalController> */}
+      <CallTextButtons />
     </div>
   )
 }
@@ -103,6 +103,7 @@ const MobileWrapper = styled(animated.div)`
   right: 0;
   left: 0;
   z-index: 250;
+  padding-bottom: 20%;
   background: var(--transWhite);
   flex-direction: column;
   align-items: center;
