@@ -12,6 +12,7 @@ import MDX from "../components/MDX"
 import Quote from "../components/Quote"
 import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"
+import Image from "gatsby-image"
 
 const AboutInteriorCreations = props => {
   const { data } = props
@@ -30,9 +31,16 @@ const AboutInteriorCreations = props => {
       <Section1>
         <Title>{section1.sectionTitle}</Title>
         <MDX>{section1.sectionText.childMdx.body}</MDX>
-        <ModalController buttonText="Discover the Difference">
+        <div className="signature">
+          <div className="name">- Jeff</div>
+          <div className="title">{`Founder & Owner`}</div>
+          <div className="avatar">
+            <Image fixed={data.jeff.fixed} />
+          </div>
+        </div>
+        {/* <ModalController buttonText="Discover the Difference">
           <ProjectForm />
-        </ModalController>
+        </ModalController> */}
       </Section1>
 
       <Section2>
@@ -75,7 +83,7 @@ const AboutInteriorCreations = props => {
         />
       </Section>
 
-      <Section>
+      {/* <Section>
         <Title style={{ marginBottom: "3rem", textAlign: "center" }}>
           {section3.sectionTitle}
         </Title>
@@ -84,14 +92,53 @@ const AboutInteriorCreations = props => {
             <TeamMember person={person} key={person.contentful_id} />
           ))}
         </div>
-      </Section>
+      </Section> */}
     </>
   )
 }
 
 const Section1 = styled(Section)`
   & p:last-of-type {
-    margin-bottom: 2rem;
+    /* text-align: right; */
+    /* margin-bottom: 2rem; */
+  }
+
+  & .signature {
+    margin-left: auto;
+    width: max-content;
+    display: grid;
+
+    /* grid-template-rows: min-content 1fr; */
+    grid-column-gap: 2rem;
+    grid-template-areas:
+      "name avatar"
+      "title avatar";
+
+    & .name {
+      grid-area: name;
+      align-self: end;
+      text-align: right;
+      font-size: 1.35rem;
+    }
+    & .title {
+      grid-area: title;
+      align-self: start;
+      text-align: right;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-style: italic;
+      color: var(--lightgray);
+      opacity: 0.5;
+    }
+
+    & .avatar {
+      grid-area: avatar;
+    }
+    & .gatsby-image-wrapper {
+      border-radius: 50%;
+      overflow: hidden;
+    }
   }
 `
 
@@ -179,6 +226,12 @@ export const data = graphql`
             }
           }
         }
+      }
+    }
+
+    jeff: contentfulAsset(contentful_id: { eq: "2SIxKzzGqC9ETEgwGmA0me" }) {
+      fixed(width: 100, quality: 100) {
+        ...GatsbyContentfulFixed_withWebp
       }
     }
   }

@@ -12,14 +12,14 @@ const StartProjectSection = () => (
       It takes <b>less than three minutes</b> to get started. Don't wait any
       longer!
     </P>
-    <ModalController
+    {/* <ModalController
       buttonText="Start Your Project Now"
       buttonStyle="solid"
       pushDown
       left
     >
       <ProjectForm />
-    </ModalController>
+    </ModalController> */}
   </StyledSection>
 )
 

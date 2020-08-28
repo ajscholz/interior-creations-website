@@ -43,12 +43,12 @@ export default styled(IconCard)`
   background: var(--white);
   border: none;
   /* outline: none;  */
-  padding: 0.75rem;
+  padding: 0.75rem 0.9rem;
 
   & svg {
     /* margin-top: 10%; */
-    height: 40%;
-    width: 40%;
+    height: 50%;
+    width: 50%;
     margin-bottom: 0.5rem;
   }
 
@@ -69,6 +69,7 @@ export default styled(IconCard)`
   @media (min-width: 662px) {
     height: 130px;
     width: 130px;
+    padding: 0.75rem 1.7rem;
 
     & ${H3} {
       font-size: 1.05rem;

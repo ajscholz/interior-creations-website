@@ -29,7 +29,7 @@ const ProjectPage = ({ data }) => {
       <Section>
         <ImageGallery images={gallery} open={open} />
       </Section>
-      <StartProjectSection />
+      {/* <StartProjectSection /> */}
       {state.open && (
         <Lightbox
           images={gallery}

@@ -6,10 +6,9 @@ import SEO from "../components/seo"
 import HeroBanner from "../components/HeroBanner"
 import { graphql } from "gatsby"
 import IconCard from "../components/IconCard"
-import { P } from "../components/Typography"
 
-import { BsCloud } from "react-icons/bs"
-import { FaHammer, FaInfinity } from "react-icons/fa"
+import { BsCloud, BsPeople } from "react-icons/bs"
+import { GiCircularSaw } from "react-icons/gi"
 import Section from "../components/Section"
 import Title from "../components/Title"
 import FlexContainer from "../components/FlexContainer"
@@ -18,16 +17,14 @@ import Reviews from "../components/ReviewComponents/Reviews"
 
 import ModalController from "../components/ModalComponents/ModalController"
 import ProjectForm from "../components/FormComponents/ProjectForm"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import Button from "../components/Button"
 
-const AnimatedP = animated(P)
-
-const icons = [<BsCloud />, <FaHammer />, <FaInfinity />]
+const icons = [<BsCloud />, <GiCircularSaw />, <BsPeople />]
 
 let text = []
 
-const IndexPage = props => {
-  const { data } = props
-
+const IndexPage = ({ data }) => {
   const { page, section1, section2, section3, section4 } = data
 
   const [index, setIndex] = useState(0)
@@ -55,9 +52,9 @@ const IndexPage = props => {
           <StyledFlexContainer>
             {section1.content.map((item, i) => {
               text[i] = ({ style }) => (
-                <AnimatedP style={{ ...style }}>
-                  {item.information.information}
-                </AnimatedP>
+                <animated.div style={style} key={i}>
+                  <MDXRenderer>{item.information.childMdx.body}</MDXRenderer>
+                </animated.div>
               )
 
               return (
@@ -75,9 +72,7 @@ const IndexPage = props => {
           <TextWrapper>
             {transitions.map(({ item, props, key }) => {
               const Text = text[item]
-              return (
-                <Text key={key} style={{ ...props, position: "absolute" }} />
-              )
+              return <Text key={key} style={props} />
             })}
           </TextWrapper>
         </Wrapper>
@@ -97,9 +92,9 @@ const IndexPage = props => {
       <ImageSection
         data={section4}
         button={
-          <ModalController buttonText={`Start the Process Now`}>
-            <ProjectForm />
-          </ModalController>
+          <Button as="a" href="tel:+6149893503">
+            Call Us Now
+          </Button>
         }
         reverse
       />
@@ -126,18 +121,53 @@ const StyledSection = styled(Section)`
 
 const TextWrapper = styled.div`
   position: relative;
+  /* display: flex; */
   margin: 1rem auto 0;
-  height: 90px;
+  height: 230px;
   overflow: hidden;
 
-  & > p {
-    font-size: 0.8rem;
-    margin-bottom: 0;
-    text-align: center;
-    @media (min-width: 576px) {
-      font-size: 1rem;
-      height: 80px;
+  & > div {
+    position: absolute;
+
+    & > p {
+      /* font-size: 0.8rem; */
+      margin-bottom: 0;
+      text-align: center;
+
+      & a {
+        color: var(--primary);
+        font-weight: bold;
+      }
+      @media (min-width: 576px) {
+        font-size: 1rem;
+      }
     }
+  }
+
+  /* MEDIA QUERIES FOR TEXT BLOCK WITH ABSOLUTE POSITIONING */
+  @media (min-width: 343px) {
+    height: 207px;
+  }
+  @media (min-width: 383px) {
+    height: 184px;
+  }
+  @media (min-width: 445px) {
+    height: 161px;
+  }
+  @media (min-width: 515px) {
+    height: 138px;
+  }
+  @media (min-width: 625px) {
+    height: 115px;
+  }
+  @media (min-width: 668px) {
+    height: 138px;
+  }
+  @media (min-width: 691px) {
+    height: 115px;
+  }
+  @media (min-width: 800px) {
+    height: 90px;
   }
 `
 
@@ -158,7 +188,9 @@ export const query = graphql`
           contentful_id
           title
           information {
-            information
+            childMdx {
+              body
+            }
           }
         }
       }

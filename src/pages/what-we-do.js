@@ -43,7 +43,7 @@ const ViewOurProjects = ({ data: { page } }) => {
         )
       })}
 
-      <StyledSection style={{ maxWidth: "1000px" }}>
+      {/* <StyledSection style={{ maxWidth: "1000px" }}>
         <Title style={{ textAlign: "center" }}>{buttonSection.title}</Title>
         <MDX style={{ textAlign: "center" }}>
           {buttonSection.sectionText.childMdx.body}
@@ -51,7 +51,7 @@ const ViewOurProjects = ({ data: { page } }) => {
         <ModalController buttonText="Start My Project">
           <ProjectForm />
         </ModalController>
-      </StyledSection>
+      </StyledSection> */}
     </>
   )
 }
