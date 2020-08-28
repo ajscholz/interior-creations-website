@@ -76,6 +76,7 @@ const Reviews = props => {
 export default styled(Reviews)`
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   height: 350px;
   width: 100%;
   max-width: 900px;
