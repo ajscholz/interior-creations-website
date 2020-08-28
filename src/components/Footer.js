@@ -23,7 +23,7 @@ const Footer = ({ className }) => {
               <br />
               New Albany, OH 43054
             </a>
-            <a href="tel:+6149893503" icon={<FiPhone />}>
+            <a href="tel:6149893503" icon={<FiPhone />}>
               614.989.3503
             </a>
             <a href="mailto:jeff@interiorcreationsco.com" icon={<FiMail />}>

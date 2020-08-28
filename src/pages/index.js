@@ -15,8 +15,8 @@ import FlexContainer from "../components/FlexContainer"
 import ImageSection from "../components/ImageSection"
 import Reviews from "../components/ReviewComponents/Reviews"
 
-import ModalController from "../components/ModalComponents/ModalController"
-import ProjectForm from "../components/FormComponents/ProjectForm"
+// import ModalController from "../components/ModalComponents/ModalController"
+// import ProjectForm from "../components/FormComponents/ProjectForm"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Button from "../components/Button"
 
@@ -92,7 +92,7 @@ const IndexPage = ({ data }) => {
       <ImageSection
         data={section4}
         button={
-          <Button as="a" href="tel:+6149893503">
+          <Button as="a" href="tel:6149893503">
             Call Us Now
           </Button>
         }
