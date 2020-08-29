@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa"
 import { FiX } from "react-icons/fi"
+import { useDrag } from "react-use-gesture"
 
 import { useTransition, useSpring, a } from "react-spring"
 
@@ -22,6 +23,11 @@ const Lightbox = ({
   useEffect(() => {
     window.addEventListener("keydown", downHandler)
     return () => window.removeEventListener("keydown", downHandler)
+  })
+
+  const bind = useDrag(({ swipe }) => {
+    if (swipe[0] === -1) handleClick(1)
+    else if (swipe[0] === 1) handleClick(-1)
   })
 
   const closeLightbox = () => setOpen(false)
@@ -83,8 +89,7 @@ const Lightbox = ({
       >
         <FaChevronLeft />
       </LeftButton>
-
-      {/* <Img fluid={images[index].fluid} /> */}
+      {/* <div> */}
       {transitions.map(({ item, key, props }) =>
         item ? (
           <AnimatedImg
@@ -102,7 +107,17 @@ const Lightbox = ({
           />
         )
       )}
-
+      {/* </div> */}
+      <div
+        {...bind()}
+        style={{
+          zIndex: 2000,
+          height: "100%",
+          width: "100%",
+          background: "transparent",
+          touchAction: "none",
+        }}
+      />
       <RightButton
         onClick={() => handleClick(1)}
         // disabled={index === len - 1}
@@ -129,6 +144,7 @@ export default styled(Lightbox)`
   padding-bottom: 4em;
   align-items: center;
   justify-content: center;
+  touch-action: none;
 
   & .blanket {
     background: rgba(0, 0, 0, 0.9);
@@ -138,6 +154,7 @@ export default styled(Lightbox)`
     height: 100%;
     width: 100%;
     z-index: -1;
+    touch-action: none;
   }
 
   & .gatsby-image-wrapper {
@@ -145,6 +162,7 @@ export default styled(Lightbox)`
     width: 100%;
     max-height: 85%;
     order: -1;
+    touch-action: none;
 
     @media (min-width: 662px) {
       width: 85%;
