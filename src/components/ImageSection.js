@@ -11,6 +11,7 @@ import MDX from "./MDX"
 
 const ImageSection = props => {
   const { data, link, className, button } = props
+
   const {
     sectionTitle: title,
     sectionText: {

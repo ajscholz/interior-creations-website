@@ -13,7 +13,7 @@ import ImageSection from "../components/ImageSection"
 // import MDX from "../components/MDX"
 
 const ViewOurProjects = ({ data: { page } }) => {
-  const sections = page.sections.slice(0, -1)
+  const sections = [...page.sections].slice(0, -1)
   // const buttonSection = page.sections[page.sections.length - 1]
 
   sections.forEach(section => {
@@ -32,6 +32,7 @@ const ViewOurProjects = ({ data: { page } }) => {
       <HeroBanner image={page.bannerImage.fluid} text={page.bannerText} />
 
       {sections.map((section, index) => {
+        console.log(section)
         return (
           <ImageSection
             data={section}
@@ -90,15 +91,17 @@ export const data = graphql`
       ...HeroBannerFragment
 
       sections {
-        id: contentful_id
-        ...ImageSectionFragment
-        contentReferences {
-          ... on ContentfulProjectType {
-            type
-            slug
-            featuredImage {
-              fluid {
-                ...GatsbyContentfulFluid_withWebp
+        ... on ContentfulPageSection {
+          id: contentful_id
+          ...ImageSectionFragment
+          contentReferences {
+            ... on ContentfulProjectType {
+              type
+              slug
+              featuredImage {
+                fluid {
+                  ...GatsbyContentfulFluid_withWebp
+                }
               }
             }
           }
