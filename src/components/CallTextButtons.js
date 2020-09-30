@@ -71,28 +71,32 @@ const CallTextButtons = ({ className, setMenuOpen }) => {
         ({ item, key, props }) =>
           item && (
             <AnimatedMenu key={key} style={props}>
-              <StyledButton
-                as="a"
-                href="tel:6149893503"
-                solid
-                onClick={() => handleClick()}
-              >
-                <span>
-                  <PhoneOutgoing />
-                </span>
-                {`Give Us A Call`}
-              </StyledButton>
-              <StyledButton
-                as="a"
-                href="sms:6149893503"
-                solid
-                onClick={() => handleClick()}
-              >
-                <span>
-                  <Smartphone />
-                </span>
-                {` Send Us A Text`}
-              </StyledButton>
+              <ButtonContainer>
+                <StyledButton
+                  as="a"
+                  href="tel:6149893503"
+                  solid
+                  onClick={() => handleClick()}
+                >
+                  <span>
+                    <PhoneOutgoing />
+                  </span>
+                  {`Give Us A Call`}
+                </StyledButton>
+              </ButtonContainer>
+              <ButtonContainer>
+                <StyledButton
+                  as="a"
+                  href="sms:6149893503"
+                  solid
+                  onClick={() => handleClick()}
+                >
+                  <span>
+                    <Smartphone />
+                  </span>
+                  {` Send Us A Text`}
+                </StyledButton>
+              </ButtonContainer>
             </AnimatedMenu>
           )
       )}
@@ -128,7 +132,6 @@ export default styled(CallTextButtons)`
 `
 const AnimatedMenu = styled(animated.div)`
   position: absolute;
-  background: var(--primary);
   top: 100%;
   display: flex;
   flex-direction: column;
@@ -138,6 +141,16 @@ const AnimatedMenu = styled(animated.div)`
   @media (min-width: 662px) {
     right: 0;
     align-items: flex-end;
+  }
+`
+
+const ButtonContainer = styled.div`
+  background: var(--primary);
+  width: 100%;
+
+  &:first-of-type {
+    margin-bottom: 2px;
+    margin-top: 2px;
   }
 `
 
