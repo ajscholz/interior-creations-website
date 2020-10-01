@@ -9,4 +9,9 @@ export default [
     path: `/about-interior-creations`,
     key: `hehjksdf88c`,
   },
+  {
+    title: `how we work`,
+    path: `/how-we-work`,
+    key: `hwefnks8830`,
+  },
 ]
