@@ -1,14 +1,10 @@
 import React from "react"
-import styled from "styled-components"
-import Section from "../components/Section"
-import Title from "../components/Title"
 import ImageSection from "../components/ImageSection"
-import Reviews from "../components/ReviewComponents/Reviews"
 import Button from "../components/Button"
 
-import OurProcessSection from "./sections/OurProcessSection"
 import BringYourDreamsToLifeSection from "./sections/BringYourDreamsToLifeSection"
 import WhatTheySaySection from "./sections/WhatTheySaySection"
+import OurProcessSection from "./sections/OurProcessSection"
 
 const PageSection = ({ section }) => {
   switch (section.id) {

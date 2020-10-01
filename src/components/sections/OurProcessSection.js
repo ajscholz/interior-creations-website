@@ -44,12 +44,18 @@ const OurProcessSection = ({ section, className }) => {
 
 export default styled(OurProcessSection)`
   flex-direction: column;
+  align-items: center;
 `
 
 const ProcessWrapper = styled.div`
   margin-top: 3rem;
   display: flex;
   align-items: center;
+
+  & ${Container} {
+    display: flex;
+    justify-content: center;
+  }
 
   & img {
     width: 30%;
