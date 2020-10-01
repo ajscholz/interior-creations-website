@@ -11,9 +11,15 @@ const OurProcessSection = ({ section, className }) => {
     <Section className={className}>
       <Container size="sm">
         <Title style={{ textAlign: "center" }}>{section.sectionTitle}</Title>
-        {/* <div style={{ textAlign: "center" }}>
-            <MDXRenderer>{section.sectionText.childMdx.body}</MDXRenderer>
-          </div> */}
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <MDXRenderer>{section.sectionText.childMdx.body}</MDXRenderer>
+        </div>
+
+        <hr style={{ width: "60%", margin: "4rem auto" }} />
         {section.contentReferences.map(step => {
           return (
             <ProcessWrapper key={step.id}>
