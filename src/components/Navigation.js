@@ -8,6 +8,7 @@ import links from "../utils/links"
 // import ProjectForm from "./FormComponents/ProjectForm"
 
 import CallTextButtons from "./CallTextButtons"
+import { FiX } from "react-icons/fi"
 
 const NavList = ({ setMenuOpen }) => (
   <List>
@@ -33,6 +34,9 @@ export const MobileNavigation = ({ open, setMenuOpen }) => {
 
   return (
     <MobileWrapper style={expandMenu}>
+      <CloseButton onClick={() => setMenuOpen(false)}>
+        <FiX />
+      </CloseButton>
       <nav>
         <NavList setMenuOpen={setMenuOpen} />
       </nav>
@@ -175,5 +179,21 @@ const NavItem = styled.li`
   }
   @media (min-width: 992px) {
     font-size: 1rem;
+  }
+`
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  outline: none;
+  border: 0;
+  padding: 0;
+  z-index: 500;
+  color: var(--primary);
+
+  & > svg {
+    stroke-width: 1;
   }
 `

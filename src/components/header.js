@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import Navigation from "./Navigation"
+import Navigation, { MobileNavigation } from "./Navigation"
 import Logo from "./Logo"
+import OpenMenuButton from "./OpenMenuButton"
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <StyledHeader>
       <Wrapper>
@@ -13,6 +16,8 @@ const Header = () => {
           <Logo />
         </StyledLink>
         <Navigation />
+        <MobileNavigation open={menuOpen} setMenuOpen={setMenuOpen} />
+        <OpenMenuButton open={menuOpen} setMenuOpen={setMenuOpen} />
       </Wrapper>
     </StyledHeader>
   )
@@ -29,7 +34,7 @@ Header.defaultProps = {
 export default Header
 
 const StyledHeader = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -45,11 +50,11 @@ const Wrapper = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   @media (min-width: 662px) {
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-end;
   }
 `

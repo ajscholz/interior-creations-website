@@ -6,7 +6,7 @@
   --white: #f0f3f7;
   --lightgray: #707070;
   --lightestgray: #e8e8e8;
-  --transWhite: rgba(240, 243, 247, 0.85);
+  --transWhite: rgba(240, 243, 247, 0.9);
   --mainTransition: all 0.3s ease;
   --shadow1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --shadow2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -27,6 +27,10 @@ html {
   height: 100%;
 
   font-size: 100%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 article,

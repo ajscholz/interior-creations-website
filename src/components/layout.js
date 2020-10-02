@@ -1,24 +1,17 @@
-import React, { useState, useContext } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 import Header from "./header"
 import "./layout.css"
-import ExpandCloseButton from "./ExpandCloseButton"
-import { MobileNavigation } from "./Navigation"
 import Footer from "./Footer"
 
-import { ModalContext } from "../context/ModalContext"
 import GlobalStyle from "./GlobalStyle"
-import ModalController from "./ModalComponents/ModalController"
 import PopupInfo from "./PopupInfo"
+import ModalController from "./ModalComponents/ModalController"
 
 const Layout = ({ children, pageContext }) => {
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  const [modalOpen] = useContext(ModalContext)
-
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,17 +27,16 @@ const Layout = ({ children, pageContext }) => {
   if (pageContext.layout === "landing") {
     return (
       <>
-        <GlobalStyle lockScroll={modalOpen || menuOpen} />
+        <GlobalStyle />
         <Main>{children}</Main>
       </>
     )
   }
   return (
     <>
-      <GlobalStyle lockScroll={modalOpen || menuOpen} />
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <MobileNavigation open={menuOpen} setMenuOpen={setMenuOpen} />
-      <ExpandCloseButton open={menuOpen} setMenuOpen={setMenuOpen} />
+
       <Main>{children}</Main>
       <Footer />
       {infoBoxActive && (
