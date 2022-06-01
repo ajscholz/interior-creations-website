@@ -41,7 +41,7 @@
     "react-spring-lightbox": "^1.1.7",
     "react-use-gesture": "^7.0.15",
     "resize-observer-polyfill": "^1.5.1",
-    "sharp": "^0.23.0",
+    "sharp": "^0.30.5",
     "styled-components": "^4.3.2",
     "typeface-cinzel": "^0.0.72",
     "typeface-prompt": "^0.0.72"
